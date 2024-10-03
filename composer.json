@@ -2,13 +2,14 @@
     "name": "enabel/ux",
     "license": "MIT",
     "type": "symfony-bundle",
+    "keywords": ["symfony-ux"],
     "require": {
         "php": "^8.1"
     },
     "minimum-stability": "stable",
     "autoload": {
         "psr-4": {
-            "Enabel\\UX\\": "src/"
+            "Enabel\\Ux\\": "src/"
         }
     },
     "config": {

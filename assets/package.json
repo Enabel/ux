@@ -1,0 +1,19 @@
+{
+    "name": "@enabel/ux",
+    "version": "0.0.1",
+    "symfony": {
+        "controllers": {
+            "enabel-ux-modal": {
+                "main": "dist/modal.js",
+                "fetch": "eager",
+                "enabled": true
+            }
+        },
+        "importmap": {
+            "@hotwired/stimulus": "^3.0.0"
+        }
+    },
+    "peerDependencies": {
+        "@hotwired/stimulus": "^3.0.0"
+    }
+}
