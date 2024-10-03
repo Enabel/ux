@@ -1,3 +1,4 @@
 services:
     Enabel\Ux\Component\Modal:
-        tags: { name: 'twig.component', key: 'Enabel:Ux:Modal', template: '@EnabelUx/modal.html.twig' }
+        tags:
+            - { name: 'twig.component', key: 'Enabel:Ux:Modal', template: '@EnabelUx/modal.html.twig' }
