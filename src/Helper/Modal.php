@@ -19,22 +19,22 @@ final readonly class Modal
     }
 
     /**
-     * @param string $background The URI of the page to render in the background
+     * @param string $backgroundUri The URI of the page to render in the background
      * @param string $template The template of the modal
      * @param array<mixed> $context Template context of the modal
      */
-    public function render(string $background, string $template, array $context = []): Response
+    public function render(string $backgroundUri, string $template, array $context = []): Response
     {
         $request = $this->getRequest();
 
         $modal = $this->twig->render($template, $context);
 
-        if ($request->query->has('_modal')) {
+        if ($request->query->get('_modal')) {
             return new Response($modal);
         }
 
-        $subRequest = Request::create($background);
-        $subRequest->attributes->set('_modal', ['background' => $background, 'content' => $modal]);
+        $subRequest = Request::create($backgroundUri);
+        $subRequest->attributes->set('_modal', ['content' => $modal, 'backgroundUri' => $backgroundUri]);
 
         if ($request->hasSession()) {
             $subRequest->setSession($request->getSession());
@@ -47,7 +47,7 @@ final readonly class Modal
     {
         $request = $this->getRequest();
 
-        if ($request->query->has('_modal')) {
+        if ($request->query->get('_modal')) {
             return new Response('', 200, ['X-Modal-Redirect' => $url]);
         }
 

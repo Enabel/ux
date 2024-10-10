@@ -2,3 +2,8 @@ services:
     Enabel\Ux\Component\Modal:
         tags:
             - { name: 'twig.component', key: 'Enabel:Ux:Modal', template: '@EnabelUx/modal.html.twig' }
+    Enabel\Ux\Helper\Modal:
+        arguments:
+            - '@request_stack'
+            - '@http_kernel'
+            - '@twig'

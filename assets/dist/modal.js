@@ -1,24 +1,29 @@
 import { Controller } from '@hotwired/stimulus';
-import { Modal } from 'bootstrap/js/dist/modal';
+import Modal from 'bootstrap/js/dist/modal';
 
 export default class extends Controller {
     constructor() {
         super(...arguments);
-        this.modal = null;
+        this.onClick = this.onClick.bind(this);
+        this.onSubmit = this.onSubmit.bind(this);
+        this.onHideBsModal = this.onHideBsModal.bind(this);
+    }
+
+    initialize() {
+        window.history.replaceState({ page: document.location.toString() }, '', document.location.toString());
+
+        if (!this.element.matches('[data-modal-background-uri]')) {
+            return;
+        }
+
+        window.history.replaceState({ page: this.element.dataset.modalBackgroundUri }, '', document.location.toString());
+        Modal.getOrCreateInstance(this.element).show();
     }
 
     connect() {
         document.addEventListener('click', this.onClick);
         document.addEventListener('submit', this.onSubmit);
         document.addEventListener('hide.bs.modal', this.onHideBsModal);
-
-        window.history.replaceState({ page: document.location.toString() }, '', document.location.toString());
-
-        if (this.element.matches('[data-background]')) {
-            window.history.replaceState({ page: this.element.dataset.background }, '', document.location.toString());
-            this.modal = new Modal(this.element.querySelector('.modal'));
-            this.modal.show();
-        }
     }
 
     disconnect() {
@@ -45,10 +50,14 @@ export default class extends Controller {
         const url = event.target.action;
         const { method } = event.target;
         const body = new FormData(event.target);
-        load(url, method, body);
+        this.load(url, method, body);
     }
 
-    onHideBsModal() {
+    onHideBsModal(event) {
+        if (event.target !== this.element) {
+            return;
+        }
+
         window.history.pushState({ page: window.history.state.page }, '', window.history.state.page);
     }
 
@@ -66,13 +75,8 @@ export default class extends Controller {
             }
 
             response.text().then((html) => {
-                if (this.modal instanceof Modal) {
-                    this.modal.dispose();
-                }
-
                 this.element.innerHTML = html;
-                this.modal = new Modal(this.element.querySelector('.modal'));
-                this.modal.show();
+                Modal.getOrCreateInstance(this.element).show();
             });
 
             window.history.pushState(window.history.state, '', url);
@@ -80,7 +84,7 @@ export default class extends Controller {
     }
 
     buildUrl(url, method, body) {
-        url = this.addSearchParams(url, new URLSearchParams('_modal'));
+        url = this.addSearchParams(url, new URLSearchParams('_modal=1'));
 
         if (method !== 'GET') {
             return url;
@@ -90,7 +94,7 @@ export default class extends Controller {
             return url;
         }
 
-        url = this.addSearchParams(url, new URLSearchParams(body));
+        url = this.addSearchParams(url, body);
 
         return url;
     }
@@ -112,9 +116,9 @@ export default class extends Controller {
     }
 
     addSearchParams(url, params) {
-        url = new URL(url, `${document.location.protocol}//${document.location.hostname}`);
+        url = new URL(url, document.location.origin);
 
-        for (const [key, value] of Object.entries(params)) {
+        for (const [key, value] of params.entries()) {
             url.searchParams.set(key, value);
         }
 
