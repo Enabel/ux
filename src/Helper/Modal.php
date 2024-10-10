@@ -43,7 +43,7 @@ final readonly class Modal
         return $this->httpKernel->handle($subRequest, HttpKernelInterface::SUB_REQUEST);
     }
 
-    public function redirect(Request $request, string $url): Response
+    public function redirect(string $url): Response
     {
         $request = $this->getRequest();
 
