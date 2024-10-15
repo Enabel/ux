@@ -62,7 +62,7 @@ export default class extends Controller {
     }
 
     load(url, method, body) {
-        method = method ? method.toUppercase() : 'GET';
+        method = method ? method.toUpperCase() : 'GET';
 
         const xhrUrl = this.buildUrl(url, method, body);
         const xhrOptions = this.buildOptions(method, body);
