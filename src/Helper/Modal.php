@@ -29,12 +29,12 @@ final readonly class Modal
 
         $modal = $this->twig->render($template, $context);
 
-        if ($request->query->get('_modal')) {
+        if ($request->query->get('_enabel_ux_modal')) {
             return new Response($modal);
         }
 
         $subRequest = Request::create($backgroundUri);
-        $subRequest->attributes->set('_modal', ['content' => $modal, 'backgroundUri' => $backgroundUri]);
+        $subRequest->attributes->set('_enabel_ux_modal', ['content' => $modal, 'backgroundUri' => $backgroundUri]);
 
         if ($request->hasSession()) {
             $subRequest->setSession($request->getSession());
@@ -47,7 +47,7 @@ final readonly class Modal
     {
         $request = $this->getRequest();
 
-        if ($request->query->get('_modal')) {
+        if ($request->query->get('_enabel_ux_modal')) {
             return new Response('', 200, ['X-Modal-Redirect' => $url]);
         }
 

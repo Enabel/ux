@@ -84,7 +84,7 @@ export default class extends Controller {
     }
 
     buildUrl(url, method, body) {
-        url = this.addSearchParams(url, new URLSearchParams('_modal=1'));
+        url = this.addSearchParams(url, new URLSearchParams('_enabel_ux_modal=1'));
 
         if (method !== 'GET') {
             return url;

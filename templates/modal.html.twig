@@ -1,3 +1,3 @@
-<div class="modal" {{ attributes.defaults(stimulus_controller('enabel/ux/modal')) }}{% if app.request.attributes.has('_modal') %} data-modal-background-uri="{{ app.request.attributes.get('_modal').backgroundUri }}"{% endif %}>
-    {% if app.request.attributes.has('_modal') %}{{ app.request.attributes.get('_modal').content | raw }}{% endif %}
+<div class="modal" {{ attributes.defaults(stimulus_controller('enabel/ux/modal')) }}{% if app.request.attributes.has('_enabel_ux_modal') %} data-modal-background-uri="{{ app.request.attributes.get('_enabel_ux_modal').backgroundUri }}"{% endif %}>
+    {% if app.request.attributes.has('_enabel_ux_modal') %}{{ app.request.attributes.get('_enabel_ux_modal').content | raw }}{% endif %}
 </div>
