@@ -75,7 +75,7 @@ export default class extends Controller {
             }
 
             if (response.headers.has('X-Modal-Redirect-Self')) {
-                return this.load(response.headers.has('X-Modal-Redirect-Self'));
+                return this.load(response.headers.get('X-Modal-Redirect-Self'));
             }
 
             response.text().then((html) => {
