@@ -54,6 +54,17 @@ final readonly class Modal
         return new RedirectResponse($url);
     }
 
+    public function redirectModal(string $url): Response
+    {
+        $request = $this->getRequest();
+
+        if ($request->query->get('_enabel_ux_modal')) {
+            return new Response('', 200, ['X-Modal-Redirect-Self' => $url]);
+        }
+
+        return new RedirectResponse($url);
+    }
+
     private function getRequest(): Request
     {
         $request = $this->requestStack->getCurrentRequest();

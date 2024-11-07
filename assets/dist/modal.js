@@ -74,6 +74,10 @@ export default class extends Controller {
                 return;
             }
 
+            if (response.headers.has('X-Modal-Redirect-Self')) {
+                return this.load(response.headers.has('X-Modal-Redirect-Self'));
+            }
+
             response.text().then((html) => {
                 this.element.innerHTML = html;
                 Modal.getOrCreateInstance(this.element).show();
