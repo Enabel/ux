@@ -65,6 +65,11 @@ final readonly class Modal
         return new RedirectResponse($url);
     }
 
+    public function callback(string $payload): Response
+    {
+        return new Response('', 204, ['X-Modal-Callback' => $payload]);
+    }
+
     private function getRequest(): Request
     {
         $request = $this->requestStack->getCurrentRequest();

@@ -78,6 +78,17 @@ export default class extends Controller {
                 return this.load(response.headers.get('X-Modal-Redirect-Self'));
             }
 
+            if (response.headers.has('X-Modal-Callback')) {
+                const event = new CustomEvent('modal:callback', {
+                    detail: response.headers.get('X-Modal-Callback')
+                });
+
+                this.element.dispatchEvent(event);
+                Modal.getOrCreateInstance(this.element).close();
+
+                return;
+            }
+
             response.text().then((html) => {
                 this.element.innerHTML = html;
                 Modal.getOrCreateInstance(this.element).show();
