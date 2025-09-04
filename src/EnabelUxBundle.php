@@ -30,7 +30,7 @@ final class EnabelUxBundle extends AbstractBundle
             return;
         }
 
-        $container->prependExtensionConfig('framework', [
+        $builder->prependExtensionConfig('framework', [
             'asset_mapper' => [
                 'paths' => [
                     __DIR__ . '/../assets/dist',
