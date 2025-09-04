@@ -20,7 +20,7 @@ final class EnabelUxBundle extends AbstractBundle
             return;
         }
 
-        $metadata = $container->getParameter('kernel.bundles_metadata');
+        $metadata = $builder->getParameter('kernel.bundles_metadata');
 
         if (!isset($metadata['FrameworkBundle'])) {
             return;
