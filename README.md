@@ -1,4 +1,4 @@
-# Enabel UX for Symfony!
+# Enabel UX for Symfony
 
 [![CI](https://github.com/Enabel/ux/actions/workflows/ci.yaml/badge.svg)](https://github.com/Enabel/ux/actions/workflows/ci.yaml)
 
@@ -13,7 +13,7 @@ This bundle provides reusable Twig components and utilities for Symfony applicat
 Install the bundle using composer:
 
 ``` bash
-composer require enabel/ux-bundle
+composer require enabel/ux
 ```
 
 ## Credits
