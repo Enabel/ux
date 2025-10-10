@@ -1,5 +1,12 @@
 <?php
 
+/*
+ * This file is part of the Enabel UX package.
+ * Copyright (c) Enabel <https://enabel.be/>
+ * For the full copyright and license information, please view the LICENSE
+ * file that was distributed with this source code.
+ */
+
 namespace Enabel\Ux\Helper;
 
 use Symfony\Component\HttpFoundation\RedirectResponse;
@@ -19,9 +26,9 @@ final readonly class Modal
     }
 
     /**
-     * @param string $backgroundUri The URI of the page to render in the background
-     * @param string $template The template of the modal
-     * @param array<mixed> $context Template context of the modal
+     * @param string       $backgroundUri The URI of the page to render in the background
+     * @param string       $template      The template of the modal
+     * @param array<mixed> $context       Template context of the modal
      */
     public function render(string $backgroundUri, string $template, array $context = []): Response
     {

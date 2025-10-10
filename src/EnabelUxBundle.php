@@ -1,5 +1,12 @@
 <?php
 
+/*
+ * This file is part of the Enabel UX package.
+ * Copyright (c) Enabel <https://enabel.be/>
+ * For the full copyright and license information, please view the LICENSE
+ * file that was distributed with this source code.
+ */
+
 namespace Enabel\Ux;
 
 use Symfony\Component\AssetMapper\AssetMapperInterface;
@@ -26,14 +33,14 @@ final class EnabelUxBundle extends AbstractBundle
             return;
         }
 
-        if (!is_file($metadata['FrameworkBundle']['path'] . '/Resources/config/asset_mapper.php')) {
+        if (!is_file($metadata['FrameworkBundle']['path'].'/Resources/config/asset_mapper.php')) {
             return;
         }
 
         $builder->prependExtensionConfig('framework', [
             'asset_mapper' => [
                 'paths' => [
-                    __DIR__ . '/../assets/dist',
+                    __DIR__.'/../assets/dist',
                 ],
             ],
         ]);
