@@ -16,6 +16,9 @@ use Symfony\Component\HttpKernel\Bundle\AbstractBundle;
 
 final class EnabelUxBundle extends AbstractBundle
 {
+    /**
+     * @param array<string, mixed> $config
+     */
     public function loadExtension(array $config, ContainerConfigurator $container, ContainerBuilder $builder): void
     {
         $container->import('../config/services.yaml');
@@ -29,7 +32,7 @@ final class EnabelUxBundle extends AbstractBundle
 
         $metadata = $builder->getParameter('kernel.bundles_metadata');
 
-        if (!isset($metadata['FrameworkBundle'])) {
+        if (!\is_array($metadata) || !isset($metadata['FrameworkBundle'])) {
             return;
         }
 

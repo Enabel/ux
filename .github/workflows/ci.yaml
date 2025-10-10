@@ -12,8 +12,8 @@ jobs:
   composer-validate:
     uses: Enabel/CI/.github/workflows/composer-validate.yaml@main
   
-  cs:
+  coding-standards:
     uses: Enabel/CI/.github/workflows/php-cs-fixer.yaml@main
   
-  sca:
+  static-analysis:
     uses: Enabel/CI/.github/workflows/phpstan.yaml@main
