@@ -1,5 +1,7 @@
 # Enabel UX for Symfony!
 
+[![CI](https://github.com/Enabel/ux/actions/workflows/ci.yaml/badge.svg)](https://github.com/Enabel/ux/actions/workflows/ci.yaml)
+
 This bundle provides reusable Twig components and utilities for Symfony applications.
 
 ## Components
