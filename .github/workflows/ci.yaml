@@ -1,0 +1,19 @@
+name: CI
+
+on:
+  pull_request: ~
+  push:
+    branches: ['main']
+
+jobs:
+  test:
+    uses: Enabel/CI/.github/workflows/phpunit.yaml@main
+  
+  composer-validate:
+    uses: Enabel/CI/.github/workflows/composer-validate.yaml@main
+  
+  coding-standards:
+    uses: Enabel/CI/.github/workflows/php-cs-fixer.yaml@main
+  
+  static-analysis:
+    uses: Enabel/CI/.github/workflows/phpstan.yaml@main

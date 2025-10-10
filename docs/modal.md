@@ -1,8 +1,3 @@
-Enabel UX Bundle
-================
-
-This bundle provides reusable Twig components and utilities for Symfony applications.
-
 Modal
 -----
 
