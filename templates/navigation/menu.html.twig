@@ -1,0 +1,7 @@
+{# Menu component #}
+{% set alignClass = align == 'center' ? 'mx-auto justify-content-center' : (align == 'end' ? 'd-flex justify-content-end ms-auto' : 'me-auto') %}
+
+<ul class="navbar-nav mb-2 mb-lg-0 {{ alignClass }} {{ attributes.render('class') }}" {{ attributes.defaults({}) }}>
+    {% block content %}
+    {% endblock %}
+</ul>

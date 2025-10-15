@@ -1,0 +1,35 @@
+{# Tab component #}
+{% set variantClass = variant == 'pills' ? 'nav-pills' : 'nav-tabs' %}
+{% set fillClass = fill ? 'nav-fill' : '' %}
+{% set justifiedClass = justified ? 'nav-justified' : '' %}
+{% set alignmentClass = alignment != 'start' ? 'justify-content-' ~ alignment : '' %}
+
+<ul class="nav {{ variantClass }} {{ fillClass }} {{ justifiedClass }} {{ alignmentClass }} {{ attributes.render('class') }}" {{ attributes.defaults({}) }}>
+    {% block tabs %}
+        {% for tab in tabs %}
+            {% set isActive = activeTab is not null and activeTab == tab.id %}
+            <li class="nav-item">
+                <a class="nav-link{% if isActive %} active{% endif %}" 
+                   href="{{ tab.link }}"
+                   id="{{ tab.id }}"
+                   {% if isActive %}aria-current="page"{% endif %}>
+                    {{ tab.label }}
+                </a>
+            </li>
+        {% endfor %}
+    {% endblock %}
+</ul>
+
+{% if tabs is not empty %}
+    <div class="tab-content mt-3">
+        {% block content %}
+            <div class="tab-pane fade show active"
+                 id="{{ activeTab }}-pane"
+                 role="tabpanel">
+                {% if activeContent is defined %}
+                    {{ activeContent|raw }}
+                {% endif %}
+            </div>
+        {% endblock %}
+    </div>
+{% endif %}

@@ -1,0 +1,28 @@
+{# Flash message component #}
+{% set typeCva = cva({
+    base: 'alert',
+    variants: {
+        type: {
+            primary: ' alert-primary',
+            secondary: ' alert-secondary',
+            success: ' alert-success',
+            danger: ' alert-danger',
+            warning: ' alert-warning',
+            info: ' alert-info',
+            light: ' alert-light',
+            dark: ' alert-dark',
+        },
+        dismissible: {
+            true: ' alert-dismissible fade show',
+        }
+    }
+}) %}
+
+<div class="{{ typeCva.apply({type, dismissible}, attributes.render('class')) }}" {{ attributes.defaults({}) }} role="alert">
+    {% block content %}
+        {{ text|raw }}
+    {% endblock %}
+    {% if dismissible %}
+        <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+    {% endif %}
+</div>

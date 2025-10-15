@@ -6,12 +6,27 @@
     "keywords": [
         "symfony-ux"
     ],
+    "authors": [
+        {
+            "name": "Damien LAGAE",
+            "email": "damien.lagae@enabel.be"
+        },
+        {
+            "name": "Gerry VANDERMAESEN",
+            "email": "gerry.vandermaesen@enabel.be"
+        }
+    ],
     "require": {
         "php": ">=8.3",
         "symfony/asset-mapper": "^7.3",
+        "symfony/options-resolver": "^7.3",
+        "symfony/ux-icons": "^2.30",
+        "symfony/ux-twig-component": "^2.30",
+        "twig/intl-extra": "^3.0",
         "twig/twig": "^3.0"
     },
     "require-dev": {
+        "ergebnis/composer-normalize": "^2.48",
         "phpunit/phpunit": "^9.6",
         "symfony/framework-bundle": "^7.3",
         "symfony/phpunit-bridge": "^7.3"
@@ -28,6 +43,9 @@
         }
     },
     "config": {
+        "allow-plugins": {
+            "ergebnis/composer-normalize": true
+        },
         "sort-packages": true
     },
     "scripts": {

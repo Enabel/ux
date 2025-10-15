@@ -1,0 +1,50 @@
+{# Card component #}
+<div class="card {{ attributes.render('class') }}" {{ attributes.defaults({}) }}>
+    {% if image and imagePosition == 'top' %}
+        <img src="{{ image }}" class="card-img-top" alt="{{ imageAlt }}">
+    {% endif %}
+
+    {% if header %}
+        <div class="card-header">
+            {% block header %}
+                {{ header }}
+            {% endblock %}
+        </div>
+    {% endif %}
+
+    {% block body %}
+        {% if title or subtitle or text or link %}
+            <div class="card-body">
+                {% block card_body %}
+                    {% if title %}
+                        <h5 class="card-title">{{ title }}</h5>
+                    {% endif %}
+
+                    {% if subtitle %}
+                        <h6 class="card-subtitle mb-2 text-muted">{{ subtitle }}</h6>
+                    {% endif %}
+
+                    {% if text %}
+                        <p class="card-text">{{ text }}</p>
+                    {% endif %}
+
+                    {% if link %}
+                        <a href="{{ link }}" class="btn btn-primary">{{ linkText }}</a>
+                    {% endif %}
+                {% endblock %}
+            </div>
+        {% endif %}
+    {% endblock %}
+
+    {% if footer %}
+        <div class="card-footer">
+            {% block footer %}
+                {{ footer }}
+            {% endblock %}
+        </div>
+    {% endif %}
+
+    {% if image and imagePosition == 'bottom' %}
+        <img src="{{ image }}" class="card-img-bottom" alt="{{ imageAlt }}">
+    {% endif %}
+</div>

@@ -23,5 +23,6 @@ EOF
         ]
     ))
     ->setRiskyAllowed(true)
+    ->setParallelConfig(new PhpCsFixer\Runner\Parallel\ParallelConfig(4, 20))
     ->setFinder($finder)
     ;

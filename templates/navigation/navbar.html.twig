@@ -1,0 +1,30 @@
+{# Navbar component #}
+{% set expandClass = expand == 'always' ? '' : (expand == 'never' ? 'navbar-expand' : 'navbar-expand-' ~ expand) %}
+{% set themeClass = theme == 'dark' ? 'navbar-dark bg-dark' : 'navbar-light bg-light' %}
+{% set fixedClass = fixed ? 'fixed-' ~ fixedPosition : '' %}
+
+<nav class="navbar {{ expandClass }} {{ themeClass }} {{ fixedClass }} {{ attributes.render('class') }}" {{ attributes.defaults({}) }}>
+    <div class="container-fluid">
+        {% block brand %}
+            {% if name or logo %}
+                <a class="navbar-brand" href="{{ link }}">
+                    {% if logo %}
+                        <img src="{{ logo }}" alt="{{ name ?? '' }}" height="30" class="d-inline-block align-text-top">
+                    {% endif %}
+                    {% if name %}
+                        {{ name }}
+                    {% endif %}
+                </a>
+            {% endif %}
+        {% endblock %}
+
+        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarContent" aria-controls="navbarContent" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+
+        <div class="collapse navbar-collapse" id="navbarContent">
+            {% block content %}
+            {% endblock %}
+        </div>
+    </div>
+</nav>
