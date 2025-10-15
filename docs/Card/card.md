@@ -22,7 +22,7 @@ A Bootstrap card component for displaying content in a flexible and extensible c
 ### Basic card with title and text
 
 ```twig
-{{ component('EnabelUx:Card', {
+{{ component('Enabel:Ux:Card', {
     title: 'Card title',
     text: 'Some quick example text to build on the card title and make up the bulk of the card\'s content.'
 }) }}
@@ -31,7 +31,7 @@ A Bootstrap card component for displaying content in a flexible and extensible c
 ### Card with image
 
 ```twig
-{{ component('EnabelUx:Card', {
+{{ component('Enabel:Ux:Card', {
     image: '/images/example.jpg',
     imageAlt: 'Example image',
     title: 'Card with image',
@@ -42,7 +42,7 @@ A Bootstrap card component for displaying content in a flexible and extensible c
 ### Card with image at bottom
 
 ```twig
-{{ component('EnabelUx:Card', {
+{{ component('Enabel:Ux:Card', {
     title: 'Card title',
     text: 'This card displays an image at the bottom.',
     image: '/images/example.jpg',
@@ -54,7 +54,7 @@ A Bootstrap card component for displaying content in a flexible and extensible c
 ### Card with subtitle
 
 ```twig
-{{ component('EnabelUx:Card', {
+{{ component('Enabel:Ux:Card', {
     title: 'Card title',
     subtitle: 'Card subtitle',
     text: 'This card includes a subtitle below the title.'
@@ -64,7 +64,7 @@ A Bootstrap card component for displaying content in a flexible and extensible c
 ### Card with header and footer
 
 ```twig
-{{ component('EnabelUx:Card', {
+{{ component('Enabel:Ux:Card', {
     header: 'Featured',
     title: 'Special title treatment',
     text: 'With supporting text below as a natural lead-in to additional content.',
@@ -75,7 +75,7 @@ A Bootstrap card component for displaying content in a flexible and extensible c
 ### Card with link button
 
 ```twig
-{{ component('EnabelUx:Card', {
+{{ component('Enabel:Ux:Card', {
     title: 'Card title',
     text: 'Some quick example text to build on the card title.',
     link: '/more-info',
@@ -86,7 +86,7 @@ A Bootstrap card component for displaying content in a flexible and extensible c
 ### Complete card example
 
 ```twig
-{{ component('EnabelUx:Card', {
+{{ component('Enabel:Ux:Card', {
     image: '/images/product.jpg',
     imageAlt: 'Product image',
     imagePosition: 'top',
@@ -103,7 +103,7 @@ A Bootstrap card component for displaying content in a flexible and extensible c
 ### Card with custom CSS classes
 
 ```twig
-{{ component('EnabelUx:Card', {
+{{ component('Enabel:Ux:Card', {
     title: 'Custom styled card',
     text: 'This card has custom styling.',
     class: 'border-primary shadow-lg'
@@ -115,7 +115,7 @@ A Bootstrap card component for displaying content in a flexible and extensible c
 You can override blocks to fully customize the card content:
 
 ```twig
-{% component 'EnabelUx:Card' %}
+{% component 'Enabel:Ux:Card' %}
     {% block body %}
         <div class="card-body">
             <h5 class="card-title">Custom Card</h5>
@@ -133,7 +133,7 @@ You can override blocks to fully customize the card content:
 ### Customizing the header
 
 ```twig
-{% component 'EnabelUx:Card' with {
+{% component 'Enabel:Ux:Card' with {
     title: 'Card with custom header',
     text: 'This card has a custom header.'
 } %}
@@ -146,7 +146,7 @@ You can override blocks to fully customize the card content:
 ### Customizing the footer
 
 ```twig
-{% component 'EnabelUx:Card' with {
+{% component 'Enabel:Ux:Card' with {
     title: 'Card with custom footer',
     text: 'This card has a custom footer.'
 } %}
@@ -159,7 +159,7 @@ You can override blocks to fully customize the card content:
 ### Customizing the card body
 
 ```twig
-{% component 'EnabelUx:Card' with {
+{% component 'Enabel:Ux:Card' with {
     image: '/images/avatar.jpg',
     imageAlt: 'Avatar'
 } %}
@@ -180,7 +180,7 @@ The component supports Bootstrap card utilities through custom CSS classes:
 ### Text alignment
 
 ```twig
-{{ component('EnabelUx:Card', {
+{{ component('Enabel:Ux:Card', {
     title: 'Centered card',
     text: 'This card has centered text.',
     class: 'text-center'
@@ -190,13 +190,13 @@ The component supports Bootstrap card utilities through custom CSS classes:
 ### Background colors
 
 ```twig
-{{ component('EnabelUx:Card', {
+{{ component('Enabel:Ux:Card', {
     title: 'Primary card',
     text: 'This card has a primary background.',
     class: 'text-white bg-primary'
 }) }}
 
-{{ component('EnabelUx:Card', {
+{{ component('Enabel:Ux:Card', {
     title: 'Success card',
     text: 'This card has a success background.',
     class: 'text-white bg-success'
@@ -206,7 +206,7 @@ The component supports Bootstrap card utilities through custom CSS classes:
 ### Border colors
 
 ```twig
-{{ component('EnabelUx:Card', {
+{{ component('Enabel:Ux:Card', {
     title: 'Border card',
     text: 'This card has a colored border.',
     class: 'border-primary'
@@ -217,7 +217,7 @@ The component supports Bootstrap card utilities through custom CSS classes:
 
 ```twig
 <div style="width: 18rem;">
-    {{ component('EnabelUx:Card', {
+    {{ component('Enabel:Ux:Card', {
         image: '/images/example.jpg',
         imageAlt: 'Example',
         title: 'Card width',
