@@ -6,7 +6,7 @@ This bundle provides reusable Twig components and utilities for Symfony applicat
 
 ## Components
 
-- Modal: Read the [documentation](docs/modal.md) for more information.
+- Modal: Read the [documentation](docs/index.md) for more information.
 
 ## Installation
 

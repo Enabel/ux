@@ -1,11 +1,12 @@
 # Changelog
 
-## [v1.3.0](https://github.com/enabel/ux/tree/v1.3.0)
+## [v1.3.0](https://github.com/enabel/ux/tree/v1.3.0) (2025-10-15)
 
 [Full Changelog](https://github.com/enabel/ux/compare/v1.2.0...v1.3.0)
 
 **Merged pull requests:**
 
+- ✨ Add layout [\#6](https://github.com/Enabel/ux/pull/6) ([damienlagae](https://github.com/damienlagae))
 - ✨ Add some composant [\#5](https://github.com/Enabel/ux/pull/5) ([damienlagae](https://github.com/damienlagae))
 - Add doc, CI, test [\#4](https://github.com/Enabel/ux/pull/4) ([damienlagae](https://github.com/damienlagae))
 

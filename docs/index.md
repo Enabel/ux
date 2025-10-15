@@ -1,10 +1,10 @@
-# Cycling Apps Component for Symfony
+# Ux Component for Symfony
 
 This bundle provides reusable components and utilities for Symfony applications.
 
 ## Repository
 
-https://github.com/EnabelUx/component-bundle
+https://github.com/Enabel/Ux
 
 ## Components
 
