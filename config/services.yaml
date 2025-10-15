@@ -1,9 +1,38 @@
 services:
-    Enabel\Ux\Component\Modal:
-        tags:
-            - { name: 'twig.component', key: 'Enabel:Ux:Modal', template: '@EnabelUx/modal.html.twig' }
-    Enabel\Ux\Helper\Modal:
-        arguments:
-            - '@request_stack'
-            - '@http_kernel'
-            - '@twig'
+  Enabel\Ux\Component\Alert\Alert:
+    tags:
+      - { name: 'twig.component', key: 'Enabel:Ux:Alert', template: '@EnabelUx/alert/alert.html.twig', expose_public_props: true }
+
+  Enabel\Ux\Component\Card\Card:
+    tags:
+      - { name: 'twig.component', key: 'Enabel:Ux:Card', template: '@EnabelUx/card/card.html.twig', expose_public_props: true }
+
+  Enabel\Ux\Component\Modal:
+    tags:
+      - { name: 'twig.component', key: 'Enabel:Ux:Modal', template: '@EnabelUx/modal.html.twig' }
+  Enabel\Ux\Helper\Modal:
+    arguments:
+      - '@request_stack'
+      - '@http_kernel'
+      - '@twig'
+  
+  Enabel\Ux\Component\Navigation\LocaleSwitcher:
+    tags:
+      - { name: 'twig.component', key: 'Enabel:Ux:LocaleSwitcher', template: '@EnabelUx/navigation/locale_switcher.html.twig', expose_public_props: true }
+  
+  Enabel\Ux\Component\Navigation\Menu:
+    public: true
+    tags:
+      - { name: 'twig.component', key: 'Enabel:Ux:Menu', template: '@EnabelUx/navigation/menu.html.twig', expose_public_props: true }
+
+  Enabel\Ux\Component\Navigation\MenuItem:
+    tags:
+      - { name: 'twig.component', key: 'Enabel:Ux:MenuItem', template: '@EnabelUx/navigation/menu_item.html.twig', expose_public_props: true }
+  
+  Enabel\Ux\Component\Navigation\Navbar:
+    tags:
+      - { name: 'twig.component', key: 'Enabel:Ux:Navbar', template: '@EnabelUx/navigation/navbar.html.twig', expose_public_props: true }
+  
+  Enabel\Ux\Component\Navigation\Tab:
+    tags:
+      - { name: 'twig.component', key: 'Enabel:Ux:Tab', template: '@EnabelUx/navigation/tab.html.twig', expose_public_props: true }

@@ -1,0 +1,23 @@
+{# Locale switcher component #}
+<li class="nav-item dropdown">
+    {% set icon = (app.locale == 'en' ? 'gb' : app.locale) %}
+    {% set locale_display_name = app.locale|locale_name(app.locale)|capitalize %}
+    <a href="#" class="nav-link dropdown-toggle" id="dropdownLocales" data-bs-toggle="dropdown"
+       aria-expanded="false">
+        <twig:ux:icon name="cif:{{ icon }}" style="width: 1.5rem; height: 1.5rem;" />{% if showLocaleName %}&nbsp;{{ locale_display_name }}{% endif %}
+    </a>
+    <ul class="dropdown-menu" aria-labelledby="dropdownLocales">
+        {% for locale in locales %}
+            {% if locale != app.locale %}
+            {% set icon = (locale == 'en' ? 'gb' : locale) %}
+            {% set navigation_url = path(app.current_route, app.current_route_parameters|merge({'_locale': locale})) %}
+            {% set locale_display_name = locale|locale_name(locale)|capitalize %}
+            <li role="menuitem">
+                <a class="dropdown-item" href="{{ navigation_url }}">
+                    <twig:ux:icon name="cif:{{ icon }}" style="width: 1.5rem; height: 1.5rem;" />{% if showLocaleName %}&nbsp;{{ locale_display_name }}{% endif %}
+                </a>
+            </li>
+            {% endif %}
+        {% endfor %}
+    </ul>
+</li>

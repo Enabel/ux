@@ -1,0 +1,51 @@
+{# MenuItem component #}
+<li class="nav-item{% if isDropdown %} dropdown{% endif %} {{ attributes.render('class') }}" {{ attributes.defaults({}) }}>
+    {% block content %}
+        {% if isDropdown %}
+            {# Dropdown menu item #}
+            <a class="nav-link dropdown-toggle{% if active %} active{% endif %}{% if disabled %} disabled{% endif %}" 
+               href="#" 
+               role="button" 
+               data-bs-toggle="dropdown" 
+               aria-expanded="false"
+               {% if disabled %}aria-disabled="true" tabindex="-1"{% endif %}>
+                {% if icon %}<twig:ux:icon name="{{ icon }}" style="width: 1.2rem; height: 1.2rem;" />{% endif %}
+                {{ label }}
+            </a>
+            <ul class="dropdown-menu">
+                {% for item in dropdownItems %}
+                    {% if item.divider|default(false) %}
+                        <li><hr class="dropdown-divider"></li>
+                    {% elseif item.header|default(false) %}
+                        <li><h6 class="dropdown-header">{{ item.label }}</h6></li>
+                    {% else %}
+                        <li>
+                            <a class="dropdown-item{% if item.active|default(false) %} active{% endif %}{% if item.disabled|default(false) %} disabled{% endif %}" 
+                               {% if item.link and not item.disabled|default(false) %}href="{{ item.link }}"{% endif %}
+                               {% if item.active|default(false) %}aria-current="page"{% endif %}
+                               {% if item.disabled|default(false) %}aria-disabled="true" tabindex="-1"{% endif %}>
+                                {% if item.icon|default(null) %}<twig:ux:icon name="{{ icon }}" style="width: 1.2rem; height: 1.2rem;" />{% endif %}
+                                {{ item.label }}
+                            </a>
+                        </li>
+                    {% endif %}
+                {% endfor %}
+            </ul>
+        {% elseif link %}
+            {# Regular link menu item #}
+            <a class="nav-link{% if active %} active{% endif %}{% if disabled %} disabled{% endif %}" 
+               {% if link and not disabled %}href="{{ link }}"{% endif %}
+               {% if active %}aria-current="page"{% endif %}
+               {% if disabled %}aria-disabled="true" tabindex="-1"{% endif %}>
+                {% if icon %}<twig:ux:icon name="{{ icon }}" style="width: 1.2rem; height: 1.2rem;" />{% endif %}
+                {{ label }}
+            </a>
+        {% else %}
+            {# Span menu item #}
+            <span class="nav-link{% if disabled %} disabled{% endif %}">
+                {% if icon %}<twig:ux:icon name="{{ icon }}" style="width: 1.2rem; height: 1.2rem;" />{% endif %}
+                {{ label }}
+            </span>
+        {% endif %}
+    {% endblock %}
+</li>
