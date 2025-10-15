@@ -15,7 +15,7 @@ A Bootstrap alert component for displaying messages with customizable types and 
 ### Basic usage
 
 ```twig
-{{ component('EnabelUx:Alert', {
+{{ component('Enabel:Ux:Alert', {
     text: 'This is an info message'
 }) }}
 ```
@@ -23,7 +23,7 @@ A Bootstrap alert component for displaying messages with customizable types and 
 ### With custom type
 
 ```twig
-{{ component('EnabelUx:Alert', {
+{{ component('Enabel:Ux:Alert', {
     text: 'Operation completed successfully!',
     type: 'success'
 }) }}
@@ -32,7 +32,7 @@ A Bootstrap alert component for displaying messages with customizable types and 
 ### Dismissible alert
 
 ```twig
-{{ component('EnabelUx:Alert', {
+{{ component('Enabel:Ux:Alert', {
     text: 'This message can be closed',
     type: 'warning',
     dismissible: true
@@ -42,42 +42,42 @@ A Bootstrap alert component for displaying messages with customizable types and 
 ### All available types
 
 ```twig
-{{ component('EnabelUx:Alert', {
+{{ component('Enabel:Ux:Alert', {
     text: 'Primary alert',
     type: 'primary'
 }) }}
 
-{{ component('EnabelUx:Alert', {
+{{ component('Enabel:Ux:Alert', {
     text: 'Secondary alert',
     type: 'secondary'
 }) }}
 
-{{ component('EnabelUx:Alert', {
+{{ component('Enabel:Ux:Alert', {
     text: 'Success alert',
     type: 'success'
 }) }}
 
-{{ component('EnabelUx:Alert', {
+{{ component('Enabel:Ux:Alert', {
     text: 'Danger alert',
     type: 'danger'
 }) }}
 
-{{ component('EnabelUx:Alert', {
+{{ component('Enabel:Ux:Alert', {
     text: 'Warning alert',
     type: 'warning'
 }) }}
 
-{{ component('EnabelUx:Alert', {
+{{ component('Enabel:Ux:Alert', {
     text: 'Info alert',
     type: 'info'
 }) }}
 
-{{ component('EnabelUx:Alert', {
+{{ component('Enabel:Ux:Alert', {
     text: 'Light alert',
     type: 'light'
 }) }}
 
-{{ component('EnabelUx:Alert', {
+{{ component('Enabel:Ux:Alert', {
     text: 'Dark alert',
     type: 'dark'
 }) }}
@@ -88,7 +88,7 @@ A Bootstrap alert component for displaying messages with customizable types and 
 ```twig
 {% for type, messages in app.flashes %}
     {% for message in messages %}
-        {{ component('EnabelUx:Alert', {
+        {{ component('Enabel:Ux:Alert', {
             text: message,
             type: type,
             dismissible: true
@@ -100,7 +100,7 @@ A Bootstrap alert component for displaying messages with customizable types and 
 ## Example with HTML content
 
 ```twig
-{{ component('EnabelUx:Alert', {
+{{ component('Enabel:Ux:Alert', {
     text: '<strong>Important!</strong> Please read this message carefully.',
     type: 'danger',
     dismissible: true
@@ -112,7 +112,7 @@ A Bootstrap alert component for displaying messages with customizable types and 
 You can override the content block to customize the message display:
 
 ```twig
-{% component 'EnabelUx:Alert' with {
+{% component 'Enabel:Ux:Alert' with {
     type: 'info',
     dismissible: true
 } %}

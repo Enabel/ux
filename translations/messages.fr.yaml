@@ -1,0 +1,13 @@
+params:
+  application:
+    name: 'EnabelApp'
+    description: 'Une autre application Enabel construite avec Symfony'
+    copyright: 'Enabel'
+
+menu:
+  navbar:
+    home: 'Accueil'
+    login: 'Connexion'
+    logout: 'Déconnexion'
+    profile: 'Profil'
+    admin: 'Administration'

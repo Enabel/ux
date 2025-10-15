@@ -18,6 +18,10 @@ https://github.com/EnabelUx/component-bundle
   - [LocaleSwitcher](LocaleSwitcher/localeSwitcher.md) - A locale switcher dropdown for Bootstrap navbar
   - [Tab](Navigation/tab.md) - A Bootstrap nav-tabs/nav-pills component for creating tabbed navigation
 
+## Layouts
+
+- [Bootstrap](Layout/bootstrap.md) - A layout for rendering Bootstrap components with Enabel UX components & Enabel Bootstrap Theme
+
 ## Install
 
 Install with composer

@@ -21,11 +21,12 @@ services:
       - { name: 'twig.component', key: 'Enabel:Ux:LocaleSwitcher', template: '@EnabelUx/navigation/locale_switcher.html.twig', expose_public_props: true }
   
   Enabel\Ux\Component\Navigation\Menu:
-    public: true
     tags:
       - { name: 'twig.component', key: 'Enabel:Ux:Menu', template: '@EnabelUx/navigation/menu.html.twig', expose_public_props: true }
 
   Enabel\Ux\Component\Navigation\MenuItem:
+    arguments:
+      - '@request_stack'
     tags:
       - { name: 'twig.component', key: 'Enabel:Ux:MenuItem', template: '@EnabelUx/navigation/menu_item.html.twig', expose_public_props: true }
   

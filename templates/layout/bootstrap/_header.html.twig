@@ -1,0 +1,50 @@
+<header class="navbar-fixed-top">
+    {% component 'Enabel:Ux:Navbar' with {
+        logo: asset('bundles/enabelux/images/enabel-logo.png'),
+        name: 'params.application.name'|trans,
+        link: '/',
+        theme: 'dark',
+        expand: 'lg',
+        fixed: true,
+        fixedPosition: 'top'
+    } %}
+        {% block content %}
+            {# Left-aligned menu with navigation items #}
+            {% component 'Enabel:Ux:Menu' with { align: 'start' } %}
+                {% block content %}
+                    {{ component('Enabel:Ux:MenuItem', {
+                        label: 'menu.navbar.home'|trans,
+                        link: '/',
+                        icon: 'ph:house-fill'
+                    }) }}
+                {% endblock %}
+            {% endcomponent %}
+
+            {# Right-aligned menu with user dropdown #}
+            {% component 'Enabel:Ux:Menu' with { align: 'end' } %}
+                {% block content %}
+                    {{ component('Enabel:Ux:LocaleSwitcher') }}
+                    {% if app.user %}
+                        {{ component('Enabel:Ux:MenuItem', {
+                            label: app.user.username,
+                            icon: 'ph:user-circle',
+                            isDropdown: true,
+                            dropdownItems: [
+                                {label: 'menu.navbar.profile'|trans, link: '#', icon: 'ph:identification-card'},
+                                {label: 'menu.navbar.admin'|trans, link: '#', icon: 'ph:gear-fill'},
+                                {divider: true},
+                                {label: 'menu.navbar.logout'|trans, link: '#', icon: 'ph:sign-out'}
+                            ]
+                        }) }}
+                    {% else %}
+                        {{ component('Enabel:Ux:MenuItem', {
+                            label: 'menu.navbar.login'|trans,
+                            link: '#',
+                            icon: 'ph:sign-in'
+                        }) }}
+                    {% endif %}
+                {% endblock %}
+            {% endcomponent %}
+        {% endblock %}
+    {% endcomponent %}
+</header>

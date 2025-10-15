@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="{{ app.request.locale }}" class="h-100">
+<head>
+    {% block meta_tags %}
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <meta name="description" content="{{ 'params.application.description' }}">
+        <meta name="theme-color" content="#ffffff">
+    {% endblock %}
+    <title>{% block title %}{{ 'params.application.name'|trans }}{% endblock %}</title>
+    {% block favicon %}
+        {# Start favicon section #}
+        <link rel="apple-touch-icon" sizes="180x180" href="{{ asset('bundles/enabelux/favicon/apple-touch-icon.png') }}">
+        <link rel="icon" type="image/png" sizes="32x32" href="{{ asset('bundles/enabelux/favicon/favicon-32x32.png') }}">
+        <link rel="icon" type="image/png" sizes="16x16" href="{{ asset('bundles/enabelux/favicon/favicon-16x16.png') }}">
+        <link rel="mask-icon" href="{{ asset('bundles/enabelux/favicon/safari-pinned-tab.svg') }}" color="#5bbad5">
+        <link rel="shortcut icon" href="{{ asset('bundles/enabelux/favicon/favicon.ico') }}">
+        <meta name="apple-mobile-web-app-title" content="{{ 'params.application.name'|trans }}">
+        <meta name="application-name" content="{{ 'params.application.name'|trans }}">
+        {# End favicon section #}
+    {% endblock %}
+
+    {% block stylesheets %}
+        <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@enabel/enabel-bootstrap-theme@3.0.2/dist/css/enabel-bootstrap-theme.min.css" integrity="sha256-P4qqJZEQsDhzsSpH3KFmT8FqaTpb/GRfS3a/3QLtktE=" crossorigin="anonymous">
+    {% endblock %}
+
+    {% block javascripts %}
+        <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/js/bootstrap.bundle.min.js" integrity="sha384-FKyoEForCGlyvwx9Hj09JcYn3nv7wiPVlz7YYwJrWVcXK/BmnVDxM+D2scQbITxI" crossorigin="anonymous"></script>
+    {% endblock %}
+</head>
+
+<body class="d-flex flex-column h-100">
+{% block header %}
+    {{ include('@EnabelUx/layout/bootstrap/_header.html.twig') }}
+{% endblock %}
+
+{% block main %}
+    <main class="flex-shrink-0 mb-3">
+        <div class="container">
+            {% block flash %}
+                {% for type, messages in app.flashes %}
+                    {% for message in messages %}
+                        {{ component('Enabel:Ux:Alert', {
+                            text: message,
+                            type: type,
+                            dismissible: true
+                        }) }}
+                    {% endfor %}
+                {% endfor %}
+            {% endblock %}
+
+            {% block body %}
+            {% endblock %}
+        </div>
+    </main>
+{% endblock %}
+
+{% block footer %}
+    {{ include('@EnabelUx/layout/bootstrap/_footer.html.twig') }}
+{% endblock %}
+</body>
+</html>
