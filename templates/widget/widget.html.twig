@@ -26,7 +26,7 @@
 {% endif %}
     <div class="{{ widgetClass }}" {{ attributes.defaults({}) }}>
         {% if icon %}
-            {{ ux_icon(icon, {class: 'widget-icon col-md-1'}) }}
+            {{ ux_icon(icon, {class: 'widget-icon col-md-1', width: '1.2rem'}) }}
         {% endif %}
         <div class="widget-content col-md-11">
             {% if count %}

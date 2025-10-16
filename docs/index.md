@@ -11,13 +11,14 @@ https://github.com/Enabel/Ux
 - [Alert](Alert/alert.md) - A Bootstrap alert component for displaying messages
 - [Callout](Callout/callout.md) - A Bootstrap callout component for displaying highlighted information with customizable types and icons
 - [Card](Card/card.md) - A Bootstrap card component for displaying content in a flexible and extensible container
-- [Modal](modal.md) - Easily render modals from a dedicated controller
-- [Widget](widget/widget.md) - A Bootstrap widget component for displaying key metrics, statistics, and navigation elements in dashboard-style format
+- [Modal](Modal/modal.md) - Easily render modals from a dedicated controller
+- [Timeline](Timeline/timeline.md) - A Bootstrap timeline component for displaying chronological events with icons and color-coded styling
+- [Widget](Widget/widget.md) - A Bootstrap widget component for displaying key metrics, statistics, and navigation elements in dashboard-style format
 - **Navigation Components** - Bootstrap components for creating responsive navigation:
   - [Navbar](Navigation/navbar.md) - Main navigation container with logo, name, and link configuration
   - [Menu](Navigation/menu.md) - Menu container for organizing navigation items
   - [MenuItem](Navigation/menuItem.md) - Individual navigation links or items
-  - [LocaleSwitcher](LocaleSwitcher/localeSwitcher.md) - A locale switcher dropdown for Bootstrap navbar
+  - [LocaleSwitcher](Navigation/localeSwitcher.md) - A locale switcher dropdown for Bootstrap navbar
   - [Tab](Navigation/tab.md) - A Bootstrap nav-tabs/nav-pills component for creating tabbed navigation
 
 ## Layouts
