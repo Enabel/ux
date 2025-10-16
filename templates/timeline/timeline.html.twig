@@ -6,7 +6,7 @@
 <div class="horizontal-timeline" {{ attributes.defaults({}) }}>
     <ul class="list-inline items row">
         {% for item in items %}
-            <li class="list-inline-item items-list col-md-4">
+            <li class="list-inline-item items-list col">
                 <div class="px-6">
                     {% if item.date %}
                         <div class="event-date{% if showColors and item.color %} event-date-{{ item.color }}{% endif %}">
@@ -22,8 +22,8 @@
                     
                     {% if item.description %}
                         <p class="text-muted">
-                            {% if item.icon and ux_icon is defined %}
-                                {{ ux_icon(item.icon) }}
+                            {% if item.icon %}
+                                {{ ux_icon(item.icon, {width: '1.2rem'}) }}
                             {% endif %}
                             {{ item.description|raw }}
                         </p>
