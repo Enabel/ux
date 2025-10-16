@@ -1,0 +1,35 @@
+{# Timeline component #}
+{% if title %}
+    <h3>{{ title }}</h3>
+{% endif %}
+
+<div class="horizontal-timeline" {{ attributes.defaults({}) }}>
+    <ul class="list-inline items row">
+        {% for item in items %}
+            <li class="list-inline-item items-list col-md-4">
+                <div class="px-6">
+                    {% if item.date %}
+                        <div class="event-date{% if showColors and item.color %} event-date-{{ item.color }}{% endif %}">
+                            {{ item.date }}
+                        </div>
+                    {% endif %}
+                    
+                    {% if item.label %}
+                        <h5 class="pt-2">
+                            {{ item.label }}
+                        </h5>
+                    {% endif %}
+                    
+                    {% if item.description %}
+                        <p class="text-muted">
+                            {% if item.icon %}
+                                {{ ux_icon(item.icon) }}
+                            {% endif %}
+                            {{ item.description|raw }}
+                        </p>
+                    {% endif %}
+                </div>
+            </li>
+        {% endfor %}
+    </ul>
+</div>
