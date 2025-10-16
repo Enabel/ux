@@ -40,7 +40,7 @@ class CalloutTest extends TestCase
         $data = $component->preMount([
             'title' => 'Success Title',
             'message' => 'Success message',
-            'type' => 'success'
+            'type' => 'success',
         ]);
 
         $component->title = $data['title'];
@@ -62,7 +62,7 @@ class CalloutTest extends TestCase
             'title' => 'Information',
             'message' => 'This is important information.',
             'type' => 'info',
-            'icon' => 'lucide:info'
+            'icon' => 'lucide:info',
         ]);
 
         $component->title = $data['title'];
@@ -83,7 +83,7 @@ class CalloutTest extends TestCase
         $component = new Callout();
         $data = $component->preMount([
             'message' => 'Small callout',
-            'size' => 'sm'
+            'size' => 'sm',
         ]);
 
         $component->title = $data['title'];
@@ -158,7 +158,7 @@ class CalloutTest extends TestCase
             'title' => 'Error',
             'message' => 'An error occurred',
             'type' => 'danger',
-            'icon' => 'lucide:alert-circle'
+            'icon' => 'lucide:alert-circle',
         ]);
 
         $component->title = $data['title'];
@@ -178,7 +178,7 @@ class CalloutTest extends TestCase
         $result = $component->preMount([
             'title' => 'Test Title',
             'message' => 'Test message',
-            'type' => 'warning'
+            'type' => 'warning',
         ]);
 
         $this->assertIsArray($result);
@@ -211,7 +211,7 @@ class CalloutTest extends TestCase
             'message' => 'This callout has all parameters set.',
             'type' => 'primary',
             'icon' => 'lucide:star',
-            'size' => 'sm'
+            'size' => 'sm',
         ]);
 
         $component->title = $data['title'];
