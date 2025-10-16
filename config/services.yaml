@@ -37,3 +37,7 @@ services:
   Enabel\Ux\Component\Navigation\Tab:
     tags:
       - { name: 'twig.component', key: 'Enabel:Ux:Tab', template: '@EnabelUx/navigation/tab.html.twig', expose_public_props: true }
+
+  Enabel\Ux\Component\Callout\Callout:
+    tags:
+      - { name: 'twig.component', key: 'Enabel:Ux:Callout', template: '@EnabelUx/callout/callout.html.twig', expose_public_props: true }
