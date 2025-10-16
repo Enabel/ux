@@ -41,3 +41,7 @@ services:
   Enabel\Ux\Component\Callout\Callout:
     tags:
       - { name: 'twig.component', key: 'Enabel:Ux:Callout', template: '@EnabelUx/callout/callout.html.twig', expose_public_props: true }
+
+  Enabel\Ux\Component\Widget\Widget:
+    tags:
+      - { name: 'twig.component', key: 'Enabel:Ux:Widget', template: '@EnabelUx/widget/widget.html.twig', expose_public_props: true }
