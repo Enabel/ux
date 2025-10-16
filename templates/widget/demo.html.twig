@@ -1,0 +1,363 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Widget Component Demo</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <style>
+        /* Enabel Bootstrap Theme Widget Styles */
+        .widget {
+            background: #fff;
+            border: 1px solid #dee2e6;
+            border-radius: 0.375rem;
+            padding: 1.25rem;
+            margin-bottom: 1rem;
+            display: flex;
+            align-items: center;
+            transition: all 0.3s ease;
+            box-shadow: 0 0.125rem 0.25rem rgba(0, 0, 0, 0.075);
+        }
+        
+        .widget:hover {
+            box-shadow: 0 0.5rem 1rem rgba(0, 0, 0, 0.15);
+            transform: translateY(-2px);
+        }
+        
+        .widget-link {
+            text-decoration: none;
+            color: inherit;
+        }
+        
+        .widget-link:hover {
+            text-decoration: none;
+            color: inherit;
+        }
+        
+        .widget-icon {
+            font-size: 3rem;
+            margin-right: 1rem;
+            flex-shrink: 0;
+        }
+        
+        .widget-content {
+            flex-grow: 1;
+        }
+        
+        .widget-content .count {
+            font-size: 2rem;
+            font-weight: bold;
+            margin: 0 0 0.25rem 0;
+        }
+        
+        .widget-content p {
+            margin: 0;
+            color: #6c757d;
+            font-size: 0.875rem;
+        }
+        
+        /* Variant Colors */
+        .widget-primary {
+            border-left: 4px solid #007bff;
+            background: linear-gradient(135deg, rgba(0, 123, 255, 0.1) 0%, rgba(255, 255, 255, 0.9) 100%);
+        }
+        
+        .widget-primary .widget-icon {
+            color: #007bff;
+        }
+        
+        .widget-primary .count {
+            color: #007bff;
+        }
+        
+        .widget-secondary {
+            border-left: 4px solid #6c757d;
+            background: linear-gradient(135deg, rgba(108, 117, 125, 0.1) 0%, rgba(255, 255, 255, 0.9) 100%);
+        }
+        
+        .widget-secondary .widget-icon {
+            color: #6c757d;
+        }
+        
+        .widget-secondary .count {
+            color: #6c757d;
+        }
+        
+        .widget-success {
+            border-left: 4px solid #28a745;
+            background: linear-gradient(135deg, rgba(40, 167, 69, 0.1) 0%, rgba(255, 255, 255, 0.9) 100%);
+        }
+        
+        .widget-success .widget-icon {
+            color: #28a745;
+        }
+        
+        .widget-success .count {
+            color: #28a745;
+        }
+        
+        .widget-danger {
+            border-left: 4px solid #dc3545;
+            background: linear-gradient(135deg, rgba(220, 53, 69, 0.1) 0%, rgba(255, 255, 255, 0.9) 100%);
+        }
+        
+        .widget-danger .widget-icon {
+            color: #dc3545;
+        }
+        
+        .widget-danger .count {
+            color: #dc3545;
+        }
+        
+        .widget-warning {
+            border-left: 4px solid #ffc107;
+            background: linear-gradient(135deg, rgba(255, 193, 7, 0.1) 0%, rgba(255, 255, 255, 0.9) 100%);
+        }
+        
+        .widget-warning .widget-icon {
+            color: #ffc107;
+        }
+        
+        .widget-warning .count {
+            color: #ffc107;
+        }
+        
+        .widget-info {
+            border-left: 4px solid #17a2b8;
+            background: linear-gradient(135deg, rgba(23, 162, 184, 0.1) 0%, rgba(255, 255, 255, 0.9) 100%);
+        }
+        
+        .widget-info .widget-icon {
+            color: #17a2b8;
+        }
+        
+        .widget-info .count {
+            color: #17a2b8;
+        }
+        
+        .widget-light {
+            border-left: 4px solid #f8f9fa;
+            background: linear-gradient(135deg, rgba(248, 249, 250, 0.5) 0%, rgba(255, 255, 255, 0.9) 100%);
+        }
+        
+        .widget-light .widget-icon {
+            color: #6c757d;
+        }
+        
+        .widget-light .count {
+            color: #6c757d;
+        }
+        
+        .widget-dark {
+            border-left: 4px solid #343a40;
+            background: linear-gradient(135deg, rgba(52, 58, 64, 0.1) 0%, rgba(255, 255, 255, 0.9) 100%);
+        }
+        
+        .widget-dark .widget-icon {
+            color: #343a40;
+        }
+        
+        .widget-dark .count {
+            color: #343a40;
+        }
+        
+        /* Responsive adjustments */
+        @media (max-width: 768px) {
+            .widget {
+                padding: 1rem;
+            }
+            
+            .widget-icon {
+                font-size: 2rem;
+            }
+            
+            .widget-content .count {
+                font-size: 1.5rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container mt-4">
+        <h1>Widget Component Demo</h1>
+        <p class="lead">Reusable Twig component aligned with the Enabel Bootstrap Theme Widget, using Symfony UX Icons.</p>
+        
+        <h2>Basic Usage</h2>
+        <p>The Widget component can be used with minimal configuration:</p>
+        
+        <div class="row">
+            <div class="col-md-3">
+                {{ component('Enabel:Ux:Widget', {
+                    label: 'Projects',
+                    count: '25',
+                    variant: 'primary',
+                    icon: 'lucide:folder'
+                }) }}
+            </div>
+            <div class="col-md-3">
+                {{ component('Enabel:Ux:Widget', {
+                    label: 'Users',
+                    count: '1,234',
+                    variant: 'success',
+                    icon: 'lucide:users'
+                }) }}
+            </div>
+            <div class="col-md-3">
+                {{ component('Enabel:Ux:Widget', {
+                    label: 'Revenue',
+                    count: '$45K',
+                    variant: 'info',
+                    icon: 'lucide:dollar-sign'
+                }) }}
+            </div>
+            <div class="col-md-3">
+                {{ component('Enabel:Ux:Widget', {
+                    label: 'Orders',
+                    count: '89',
+                    variant: 'warning',
+                    icon: 'lucide:shopping-cart'
+                }) }}
+            </div>
+        </div>
+        
+        <h2>Linked Widgets</h2>
+        <p>Widgets can be made clickable by adding a <code>link</code> parameter:</p>
+        
+        <div class="row">
+            <div class="col-md-3">
+                {{ component('Enabel:Ux:Widget', {
+                    label: 'View Projects',
+                    count: '25',
+                    variant: 'primary',
+                    icon: 'lucide:external-link',
+                    link: '/projects'
+                }) }}
+            </div>
+            <div class="col-md-3">
+                {{ component('Enabel:Ux:Widget', {
+                    label: 'Manage Users',
+                    count: '1,234',
+                    variant: 'secondary',
+                    icon: 'lucide:settings',
+                    link: '/users'
+                }) }}
+            </div>
+        </div>
+        
+        <h2>All Variants</h2>
+        <p>The Widget component supports all Bootstrap color variants:</p>
+        
+        <div class="row">
+            {% for variant in ['primary', 'secondary', 'success', 'danger', 'warning', 'info', 'light', 'dark'] %}
+                <div class="col-md-3">
+                    {{ component('Enabel:Ux:Widget', {
+                        label: variant|title ~ ' Widget',
+                        count: (loop.index * 10),
+                        variant: variant,
+                        icon: 'lucide:star'
+                    }) }}
+                </div>
+            {% endfor %}
+        </div>
+        
+        <h2>Without Count</h2>
+        <p>Widgets can display just labels without numerical counts:</p>
+        
+        <div class="row">
+            <div class="col-md-4">
+                {{ component('Enabel:Ux:Widget', {
+                    label: 'Status: Active',
+                    variant: 'success',
+                    icon: 'lucide:check-circle'
+                }) }}
+            </div>
+            <div class="col-md-4">
+                {{ component('Enabel:Ux:Widget', {
+                    label: 'System Health',
+                    variant: 'info',
+                    icon: 'lucide:activity'
+                }) }}
+            </div>
+            <div class="col-md-4">
+                {{ component('Enabel:Ux:Widget', {
+                    label: 'Alerts: None',
+                    variant: 'light',
+                    icon: 'lucide:bell'
+                }) }}
+            </div>
+        </div>
+        
+        <h2>Code Examples</h2>
+        
+        <h3>Basic Widget</h3>
+        <pre><code>{{ "{{ component('Enabel:Ux:Widget', {
+    label: 'Projects',
+    count: '25',
+    variant: 'primary',
+    icon: 'lucide:folder'
+}) }}" }}</code></pre>
+        
+        <h3>Linked Widget</h3>
+        <pre><code>{{ "{{ component('Enabel:Ux:Widget', {
+    label: 'View Projects',
+    count: '25',
+    variant: 'primary',
+    icon: 'lucide:external-link',
+    link: '/projects'
+}) }}" }}</code></pre>
+        
+        <h3>Widget Without Count</h3>
+        <pre><code>{{ "{{ component('Enabel:Ux:Widget', {
+    label: 'Status: Active',
+    variant: 'success',
+    icon: 'lucide:check-circle'
+}) }}" }}</code></pre>
+        
+        <h2>Configuration Options</h2>
+        <table class="table table-striped">
+            <thead>
+                <tr>
+                    <th>Property</th>
+                    <th>Type</th>
+                    <th>Default</th>
+                    <th>Description</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td><code>label</code></td>
+                    <td>string</td>
+                    <td>''</td>
+                    <td>The text label displayed in the widget</td>
+                </tr>
+                <tr>
+                    <td><code>variant</code></td>
+                    <td>string</td>
+                    <td>'primary'</td>
+                    <td>Color variant: primary, secondary, success, danger, warning, info, light, dark</td>
+                </tr>
+                <tr>
+                    <td><code>icon</code></td>
+                    <td>string|null</td>
+                    <td>null</td>
+                    <td>Symfony UX Icons identifier (e.g., 'lucide:folder')</td>
+                </tr>
+                <tr>
+                    <td><code>link</code></td>
+                    <td>string|null</td>
+                    <td>null</td>
+                    <td>URL to make the widget clickable</td>
+                </tr>
+                <tr>
+                    <td><code>count</code></td>
+                    <td>string|null</td>
+                    <td>null</td>
+                    <td>Numerical or textual count to display</td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+    
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+</body>
+</html>
