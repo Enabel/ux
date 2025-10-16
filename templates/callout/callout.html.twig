@@ -1,20 +1,47 @@
 {# Callout component following Enabel Bootstrap Theme pattern #}
-{% set calloutClasses = ['callout', 'callout-' ~ type] %}
-{% if size %}
-    {% set calloutClasses = calloutClasses|merge(['callout-' ~ size]) %}
+{% if cva is defined %}
+    {% set typeCva = cva({
+        base: 'callout',
+        variants: {
+            type: {
+                primary: ' callout-primary',
+                secondary: ' callout-secondary',
+                success: ' callout-success',
+                danger: ' callout-danger',
+                warning: ' callout-warning',
+                info: ' callout-info',
+                light: ' callout-light',
+                dark: ' callout-dark',
+            },
+            size: {
+                sm: ' callout-sm',
+            }
+        }
+    }) %}
+    {% set calloutClass = typeCva.apply({type, size}, attributes.render('class')) %}
+{% else %}
+    {% set calloutClasses = ['callout', 'callout-' ~ type] %}
+    {% if size %}
+        {% set calloutClasses = calloutClasses|merge(['callout-' ~ size]) %}
+    {% endif %}
+    {% set calloutClass = calloutClasses|join(' ') ~ (attributes.render('class') ? ' ' ~ attributes.render('class') : '') %}
 {% endif %}
 
-<div class="{{ calloutClasses|join(' ') }}{{ attributes.render('class') ? ' ' ~ attributes.render('class') : '' }}" {{ attributes.defaults({}) }}>
+<div class="{{ calloutClass }}" {{ attributes.defaults({}) }}>
     {% if title or icon %}
         {% if title %}
             <h5>
                 {% if icon %}
-                    {{ ux_icon(icon, {class: 'me-2'}) }}
+                    {% if ux_icon is defined %}
+                        {{ ux_icon(icon, {class: 'me-2'}) }}
+                    {% endif %}
                 {% endif %}
                 {{ title }}
             </h5>
         {% elseif icon %}
-            {{ ux_icon(icon, {class: 'mb-2'}) }}
+            {% if ux_icon is defined %}
+                {{ ux_icon(icon, {class: 'mb-2'}) }}
+            {% endif %}
         {% endif %}
     {% endif %}
     {% block content %}
