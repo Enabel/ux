@@ -1,0 +1,46 @@
+{# Widget component following Enabel Bootstrap Theme pattern #}
+{% if cva is defined %}
+    {% set typeCva = cva({
+        base: 'widget',
+        variants: {
+            variant: {
+                primary: ' widget-primary',
+                secondary: ' widget-secondary',
+                success: ' widget-success',
+                danger: ' widget-danger',
+                warning: ' widget-warning',
+                info: ' widget-info',
+                light: ' widget-light',
+                dark: ' widget-dark',
+            }
+        }
+    }) %}
+    {% set widgetClass = typeCva.apply({variant}, attributes.render('class')) %}
+{% else %}
+    {% set widgetClasses = ['widget', 'widget-' ~ variant] %}
+    {% set widgetClass = widgetClasses|join(' ') ~ (attributes.render('class') ? ' ' ~ attributes.render('class') : '') %}
+{% endif %}
+
+{% if link %}
+<a href="{{ link }}" class="widget-link">
+{% endif %}
+    <div class="{{ widgetClass }}" {{ attributes.defaults({}) }}>
+        {% if icon %}
+            {% if ux_icon is defined %}
+                {{ ux_icon(icon, {class: 'widget-icon col-md-1 fa-3x'}) }}
+            {% endif %}
+        {% endif %}
+        <div class="widget-content col-md-11">
+            {% if count %}
+                <h2 class="count">{{ count }}</h2>
+            {% endif %}
+            {% block content %}
+                {% if label %}
+                    <p>{{ label }}</p>
+                {% endif %}
+            {% endblock %}
+        </div>
+    </div>
+{% if link %}
+</a>
+{% endif %}
