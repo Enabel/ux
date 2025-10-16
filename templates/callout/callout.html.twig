@@ -32,16 +32,12 @@
         {% if title %}
             <h5>
                 {% if icon %}
-                    {% if ux_icon is defined %}
-                        {{ ux_icon(icon, {class: 'me-2'}) }}
-                    {% endif %}
+                    {{ ux_icon(icon, {class: 'me-2', height: '1.2rem'}) }}
                 {% endif %}
                 {{ title }}
             </h5>
         {% elseif icon %}
-            {% if ux_icon is defined %}
-                {{ ux_icon(icon, {class: 'mb-2'}) }}
-            {% endif %}
+            {{ ux_icon(icon, {class: 'mb-2', height: '1.2rem'}) }}
         {% endif %}
     {% endif %}
     {% block content %}

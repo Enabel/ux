@@ -9,7 +9,7 @@
 
 namespace Enabel\Ux\Tests\Component\Widget;
 
-use Enabel\Ux\Component\Widget;
+use Enabel\Ux\Component\Widget\Widget;
 use PHPUnit\Framework\TestCase;
 use Symfony\Component\OptionsResolver\Exception\InvalidOptionsException;
 

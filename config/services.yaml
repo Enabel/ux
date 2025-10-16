@@ -46,6 +46,6 @@ services:
     tags:
       - { name: 'twig.component', key: 'Enabel:Ux:Timeline', template: '@EnabelUx/timeline/timeline.html.twig', expose_public_props: true }
 
-  Enabel\Ux\Component\Widget:
+  Enabel\Ux\Component\Widget\Widget:
     tags:
-      - { name: 'twig.component', key: 'Enabel:Ux:Widget', template: '@EnabelUx/widget.html.twig', expose_public_props: true }
+      - { name: 'twig.component', key: 'Enabel:Ux:Widget', template: '@EnabelUx/widget/widget.html.twig', expose_public_props: true }

@@ -7,7 +7,7 @@
  * file that was distributed with this source code.
  */
 
-namespace Enabel\Ux\Component;
+namespace Enabel\Ux\Component\Widget;
 
 use Symfony\Component\OptionsResolver\OptionsResolver;
 use Symfony\UX\TwigComponent\Attribute\PreMount;
