@@ -9,8 +9,10 @@ https://github.com/Enabel/Ux
 ## Components
 
 - [Alert](Alert/alert.md) - A Bootstrap alert component for displaying messages
+- [Callout](Callout/callout.md) - A Bootstrap callout component for displaying highlighted information with customizable types and icons
 - [Card](Card/card.md) - A Bootstrap card component for displaying content in a flexible and extensible container
 - [Modal](modal.md) - Easily render modals from a dedicated controller
+- [Widget](Widget/widget.md) - A Bootstrap widget component for displaying key metrics, statistics, and navigation elements in dashboard-style format
 - **Navigation Components** - Bootstrap components for creating responsive navigation:
   - [Navbar](Navigation/navbar.md) - Main navigation container with logo, name, and link configuration
   - [Menu](Navigation/menu.md) - Menu container for organizing navigation items
