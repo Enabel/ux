@@ -26,7 +26,7 @@
                     {{ component('Enabel:Ux:LocaleSwitcher') }}
                     {% if app.user %}
                         {{ component('Enabel:Ux:MenuItem', {
-                            label: app.user.username,
+                            label: app.user.userIdentifier,
                             icon: 'ph:user-circle',
                             isDropdown: true,
                             dropdownItems: [

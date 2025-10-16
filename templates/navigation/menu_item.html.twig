@@ -24,7 +24,7 @@
                                {% if item.link and not item.disabled|default(false) %}href="{{ item.link }}"{% endif %}
                                {% if item.active|default(false) %}aria-current="page"{% endif %}
                                {% if item.disabled|default(false) %}aria-disabled="true" tabindex="-1"{% endif %}>
-                                {% if item.icon|default(null) %}<twig:ux:icon name="{{ icon }}" style="width: 1.2rem; height: 1.2rem;" />{% endif %}
+                                {% if item.icon|default(null) %}<twig:ux:icon name="{{ item.icon }}" style="width: 1.2rem; height: 1.2rem;" />{% endif %}
                                 {{ item.label }}
                             </a>
                         </li>
