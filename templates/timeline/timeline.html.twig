@@ -22,7 +22,7 @@
                     
                     {% if item.description %}
                         <p class="text-muted">
-                            {% if item.icon %}
+                            {% if item.icon and ux_icon is defined %}
                                 {{ ux_icon(item.icon) }}
                             {% endif %}
                             {{ item.description|raw }}
