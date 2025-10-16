@@ -1,5 +1,21 @@
 # Changelog
 
+## [v1.4.0](https://github.com/enabel/ux/tree/v1.3.0) (2025-10-16)
+
+[Full Changelog](https://github.com/enabel/ux/compare/v1.3.0...v1.4.0)
+
+**Closed issues:**
+
+- Add a Widget component [\#9](https://github.com/Enabel/ux/issues/9)
+- Add a Callout component [\#8](https://github.com/Enabel/ux/issues/8)
+- Add a Timeline component [\#7](https://github.com/Enabel/ux/issues/7)
+
+**Merged pull requests:**
+
+- Add Timeline component with Enabel Bootstrap Theme integration and Symfony UX Icons [\#12](https://github.com/Enabel/ux/pull/12) ([Copilot](https://github.com/apps/copilot-swe-agent))
+- Add Widget component with Enabel Bootstrap Theme integration and comprehensive documentation [\#11](https://github.com/Enabel/ux/pull/11) ([Copilot](https://github.com/apps/copilot-swe-agent))
+- Add Callout component with Symfony UX Icons integration [\#10](https://github.com/Enabel/ux/pull/10) ([Copilot](https://github.com/apps/copilot-swe-agent))
+
 ## [v1.3.0](https://github.com/enabel/ux/tree/v1.3.0) (2025-10-15)
 
 [Full Changelog](https://github.com/enabel/ux/compare/v1.2.0...v1.3.0)
