@@ -15,6 +15,10 @@ It provides:
 - A flash messages area rendered as alerts
 - Clear Twig blocks to customize each part
 
+## Requirements
+
+This layout require `symfony/asset-mapper` to work.
+
 ## Dependencies
 
 By default, the layout loads:

@@ -10,10 +10,16 @@
             }
         },
         "importmap": {
-            "@hotwired/stimulus": "^3.0.0"
+            "@hotwired/stimulus": "^3.0.0",
+            "@popperjs/core": "^2.11.8",
+            "bootstrap": "¨5.3.8",
+            "enabel/enabel-bootstrap-theme": "^3.0.2"
         }
     },
     "peerDependencies": {
-        "@hotwired/stimulus": "^3.0.0"
+        "@hotwired/stimulus": "^3.0.0",
+        "@popperjs/core": "^2.11.8",
+        "bootstrap": "^5.3.8",
+        "enabel/enabel-bootstrap-theme": "^3.0.2"
     }
 }
