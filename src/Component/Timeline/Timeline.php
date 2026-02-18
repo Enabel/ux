@@ -47,7 +47,7 @@ class Timeline
         $resolver->setAllowedTypes('showColors', 'bool');
 
         // Validate items structure
-        $resolver->setNormalizer('items', function ($resolver, $items) {
+        $resolver->setNormalizer('items', static function ($resolver, $items) {
             if (empty($items)) {
                 return [];
             }
