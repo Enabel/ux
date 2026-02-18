@@ -9,7 +9,11 @@
                data-bs-toggle="dropdown" 
                aria-expanded="false"
                {% if disabled %}aria-disabled="true" tabindex="-1"{% endif %}>
-                {% if icon %}<twig:ux:icon name="{{ icon }}" style="width: 1.2rem; height: 1.2rem;" />{% endif %}
+                {% if image %}
+                    <img src="{{ image }}" alt="" class="rounded-circle" style="width: 1.9rem; height: 1.9rem; object-fit: cover; border: 2px solid rgba(255,255,255,0.75);">
+                {% elseif icon %}
+                    <twig:ux:icon name="{{ icon }}" style="width: 1.2rem; height: 1.2rem;" />
+                {% endif %}
                 {{ label }}
             </a>
             <ul class="dropdown-menu">
@@ -24,7 +28,11 @@
                                {% if item.link and not item.disabled|default(false) %}href="{{ item.link }}"{% endif %}
                                {% if item.active|default(false) %}aria-current="page"{% endif %}
                                {% if item.disabled|default(false) %}aria-disabled="true" tabindex="-1"{% endif %}>
-                                {% if item.icon|default(null) %}<twig:ux:icon name="{{ item.icon }}" style="width: 1.2rem; height: 1.2rem;" />{% endif %}
+                                {% if item.image|default(null) %}
+                                    <img src="{{ item.image }}" alt="" class="rounded-circle" style="width: 1.9rem; height: 1.9rem; object-fit: cover; border: 2px solid rgba(255,255,255,0.75);">
+                                {% elseif item.icon|default(null) %}
+                                    <twig:ux:icon name="{{ item.icon }}" style="width: 1.2rem; height: 1.2rem;" />
+                                {% endif %}
                                 {{ item.label }}
                             </a>
                         </li>
@@ -37,13 +45,21 @@
                {% if link and not disabled %}href="{{ link }}"{% endif %}
                {% if active %}aria-current="page"{% endif %}
                {% if disabled %}aria-disabled="true" tabindex="-1"{% endif %}>
-                {% if icon %}<twig:ux:icon name="{{ icon }}" style="width: 1.2rem; height: 1.2rem;" />{% endif %}
+                {% if image %}
+                    <img src="{{ image }}" alt="" class="rounded-circle" style="width: 1.9rem; height: 1.9rem; object-fit: cover; border: 2px solid rgba(255,255,255,0.75);">
+                {% elseif icon %}
+                    <twig:ux:icon name="{{ icon }}" style="width: 1.2rem; height: 1.2rem;" />
+                {% endif %}
                 {{ label }}
             </a>
         {% else %}
             {# Span menu item #}
             <span class="nav-link{% if disabled %} disabled{% endif %}">
-                {% if icon %}<twig:ux:icon name="{{ icon }}" style="width: 1.2rem; height: 1.2rem;" />{% endif %}
+                {% if image %}
+                    <img src="{{ image }}" alt="" class="rounded-circle" style="width: 1.9rem; height: 1.9rem; object-fit: cover; border: 2px solid rgba(255,255,255,0.75);">
+                {% elseif icon %}
+                    <twig:ux:icon name="{{ icon }}" style="width: 1.2rem; height: 1.2rem;" />
+                {% endif %}
                 {{ label }}
             </span>
         {% endif %}

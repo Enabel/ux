@@ -20,6 +20,7 @@ class MenuItem
     public bool $active;
     public bool $disabled;
     public ?string $icon;
+    public ?string $image;
     public bool $isDropdown;
     /**
      * @var array<string, string>
@@ -111,6 +112,7 @@ class MenuItem
             'active' => false,
             'disabled' => false,
             'icon' => null,
+            'image' => null,
             'isDropdown' => false,
             'dropdownItems' => [],
         ]);
@@ -120,6 +122,7 @@ class MenuItem
         $resolver->setAllowedTypes('active', 'bool');
         $resolver->setAllowedTypes('disabled', 'bool');
         $resolver->setAllowedTypes('icon', ['string', 'null']);
+        $resolver->setAllowedTypes('image', ['string', 'null']);
         $resolver->setAllowedTypes('isDropdown', 'bool');
         $resolver->setAllowedTypes('dropdownItems', 'array');
     }
