@@ -33,12 +33,14 @@ export default class extends Controller {
     }
 
     onClick(event) {
-        if (!event.target.matches('a[data-target="modal"]')) {
+        const link = event.target.closest('a[data-target="modal"]');
+
+        if (!link) {
             return;
         }
 
         event.preventDefault();
-        this.load(event.target.href);
+        this.load(link.href);
     }
 
     onSubmit(event) {
