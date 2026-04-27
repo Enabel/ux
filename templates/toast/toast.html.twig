@@ -1,0 +1,21 @@
+{# Toast component (Bootstrap 5) #}
+{% set isLightBg = type in ['warning', 'light'] %}
+
+<div class="toast align-items-center text-bg-{{ type }} border-0 {{ attributes.render('class') }}"
+     {{ attributes.defaults({}) }}
+     role="alert"
+     aria-live="{{ politeness }}"
+     aria-atomic="true"
+     data-bs-autohide="{{ autohide ? 'true' : 'false' }}"
+     data-bs-delay="{{ delay }}">
+    <div class="d-flex">
+        <div class="toast-body">
+            {% block content %}
+                {{ text|raw }}
+            {% endblock %}
+        </div>
+        {% if dismissible %}
+            <button type="button" class="btn-close{% if not isLightBg %} btn-close-white{% endif %} me-2 m-auto" data-bs-dismiss="toast" aria-label="Close"></button>
+        {% endif %}
+    </div>
+</div>
