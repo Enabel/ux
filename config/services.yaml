@@ -33,6 +33,12 @@ services:
   Enabel\Ux\Component\Navigation\Navbar:
     tags:
       - { name: 'twig.component', key: 'Enabel:Ux:Navbar', template: '@EnabelUx/navigation/navbar.html.twig', expose_public_props: true }
+
+  Enabel\Ux\Component\Navigation\UserMenu:
+    arguments:
+      - '@request_stack'
+    tags:
+      - { name: 'twig.component', key: 'Enabel:Ux:UserMenu', template: '@EnabelUx/navigation/user_menu.html.twig', expose_public_props: true }
   
   Enabel\Ux\Component\Navigation\Tab:
     tags:
