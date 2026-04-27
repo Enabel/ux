@@ -18,6 +18,7 @@ https://github.com/Enabel/Ux
   - [Navbar](Navigation/navbar.md) - Main navigation container with logo, name, and link configuration
   - [Menu](Navigation/menu.md) - Menu container for organizing navigation items
   - [MenuItem](Navigation/menuItem.md) - Individual navigation links or items
+  - [UserMenu](Navigation/userMenu.md) - User menu with avatar (photo or auto-derived colored initials) and dropdown
   - [LocaleSwitcher](Navigation/localeSwitcher.md) - A locale switcher dropdown for Bootstrap navbar
   - [Tab](Navigation/tab.md) - A Bootstrap nav-tabs/nav-pills component for creating tabbed navigation
 

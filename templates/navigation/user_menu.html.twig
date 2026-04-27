@@ -1,0 +1,40 @@
+{# UserMenu component #}
+{% set dropdownAlignClass = dropdownAlign == 'end' ? 'dropdown-menu-end' : 'dropdown-menu-start' %}
+
+<li class="nav-item dropdown {{ attributes.render('class') }}" {{ attributes.defaults({}) }}>
+    <a class="nav-link dropdown-toggle d-flex align-items-center gap-2 py-1" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="{{ name }}">
+        {% if image %}
+            <img src="{{ image }}" alt="" class="rounded-circle" style="width: 3rem; height: 3rem; object-fit: cover; border: 2px solid rgba(255, 255, 255, 0.4);">
+        {% else %}
+            <span class="rounded-circle d-inline-flex align-items-center justify-content-center text-white fw-bold" style="width: 3rem; height: 3rem; background: {{ initialsColor }}; font-size: 1.125rem;" aria-hidden="true">{{ initials }}</span>
+        {% endif %}
+        {% if not hideName %}
+            <span>{{ name }}</span>
+        {% endif %}
+    </a>
+    <ul class="dropdown-menu {{ dropdownAlignClass }}">
+        <li><h6 class="dropdown-header">{{ name }}</h6></li>
+        {% if items|length > 0 %}
+            <li><hr class="dropdown-divider"></li>
+            {% for item in items %}
+                {% if item.divider|default(false) %}
+                    <li><hr class="dropdown-divider"></li>
+                {% elseif item.header|default(false) %}
+                    <li><h6 class="dropdown-header">{{ item.label }}</h6></li>
+                {% else %}
+                    <li>
+                        <a class="dropdown-item{% if item.active|default(false) %} active{% endif %}{% if item.disabled|default(false) %} disabled{% endif %}"
+                           {% if item.link|default(null) and not item.disabled|default(false) %}href="{{ item.link }}"{% endif %}
+                           {% if item.active|default(false) %}aria-current="page"{% endif %}
+                           {% if item.disabled|default(false) %}aria-disabled="true" tabindex="-1"{% endif %}>
+                            {% if item.icon|default(null) %}
+                                <twig:ux:icon name="{{ item.icon }}" class="me-2" style="width: 1.1rem; height: 1.1rem;" />
+                            {% endif %}
+                            {{ item.label }}
+                        </a>
+                    </li>
+                {% endif %}
+            {% endfor %}
+        {% endif %}
+    </ul>
+</li>
