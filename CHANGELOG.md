@@ -1,13 +1,5 @@
 # Changelog
 
-## [Unreleased](https://github.com/Enabel/ux/tree/HEAD)
-
-[Full Changelog](https://github.com/Enabel/ux/compare/v2.3.0...HEAD)
-
-**Closed issues:**
-
-- Add an ImpersonateDropdown navigation component [\#15](https://github.com/Enabel/ux/issues/15)
-
 ## [v2.3.0](https://github.com/Enabel/ux/tree/v2.3.0) (2026-05-28)
 
 [Full Changelog](https://github.com/Enabel/ux/compare/v2.2.0...v2.3.0)
@@ -18,6 +10,7 @@
 - Add an ErrorPage component \(replace abandoned enabel/layout-bundle error base\) [\#18](https://github.com/Enabel/ux/issues/18)
 - Add an EmailLayout component \(replace abandoned enabel/layout-bundle email base\) [\#17](https://github.com/Enabel/ux/issues/17)
 - Add an ImpersonateBanner component \(paired with \#15\) [\#16](https://github.com/Enabel/ux/issues/16)
+- Add an ImpersonateDropdown navigation component [\#15](https://github.com/Enabel/ux/issues/15)
 
 **Merged pull requests:**
 
