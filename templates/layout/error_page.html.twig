@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang="{{ locale }}">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>{{ statusCode }} — {{ appName }}</title>
+    <link rel="stylesheet" href="{{ asset(stylesheet) }}">
+</head>
+<body>
+    <div class="bg"><img src="{{ asset(symbol) }}" alt=""></div>
+    <div id="error">
+        <div class="error">
+            <div class="code-error"><h1>{{ statusCode }}</h1></div>
+            <h2>{{ title }}</h2>
+            <p>{{ message }}</p>
+            {% if backUrl %}<a href="{{ backUrl }}">{{ backLabel }}</a>{% endif %}
+            {% if details %}<small>{{ details }}</small>{% endif %}
+            <img class="logo" src="{{ asset(logo) }}" alt="{{ appName }}">
+        </div>
+    </div>
+</body>
+</html>

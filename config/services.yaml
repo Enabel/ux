@@ -59,3 +59,7 @@ services:
   Enabel\Ux\Component\Widget\Widget:
     tags:
       - { name: 'twig.component', key: 'Enabel:Ux:Widget', template: '@EnabelUx/widget/widget.html.twig', expose_public_props: true }
+
+  Enabel\Ux\Component\Layout\ErrorPage:
+    tags:
+      - { name: 'twig.component', key: 'Enabel:Ux:ErrorPage', template: '@EnabelUx/layout/error_page.html.twig', expose_public_props: true }
