@@ -73,6 +73,9 @@ If you serve the theme through a different path, override the `stylesheet` param
 }) }}
 ```
 
+> [!TIP]
+> On 5xx pages, leave `backUrl` unset — the trace ID then sits on its own line under the message instead of inline next to the button.
+
 ## Why a full-page component?
 
 Symfony renders TwigBundle exception templates in a context where the regular `base.html.twig` cannot be trusted (the failing request might be the one that broke the asset pipeline). For this reason the component does not extend `base.html.twig` and only loads a single stylesheet via `asset()`.
