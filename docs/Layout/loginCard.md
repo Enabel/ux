@@ -31,7 +31,7 @@ The component also forwards `class` and other HTML attributes onto the outer wra
 
 {% block body %}
     {% component 'Enabel:Ux:LoginCard' with {
-        logo: asset('images/enabel-logo.png'),
+        logo: 'images/enabel-logo.png',
         title: 'app.name'|trans,
         background: 'primary',
     } %}
@@ -76,13 +76,36 @@ When `backgroundImage` is set, the `background` colour is ignored — the image 
 
 ## Rendering inside a modal
 
-The component is designed for a full-viewport login page (`min-vh-100`). If you need the same card inside a Bootstrap modal (typical for an "external login" confirmation dialog), the cleanest path is to override the template:
+The component is designed for a full-viewport login page (`min-vh-100`). If you need the same card inside a Bootstrap modal (typical for an "external login" confirmation dialog), override the template via the standard bundle override mechanism (see the main [documentation](../index.md#how-to-override-templates)):
 
 1. Copy `vendor/enabel/ux/templates/layout/login_card.html.twig` to `templates/bundles/EnabelUx/layout/login_card.html.twig`
-2. Remove the outer `enabel-login-card` wrapper (`min-vh-100`, `bg-*`, etc.) and keep only the `<div class="card">…</div>` body
-3. Wrap with `<div class="modal-dialog modal-lg modal-dialog-centered">` at the call site
+2. Drop the outer wrapper so only the card body is rendered. Replace:
 
-See the bundle override mechanism in the main [documentation](../index.md#how-to-override-templates).
+   ```twig
+   <div class="enabel-login-card d-flex align-items-center justify-content-center min-vh-100 p-3 {{ wrapperClass }} …">
+       <div class="card shadow-lg border-0 w-100" style="max-width: {{ maxWidth }}; border-radius: 1rem;">
+           …
+       </div>
+   </div>
+   ```
+
+   with the inner card only:
+
+   ```twig
+   <div class="card shadow-lg border-0 w-100" style="max-width: {{ maxWidth }}; border-radius: 1rem;">
+       …
+   </div>
+   ```
+
+3. Wrap the component at the call site:
+
+   ```twig
+   <div class="modal-dialog modal-lg modal-dialog-centered">
+       {% component 'Enabel:Ux:LoginCard' with { title: 'External login'|trans } %}
+           {% block content %}{# the form #}{% endblock %}
+       {% endcomponent %}
+   </div>
+   ```
 
 ## Notes
 
