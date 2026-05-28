@@ -17,6 +17,9 @@ twig:
         '%kernel.project_dir%/public/images': images
 ```
 
+> [!IMPORTANT]
+> The bundle does **not** ship the logo asset. The consuming application is responsible for placing `enabel-logo-email.png` (or whatever path is passed to `logo`) under the directory mapped to the `@images` namespace — e.g. `public/images/enabel-logo-email.png`. A missing asset will surface as `Unable to find template "@images/..."` at render time.
+
 If you don't want inline embedding (or are not using `TemplatedEmail`), set `logo` to `null` and render the header yourself in the `content` block.
 
 ## Parameters
