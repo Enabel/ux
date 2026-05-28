@@ -1,0 +1,31 @@
+{# Impersonate Banner component #}
+<style>
+    .impersonate-banner {
+        position: fixed;
+        top: 0;
+        left: 0;
+        right: 0;
+        height: 28px;
+        z-index: 1031;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        gap: 1rem;
+        padding: 0 1rem;
+        background-color: #ffc107;
+        color: #000;
+        font-size: 0.875rem;
+        line-height: 1;
+    }
+    .impersonate-banner a { color: #000; text-decoration: underline; }
+    .impersonate-banner a:hover { text-decoration: none; }
+    .impersonate-banner ~ .navbar.fixed-top { top: 28px; }
+    body:has(.impersonate-banner) { --app-navbar-offset: 108px; }
+</style>
+<div class="impersonate-banner {{ attributes.render('class') }}" role="status" {{ attributes.defaults({}) }}>
+    <span>
+        {{ ux_icon(icon, {class: 'me-1', height: '1rem'}) }}
+        {{ message|raw }}
+    </span>
+    <a href="{{ exitUrl }}">{{ exitLabel }}</a>
+</div>
