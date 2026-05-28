@@ -73,6 +73,10 @@ The `--app-navbar-offset` variable is set on `<body>` via `body:has(.impersonate
 
 If you don't use that variable, the banner still renders fine — but you may want to either bump your fixed body padding by 28 px when the banner is present, or adopt the variable in your layout.
 
+## Adopting the component when you already have impersonate-banner CSS
+
+The component inlines its CSS through a `<style>` tag inside the rendered template, which means it loads **after** any stylesheet linked in `<head>`. Source-order wins for equal-specificity selectors, so if your app already carries hand-rolled `.impersonate-banner` rules in its `app.css` (typical of projects that pre-dated this component), the component's inline styles take over automatically — you can drop the duplicated rules from your stylesheet at the same time as the bespoke markup, no transition flicker.
+
 ## Pairs with
 
 - [ImpersonateDropdown](impersonateDropdown.md) — issue #15, the navbar-side widget that lets ROLE_ALLOWED_TO_SWITCH users enter impersonation mode.
