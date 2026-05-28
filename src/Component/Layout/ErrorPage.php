@@ -14,6 +14,9 @@ use Symfony\UX\TwigComponent\Attribute\PreMount;
 
 class ErrorPage
 {
+    private static ?string $defaultLogo = null;
+    private static ?string $defaultSymbol = null;
+
     public int $statusCode;
     public string $title;
     public string $message;
@@ -48,8 +51,8 @@ class ErrorPage
             'details' => null,
             'backUrl' => null,
             'backLabel' => 'Back to homepage',
-            'symbol' => '/images/enabel-symbol.png',
-            'logo' => '/images/enabel-logo-email.png',
+            'symbol' => self::defaultSymbol(),
+            'logo' => self::defaultLogo(),
             'locale' => 'en',
             'appName' => 'Enabel',
             'stylesheet' => 'vendor/@enabel/enabel-bootstrap-theme/dist/css/error.min.css',
@@ -66,5 +69,15 @@ class ErrorPage
         $resolver->setAllowedTypes('locale', 'string');
         $resolver->setAllowedTypes('appName', 'string');
         $resolver->setAllowedTypes('stylesheet', 'string');
+    }
+
+    private static function defaultLogo(): string
+    {
+        return self::$defaultLogo ??= trim((string) file_get_contents(__DIR__.'/Defaults/error_page_logo.txt'));
+    }
+
+    private static function defaultSymbol(): string
+    {
+        return self::$defaultSymbol ??= trim((string) file_get_contents(__DIR__.'/Defaults/error_page_symbol.txt'));
     }
 }

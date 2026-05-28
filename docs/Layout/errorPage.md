@@ -16,6 +16,9 @@ symfony console importmap:require "@enabel/enabel-bootstrap-theme/dist/css/error
 
 If you serve the theme through a different path, override the `stylesheet` parameter (see below).
 
+> [!NOTE]
+> The default `symbol` and `logo` ship as `data:` URIs embedded in the component — the consuming app does not need to provide any image asset. To use a custom logo, pass a path (resolved through `asset()`) or your own `data:` URI; the template detects the prefix automatically.
+
 ## Parameters
 
 | Parameter    | Type      | Description                                                              | Default                                                                  |
@@ -26,8 +29,8 @@ If you serve the theme through a different path, override the `stylesheet` param
 | `details`    | `?string` | Optional small print (trace IDs, technical details)                      | `null`                                                                   |
 | `backUrl`    | `?string` | URL of the "back home" button. Button is hidden when `null`              | `null`                                                                   |
 | `backLabel`  | `string`  | Label of the "back home" button                                          | `'Back to homepage'`                                                     |
-| `symbol`     | `string`  | Path to the watermark image (`.bg img`)                                  | `'/images/enabel-symbol.png'`                                            |
-| `logo`       | `string`  | Path to the bottom logo (`.logo img`)                                    | `'/images/enabel-logo-email.png'`                                        |
+| `symbol`     | `string`  | Watermark image. Accepts a `data:` URI (rendered as-is) or an asset path passed to `asset()` | Enabel mark embedded as `data:image/svg+xml;base64,…`                    |
+| `logo`       | `string`  | Bottom logo. Same `data:` vs asset path resolution as `symbol`                               | Enabel logo embedded as `data:image/png;base64,…`                        |
 | `locale`     | `string`  | Value used for `<html lang>`                                             | `'en'`                                                                   |
 | `appName`    | `string`  | Application name used in the `<title>` tag and logo `alt`                | `'Enabel'`                                                               |
 | `stylesheet` | `string`  | Path passed to `asset()` for the error CSS                               | `'vendor/@enabel/enabel-bootstrap-theme/dist/css/error.min.css'`         |
@@ -42,6 +45,19 @@ If you serve the theme through a different path, override the `stylesheet` param
     statusCode: 404,
     title: 'app.error.404.title'|trans,
     message: 'app.error.404.message'|trans,
+}) }}
+```
+
+### With a custom logo (asset path)
+
+```twig
+{# templates/bundles/TwigBundle/Exception/error404.html.twig #}
+{{ component('Enabel:Ux:ErrorPage', {
+    statusCode: 404,
+    title: 'app.error.404.title'|trans,
+    message: 'app.error.404.message'|trans,
+    symbol: '/images/my-symbol.png',
+    logo: '/images/my-logo.png',
 }) }}
 ```
 
