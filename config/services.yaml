@@ -67,3 +67,7 @@ services:
   Enabel\Ux\Component\Layout\EmailLayout:
     tags:
       - { name: 'twig.component', key: 'Enabel:Ux:EmailLayout', template: '@EnabelUx/layout/email_layout.html.twig', expose_public_props: true }
+
+  Enabel\Ux\Component\Layout\LoginCard:
+    tags:
+      - { name: 'twig.component', key: 'Enabel:Ux:LoginCard', template: '@EnabelUx/layout/login_card.html.twig', expose_public_props: true }

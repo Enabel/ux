@@ -1,0 +1,25 @@
+{% set sizes = { sm: '360px', md: '480px', lg: '640px', xl: '800px' } %}
+{% set maxWidth = sizes[size] %}
+
+{% set wrapperStyle = backgroundImage
+    ? 'background-image: url(\'' ~ asset(backgroundImage) ~ '\'); background-size: cover; background-position: center; background-repeat: no-repeat;'
+    : '' %}
+{% set wrapperClass = backgroundImage ? '' : 'bg-' ~ background %}
+
+<div class="enabel-login-card d-flex align-items-center justify-content-center min-vh-100 p-3 {{ wrapperClass }} {{ attributes.render('class') }}"
+     {% if wrapperStyle %}style="{{ wrapperStyle }}"{% endif %}
+     {{ attributes.defaults({}) }}>
+    <div class="card shadow-lg border-0 w-100" style="max-width: {{ maxWidth }}; border-radius: 1rem;">
+        <div class="card-body p-4 p-md-5">
+            {% if logo %}
+                <div class="text-center mb-4">
+                    <img src="{{ asset(logo) }}" alt="{{ title|default('') }}" class="img-fluid" style="max-height: 80px;">
+                </div>
+            {% endif %}
+            {% if title %}
+                <h1 class="h3 text-center mb-4">{{ title }}</h1>
+            {% endif %}
+            {% block content %}{% endblock %}
+        </div>
+    </div>
+</div>
