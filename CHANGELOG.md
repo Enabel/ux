@@ -1,8 +1,64 @@
 # Changelog
 
-## [v1.4.0](https://github.com/enabel/ux/tree/v1.3.0) (2025-10-16)
+## [Unreleased](https://github.com/Enabel/ux/tree/HEAD)
 
-[Full Changelog](https://github.com/enabel/ux/compare/v1.3.0...v1.4.0)
+[Full Changelog](https://github.com/Enabel/ux/compare/v2.3.0...HEAD)
+
+**Closed issues:**
+
+- Add an ImpersonateDropdown navigation component [\#15](https://github.com/Enabel/ux/issues/15)
+
+## [v2.3.0](https://github.com/Enabel/ux/tree/v2.3.0) (2026-05-28)
+
+[Full Changelog](https://github.com/Enabel/ux/compare/v2.2.0...v2.3.0)
+
+**Closed issues:**
+
+- Add a LoginCard layout component \(centered card on a solid background\) [\#19](https://github.com/Enabel/ux/issues/19)
+- Add an ErrorPage component \(replace abandoned enabel/layout-bundle error base\) [\#18](https://github.com/Enabel/ux/issues/18)
+- Add an EmailLayout component \(replace abandoned enabel/layout-bundle email base\) [\#17](https://github.com/Enabel/ux/issues/17)
+- Add an ImpersonateBanner component \(paired with \#15\) [\#16](https://github.com/Enabel/ux/issues/16)
+
+**Merged pull requests:**
+
+- ✨ Add ImpersonateDropdown navigation component [\#25](https://github.com/Enabel/ux/pull/25) ([damienlagae](https://github.com/damienlagae))
+- ✨ Add ImpersonateBanner navigation component [\#24](https://github.com/Enabel/ux/pull/24) ([damienlagae](https://github.com/damienlagae))
+- ✨ Add LoginCard layout component [\#23](https://github.com/Enabel/ux/pull/23) ([damienlagae](https://github.com/damienlagae))
+- ✨ Ship ErrorPage default symbol & logo as data: URIs [\#22](https://github.com/Enabel/ux/pull/22) ([damienlagae](https://github.com/damienlagae))
+- ✨ Add EmailLayout layout component [\#21](https://github.com/Enabel/ux/pull/21) ([damienlagae](https://github.com/damienlagae))
+- ✨ Add ErrorPage layout component [\#20](https://github.com/Enabel/ux/pull/20) ([damienlagae](https://github.com/damienlagae))
+
+## [v2.2.0](https://github.com/Enabel/ux/tree/v2.2.0) (2026-04-27)
+
+[Full Changelog](https://github.com/Enabel/ux/compare/v2.1.0...v2.2.0)
+
+**Merged pull requests:**
+
+- ✨ Add Toast notification component [\#14](https://github.com/Enabel/ux/pull/14) ([damienlagae](https://github.com/damienlagae))
+
+## [v2.1.0](https://github.com/Enabel/ux/tree/v2.1.0) (2026-04-27)
+
+[Full Changelog](https://github.com/Enabel/ux/compare/v2.0.3...v2.1.0)
+
+**Merged pull requests:**
+
+- ✨ Add UserMenu navigation component [\#13](https://github.com/Enabel/ux/pull/13) ([damienlagae](https://github.com/damienlagae))
+
+## [v2.0.3](https://github.com/Enabel/ux/tree/v2.0.3) (2026-04-01)
+
+[Full Changelog](https://github.com/Enabel/ux/compare/v2.0.2...v2.0.3)
+
+## [v2.0.2](https://github.com/Enabel/ux/tree/v2.0.2) (2026-02-18)
+
+[Full Changelog](https://github.com/Enabel/ux/compare/v2.0.1...v2.0.2)
+
+## [v2.0.1](https://github.com/Enabel/ux/tree/v2.0.1) (2025-11-19)
+
+[Full Changelog](https://github.com/Enabel/ux/compare/v2.0.0...v2.0.1)
+
+## [v2.0.0](https://github.com/Enabel/ux/tree/v2.0.0) (2025-11-13)
+
+[Full Changelog](https://github.com/Enabel/ux/compare/v1.2.0...v2.0.0)
 
 **Closed issues:**
 
@@ -15,56 +71,49 @@
 - Add Timeline component with Enabel Bootstrap Theme integration and Symfony UX Icons [\#12](https://github.com/Enabel/ux/pull/12) ([Copilot](https://github.com/apps/copilot-swe-agent))
 - Add Widget component with Enabel Bootstrap Theme integration and comprehensive documentation [\#11](https://github.com/Enabel/ux/pull/11) ([Copilot](https://github.com/apps/copilot-swe-agent))
 - Add Callout component with Symfony UX Icons integration [\#10](https://github.com/Enabel/ux/pull/10) ([Copilot](https://github.com/apps/copilot-swe-agent))
-
-## [v1.3.0](https://github.com/enabel/ux/tree/v1.3.0) (2025-10-15)
-
-[Full Changelog](https://github.com/enabel/ux/compare/v1.2.0...v1.3.0)
-
-**Merged pull requests:**
-
 - ✨ Add layout [\#6](https://github.com/Enabel/ux/pull/6) ([damienlagae](https://github.com/damienlagae))
 - ✨ Add some composant [\#5](https://github.com/Enabel/ux/pull/5) ([damienlagae](https://github.com/damienlagae))
 - Add doc, CI, test [\#4](https://github.com/Enabel/ux/pull/4) ([damienlagae](https://github.com/damienlagae))
 
-## [v1.2.0](https://github.com/enabel/ux/tree/v1.2.0) (2025-09-04)
+## [v1.2.0](https://github.com/Enabel/ux/tree/v1.2.0) (2025-09-04)
 
-[Full Changelog](https://github.com/enabel/ux/compare/v1.1.1...v1.2.0)
+[Full Changelog](https://github.com/Enabel/ux/compare/v1.1.1...v1.2.0)
 
 **Merged pull requests:**
 
 - Feat/asset mapper auto discovery [\#3](https://github.com/Enabel/ux/pull/3) ([gerryvdm](https://github.com/gerryvdm))
 
-## [v1.1.1](https://github.com/enabel/ux/tree/v1.1.1) (2025-07-10)
+## [v1.1.1](https://github.com/Enabel/ux/tree/v1.1.1) (2025-07-10)
 
-[Full Changelog](https://github.com/enabel/ux/compare/v1.1.0...v1.1.1)
+[Full Changelog](https://github.com/Enabel/ux/compare/v1.1.0...v1.1.1)
 
 **Merged pull requests:**
 
 - Feat/asset mapper compat [\#2](https://github.com/Enabel/ux/pull/2) ([gerryvdm](https://github.com/gerryvdm))
 
-## [v1.1.0](https://github.com/enabel/ux/tree/v1.1.0) (2025-04-03)
+## [v1.1.0](https://github.com/Enabel/ux/tree/v1.1.0) (2025-04-03)
 
-[Full Changelog](https://github.com/enabel/ux/compare/v1.0.3...v1.1.0)
+[Full Changelog](https://github.com/Enabel/ux/compare/v1.0.3...v1.1.0)
 
 **Merged pull requests:**
 
 - Add a way to trigger a callback event [\#1](https://github.com/Enabel/ux/pull/1) ([gerryvdm](https://github.com/gerryvdm))
 
-## [v1.0.3](https://github.com/enabel/ux/tree/v1.0.3) (2024-10-22)
+## [v1.0.3](https://github.com/Enabel/ux/tree/v1.0.3) (2024-10-22)
 
-[Full Changelog](https://github.com/enabel/ux/compare/v1.0.2...v1.0.3)
+[Full Changelog](https://github.com/Enabel/ux/compare/v1.0.2...v1.0.3)
 
-## [v1.0.2](https://github.com/enabel/ux/tree/v1.0.2) (2024-10-15)
+## [v1.0.2](https://github.com/Enabel/ux/tree/v1.0.2) (2024-10-15)
 
-[Full Changelog](https://github.com/enabel/ux/compare/v1.0.1...v1.0.2)
+[Full Changelog](https://github.com/Enabel/ux/compare/v1.0.1...v1.0.2)
 
-## [v1.0.1](https://github.com/enabel/ux/tree/v1.0.1) (2024-10-10)
+## [v1.0.1](https://github.com/Enabel/ux/tree/v1.0.1) (2024-10-10)
 
-[Full Changelog](https://github.com/enabel/ux/compare/v1.0.0...v1.0.1)
+[Full Changelog](https://github.com/Enabel/ux/compare/v1.0.0...v1.0.1)
 
-## [v1.0.0](https://github.com/enabel/ux/tree/v1.0.0) (2024-10-10)
+## [v1.0.0](https://github.com/Enabel/ux/tree/v1.0.0) (2024-10-10)
 
-[Full Changelog](https://github.com/enabel/ux/compare/b916c974ed6c4dc810794a179d15af4ca1835d9b...v1.0.0)
+[Full Changelog](https://github.com/Enabel/ux/compare/b916c974ed6c4dc810794a179d15af4ca1835d9b...v1.0.0)
 
 
 
