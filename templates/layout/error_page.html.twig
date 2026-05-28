@@ -7,7 +7,7 @@
     <link rel="stylesheet" href="{{ asset(stylesheet) }}">
 </head>
 <body>
-    <div class="bg"><img src="{{ asset(symbol) }}" alt=""></div>
+    <div class="bg"><img src="{{ symbol starts with 'data:' ? symbol : asset(symbol) }}" alt=""></div>
     <div id="error">
         <div class="error">
             <div class="code-error"><h1>{{ statusCode }}</h1></div>
@@ -15,7 +15,7 @@
             <p>{{ message }}</p>
             {% if backUrl %}<a href="{{ backUrl }}">{{ backLabel }}</a>{% endif %}
             {% if details %}<small>{{ details }}</small>{% endif %}
-            <img class="logo" src="{{ asset(logo) }}" alt="{{ appName }}">
+            <img class="logo" src="{{ logo starts with 'data:' ? logo : asset(logo) }}" alt="{{ appName }}">
         </div>
     </div>
 </body>

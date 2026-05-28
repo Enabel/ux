@@ -43,8 +43,8 @@ class ErrorPageTest extends TestCase
         $this->assertNull($component->details);
         $this->assertNull($component->backUrl);
         $this->assertSame('Back to homepage', $component->backLabel);
-        $this->assertSame('/images/enabel-symbol.png', $component->symbol);
-        $this->assertSame('/images/enabel-logo-email.png', $component->logo);
+        $this->assertStringStartsWith('data:image/svg+xml;base64,', $component->symbol);
+        $this->assertStringStartsWith('data:image/png;base64,', $component->logo);
         $this->assertSame('en', $component->locale);
         $this->assertSame('Enabel', $component->appName);
         $this->assertSame('vendor/@enabel/enabel-bootstrap-theme/dist/css/error.min.css', $component->stylesheet);
@@ -152,6 +152,21 @@ class ErrorPageTest extends TestCase
             'message' => 'Missing',
             'backUrl' => true,
         ]);
+    }
+
+    public function testCustomSymbolAndLogoPathsOverrideDataUriDefaults(): void
+    {
+        $component = new ErrorPage();
+        $data = $component->preMount([
+            'statusCode' => 404,
+            'title' => 'Not Found',
+            'message' => 'Missing',
+            'symbol' => '/images/custom-symbol.png',
+            'logo' => '/images/custom-logo.png',
+        ]);
+
+        $this->assertSame('/images/custom-symbol.png', $data['symbol']);
+        $this->assertSame('/images/custom-logo.png', $data['logo']);
     }
 
     public function testPreMountPreservesAdditionalData(): void
