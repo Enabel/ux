@@ -28,6 +28,7 @@ class ImpersonateDropdownTest extends TestCase
         $component->title = $data['title'];
         $component->exitParameter = $data['exitParameter'];
         $component->debounce = $data['debounce'];
+        $component->minLength = $data['minLength'];
 
         $this->assertSame('/admin/users/search', $component->searchUrl);
         $this->assertSame('', $component->searchPlaceholder);
@@ -36,6 +37,7 @@ class ImpersonateDropdownTest extends TestCase
         $this->assertNull($component->title);
         $this->assertSame('_switch_user', $component->exitParameter);
         $this->assertSame(250, $component->debounce);
+        $this->assertSame(2, $component->minLength);
     }
 
     public function testComponentCanBeInstantiatedWithCustomParameters(): void
@@ -49,6 +51,7 @@ class ImpersonateDropdownTest extends TestCase
             'title' => 'Incarner un utilisateur',
             'exitParameter' => '_switch',
             'debounce' => 500,
+            'minLength' => 3,
         ]);
 
         $this->assertSame('/api/search', $data['searchUrl']);
@@ -58,6 +61,7 @@ class ImpersonateDropdownTest extends TestCase
         $this->assertSame('Incarner un utilisateur', $data['title']);
         $this->assertSame('_switch', $data['exitParameter']);
         $this->assertSame(500, $data['debounce']);
+        $this->assertSame(3, $data['minLength']);
     }
 
     public function testMissingSearchUrlThrows(): void
@@ -117,6 +121,17 @@ class ImpersonateDropdownTest extends TestCase
         $component->preMount([
             'searchUrl' => '/search',
             'exitParameter' => 42,
+        ]);
+    }
+
+    public function testInvalidMinLengthTypeThrows(): void
+    {
+        $this->expectException(InvalidOptionsException::class);
+
+        $component = new ImpersonateDropdown();
+        $component->preMount([
+            'searchUrl' => '/search',
+            'minLength' => '2',
         ]);
     }
 

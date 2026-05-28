@@ -19,6 +19,7 @@ Pairs with [`Enabel:Ux:ImpersonateBanner`](impersonateBanner.md) (issue #16), wh
 | `title`             | `?string` | Tooltip on the dropdown toggle button (HTML `title` attribute)                                         | `null`                    |
 | `exitParameter`     | `string`  | Query-string key appended on row click (Symfony's default is `_switch_user`)                           | `'_switch_user'`          |
 | `debounce`          | `int`     | Search debounce delay in milliseconds                                                                  | `250`                     |
+| `minLength`         | `int`     | Minimum query length before the controller fires a fetch (under this, the results list is cleared)     | `2`                       |
 
 ## Endpoint contract
 
@@ -37,7 +38,7 @@ The component issues `GET {searchUrl}?q={query}` after the debounce window, expe
 
 The endpoint must be protected by `ROLE_ALLOWED_TO_SWITCH` (or stricter) at the controller level — the component only renders the widget, it does not gate access.
 
-The Stimulus controller fires no request until the input contains at least 2 characters, aborts in-flight requests when the query changes, and renders an empty-state row when the endpoint returns `[]`.
+The Stimulus controller fires no request until the input contains at least `minLength` characters (default 2), aborts in-flight requests when the query changes, and renders an empty-state row when the endpoint returns `[]`.
 
 ## Usage
 

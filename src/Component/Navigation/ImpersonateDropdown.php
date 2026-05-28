@@ -21,6 +21,7 @@ class ImpersonateDropdown
     public ?string $title;
     public string $exitParameter;
     public int $debounce;
+    public int $minLength;
 
     /**
      * @param array<string, mixed> $data
@@ -47,6 +48,7 @@ class ImpersonateDropdown
             'title' => null,
             'exitParameter' => '_switch_user',
             'debounce' => 250,
+            'minLength' => 2,
         ]);
 
         $resolver->setAllowedTypes('searchUrl', 'string');
@@ -56,5 +58,6 @@ class ImpersonateDropdown
         $resolver->setAllowedTypes('title', ['string', 'null']);
         $resolver->setAllowedTypes('exitParameter', 'string');
         $resolver->setAllowedTypes('debounce', 'int');
+        $resolver->setAllowedTypes('minLength', 'int');
     }
 }
