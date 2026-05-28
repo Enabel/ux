@@ -48,6 +48,10 @@ services:
     tags:
       - { name: 'twig.component', key: 'Enabel:Ux:ImpersonateBanner', template: '@EnabelUx/navigation/impersonate_banner.html.twig', expose_public_props: true }
 
+  Enabel\Ux\Component\Navigation\ImpersonateDropdown:
+    tags:
+      - { name: 'twig.component', key: 'Enabel:Ux:ImpersonateDropdown', template: '@EnabelUx/navigation/impersonate_dropdown.html.twig', expose_public_props: true }
+
   Enabel\Ux\Component\Callout\Callout:
     tags:
       - { name: 'twig.component', key: 'Enabel:Ux:Callout', template: '@EnabelUx/callout/callout.html.twig', expose_public_props: true }

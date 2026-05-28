@@ -1,0 +1,44 @@
+{# Impersonate Dropdown component #}
+<style>
+    .enabel-ux-impersonate-dropdown { min-width: 320px; }
+    .enabel-ux-impersonate-results { max-height: 320px; overflow-y: auto; }
+    .enabel-ux-impersonate-initials {
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+        width: 28px;
+        height: 28px;
+        border-radius: 50%;
+        background-color: #6c757d;
+        color: #fff;
+        font-size: 0.75rem;
+        font-weight: 600;
+        flex-shrink: 0;
+    }
+</style>
+<li class="nav-item dropdown {{ attributes.render('class') }}"
+    {{ attributes.defaults(stimulus_controller('enabel/ux/impersonate_dropdown', {
+        searchUrl: searchUrl,
+        noResultsLabel: noResultsLabel,
+        exitParameter: exitParameter,
+        debounce: debounce,
+    })) }}>
+    <a class="nav-link dropdown-toggle"
+       href="#"
+       role="button"
+       data-bs-toggle="dropdown"
+       aria-expanded="false"
+       {% if title %}title="{{ title }}"{% endif %}>
+        {{ ux_icon(icon, {height: '1.2rem'}) }}
+    </a>
+    <div class="dropdown-menu dropdown-menu-end p-2 enabel-ux-impersonate-dropdown">
+        <input type="search"
+               class="form-control form-control-sm mb-2"
+               placeholder="{{ searchPlaceholder }}"
+               autocomplete="off"
+               {{ stimulus_target('enabel/ux/impersonate_dropdown', 'input') }}
+               {{ stimulus_action('enabel/ux/impersonate_dropdown', 'search', 'input') }}>
+        <ul class="list-unstyled mb-0 enabel-ux-impersonate-results"
+            {{ stimulus_target('enabel/ux/impersonate_dropdown', 'results') }}></ul>
+    </div>
+</li>
