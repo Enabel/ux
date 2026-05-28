@@ -22,6 +22,7 @@ https://github.com/Enabel/Ux
   - [UserMenu](Navigation/userMenu.md) - User menu with avatar (photo or auto-derived colored initials) and dropdown
   - [LocaleSwitcher](Navigation/localeSwitcher.md) - A locale switcher dropdown for Bootstrap navbar
   - [Tab](Navigation/tab.md) - A Bootstrap nav-tabs/nav-pills component for creating tabbed navigation
+  - [ImpersonateBanner](Navigation/impersonateBanner.md) - A fixed-top banner for Symfony's user-impersonation feature
 
 ## Layouts
 
