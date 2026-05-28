@@ -26,6 +26,7 @@ https://github.com/Enabel/Ux
 ## Layouts
 
 - [Bootstrap](Layout/bootstrap.md) - A layout for rendering Bootstrap components with Enabel UX components & Enabel Bootstrap Theme
+- [EmailLayout](Layout/emailLayout.md) - A reusable HTML email layout for Symfony Mailer's TemplatedEmail
 - [ErrorPage](Layout/errorPage.md) - A full-page error layout for Symfony's TwigBundle exception templates
 
 ## Install

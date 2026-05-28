@@ -63,3 +63,7 @@ services:
   Enabel\Ux\Component\Layout\ErrorPage:
     tags:
       - { name: 'twig.component', key: 'Enabel:Ux:ErrorPage', template: '@EnabelUx/layout/error_page.html.twig', expose_public_props: true }
+
+  Enabel\Ux\Component\Layout\EmailLayout:
+    tags:
+      - { name: 'twig.component', key: 'Enabel:Ux:EmailLayout', template: '@EnabelUx/layout/email_layout.html.twig', expose_public_props: true }
