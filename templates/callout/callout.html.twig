@@ -1,31 +1,9 @@
 {# Callout component following Enabel Bootstrap Theme pattern #}
-{% if cva is defined %}
-    {% set typeCva = cva({
-        base: 'callout',
-        variants: {
-            type: {
-                primary: ' callout-primary',
-                secondary: ' callout-secondary',
-                success: ' callout-success',
-                danger: ' callout-danger',
-                warning: ' callout-warning',
-                info: ' callout-info',
-                light: ' callout-light',
-                dark: ' callout-dark',
-            },
-            size: {
-                sm: ' callout-sm',
-            }
-        }
-    }) %}
-    {% set calloutClass = typeCva.apply({type, size}, attributes.render('class')) %}
-{% else %}
-    {% set calloutClasses = ['callout', 'callout-' ~ type] %}
-    {% if size %}
-        {% set calloutClasses = calloutClasses|merge(['callout-' ~ size]) %}
-    {% endif %}
-    {% set calloutClass = calloutClasses|join(' ') ~ (attributes.render('class') ? ' ' ~ attributes.render('class') : '') %}
+{% set calloutClasses = ['callout', 'callout-' ~ type] %}
+{% if size %}
+    {% set calloutClasses = calloutClasses|merge(['callout-' ~ size]) %}
 {% endif %}
+{% set calloutClass = calloutClasses|join(' ') ~ (attributes.render('class') ? ' ' ~ attributes.render('class') : '') %}
 
 <div class="{{ calloutClass }}" {{ attributes.defaults({}) }}>
     {% if title or icon %}
