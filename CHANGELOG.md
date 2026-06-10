@@ -1,5 +1,13 @@
 # Changelog
 
+## [v2.4.0](https://github.com/Enabel/ux/tree/v2.4.0) (2026-06-10)
+
+[Full Changelog](https://github.com/Enabel/ux/compare/v2.3.0...v2.4.0)
+
+**Merged pull requests:**
+
+- ✨ Add Symfony UX 3.x compatibility [\#26](https://github.com/Enabel/ux/pull/26) ([damienlagae](https://github.com/damienlagae))
+
 ## [v2.3.0](https://github.com/Enabel/ux/tree/v2.3.0) (2026-05-28)
 
 [Full Changelog](https://github.com/Enabel/ux/compare/v2.2.0...v2.3.0)
