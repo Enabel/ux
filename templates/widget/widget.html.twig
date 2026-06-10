@@ -1,25 +1,6 @@
 {# Widget component following Enabel Bootstrap Theme pattern #}
-{% if cva is defined %}
-    {% set typeCva = cva({
-        base: 'widget',
-        variants: {
-            variant: {
-                primary: ' widget-primary',
-                secondary: ' widget-secondary',
-                success: ' widget-success',
-                danger: ' widget-danger',
-                warning: ' widget-warning',
-                info: ' widget-info',
-                light: ' widget-light',
-                dark: ' widget-dark',
-            }
-        }
-    }) %}
-    {% set widgetClass = typeCva.apply({variant}, attributes.render('class')) %}
-{% else %}
-    {% set widgetClasses = ['widget', 'widget-' ~ variant] %}
-    {% set widgetClass = widgetClasses|join(' ') ~ (attributes.render('class') ? ' ' ~ attributes.render('class') : '') %}
-{% endif %}
+{% set widgetClasses = ['widget', 'widget-' ~ variant] %}
+{% set widgetClass = widgetClasses|join(' ') ~ (attributes.render('class') ? ' ' ~ attributes.render('class') : '') %}
 
 {% if link %}
 <a href="{{ link }}" class="widget-link">
