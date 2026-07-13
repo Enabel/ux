@@ -6,9 +6,41 @@ on:
     branches: ['main']
 
 jobs:
-  test:
-    uses: Enabel/CI/.github/workflows/phpunit.yaml@main
-  
+  tests:
+    name: PHP ${{ matrix.php }} (${{ matrix.name }} deps)
+    runs-on: ubuntu-latest
+    strategy:
+      fail-fast: false
+      matrix:
+        include:
+          - php: '8.3'
+            name: highest
+            flags: '--prefer-stable'
+          - php: '8.4'
+            name: highest
+            flags: '--prefer-stable'
+          - php: '8.3'
+            name: lowest
+            flags: '--prefer-lowest --prefer-stable'
+          - php: '8.4'
+            name: dev
+            flags: ''
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+
+      - name: Setup PHP
+        uses: shivammathur/setup-php@v2
+        with:
+          php-version: ${{ matrix.php }}
+          coverage: none
+
+      - name: Install dependencies
+        run: composer update ${{ matrix.flags }} --prefer-dist --no-progress
+
+      - name: Run tests
+        run: vendor/bin/phpunit
+
   composer-validate:
     uses: Enabel/CI/.github/workflows/composer-validate.yaml@main
   
