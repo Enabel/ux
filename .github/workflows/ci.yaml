@@ -17,3 +17,37 @@ jobs:
   
   static-analysis:
     uses: Enabel/CI/.github/workflows/phpstan.yaml@main
+
+  symfony-versions:
+    name: Symfony ${{ matrix.symfony }} (PHP ${{ matrix.php }})
+    runs-on: ubuntu-latest
+    strategy:
+      fail-fast: false
+      matrix:
+        include:
+          - php: '8.3'
+            symfony: '7.4.*'
+          - php: '8.4'
+            symfony: '8.1.*'
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+
+      - name: Setup PHP
+        uses: shivammathur/setup-php@v2
+        with:
+          php-version: ${{ matrix.php }}
+          coverage: none
+
+      - name: Install symfony/flex
+        run: |
+          composer global config --no-plugins allow-plugins.symfony/flex true
+          composer global require --no-progress --no-scripts symfony/flex
+
+      - name: Install dependencies (Symfony ${{ matrix.symfony }})
+        env:
+          SYMFONY_REQUIRE: ${{ matrix.symfony }}
+        run: composer update --prefer-dist --prefer-stable --no-progress
+
+      - name: Run tests
+        run: vendor/bin/phpunit
