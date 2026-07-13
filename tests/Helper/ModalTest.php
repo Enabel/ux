@@ -27,8 +27,9 @@ class ModalTest extends TestCase
     protected function setUp(): void
     {
         $this->requestStack = new RequestStack();
-        $this->httpKernel = $this->createMock(HttpKernelInterface::class);
-        $this->twig = $this->createMock(Environment::class);
+        // Stubs: ces dépendances ne sont pas sollicitées par les scénarios redirect/callback.
+        $this->httpKernel = $this->createStub(HttpKernelInterface::class);
+        $this->twig = $this->createStub(Environment::class);
     }
 
     public function testRenderWithModalQueryParameter(): void
@@ -36,12 +37,13 @@ class ModalTest extends TestCase
         $request = new Request(['_enabel_ux_modal' => '1']);
         $this->requestStack->push($request);
 
-        $this->twig->expects($this->once())
+        $twig = $this->createMock(Environment::class);
+        $twig->expects($this->once())
             ->method('render')
             ->with('modal.html.twig', ['key' => 'value'])
             ->willReturn('<div>Modal Content</div>');
 
-        $modal = new Modal($this->requestStack, $this->httpKernel, $this->twig);
+        $modal = new Modal($this->requestStack, $this->httpKernel, $twig);
         $response = $modal->render('/background', 'modal.html.twig', ['key' => 'value']);
 
         $this->assertInstanceOf(Response::class, $response);
@@ -53,18 +55,20 @@ class ModalTest extends TestCase
         $request = new Request();
         $this->requestStack->push($request);
 
-        $this->twig->expects($this->once())
+        $twig = $this->createMock(Environment::class);
+        $twig->expects($this->once())
             ->method('render')
             ->with('modal.html.twig', [])
             ->willReturn('<div>Modal Content</div>');
 
         $expectedResponse = new Response('Background with modal');
 
-        $this->httpKernel->expects($this->once())
+        $httpKernel = $this->createMock(HttpKernelInterface::class);
+        $httpKernel->expects($this->once())
             ->method('handle')
             ->willReturn($expectedResponse);
 
-        $modal = new Modal($this->requestStack, $this->httpKernel, $this->twig);
+        $modal = new Modal($this->requestStack, $httpKernel, $twig);
         $response = $modal->render('/background', 'modal.html.twig');
 
         $this->assertSame($expectedResponse, $response);

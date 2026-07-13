@@ -6,14 +6,128 @@ on:
     branches: ['main']
 
 jobs:
-  test:
-    uses: Enabel/CI/.github/workflows/phpunit.yaml@main
-  
+  tests:
+    name: PHP ${{ matrix.php }} (${{ matrix.name }} deps)
+    runs-on: ubuntu-latest
+    strategy:
+      fail-fast: false
+      matrix:
+        include:
+          - php: '8.3'
+            name: highest
+            flags: '--prefer-stable'
+          - php: '8.4'
+            name: highest
+            flags: '--prefer-stable'
+          - php: '8.3'
+            name: lowest
+            flags: '--prefer-lowest --prefer-stable'
+          - php: '8.4'
+            name: dev
+            flags: ''
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v5
+
+      - name: Setup PHP
+        uses: shivammathur/setup-php@v2
+        with:
+          php-version: ${{ matrix.php }}
+          coverage: none
+
+      - name: Install dependencies
+        run: composer update ${{ matrix.flags }} --prefer-dist --no-progress
+
+      - name: Run tests
+        run: vendor/bin/phpunit
+
   composer-validate:
-    uses: Enabel/CI/.github/workflows/composer-validate.yaml@main
-  
+    name: Validate composer.json
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v5
+
+      - name: Setup PHP
+        uses: shivammathur/setup-php@v2
+        with:
+          php-version: '8.4'
+          coverage: none
+
+      - name: Validate
+        run: composer validate --strict
+
   coding-standards:
-    uses: Enabel/CI/.github/workflows/php-cs-fixer.yaml@main
-  
+    name: PHP CS Fixer
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v5
+
+      - name: Setup PHP
+        uses: shivammathur/setup-php@v2
+        with:
+          php-version: '8.3'
+          coverage: none
+
+      - name: Install PHP CS Fixer
+        run: composer install --no-progress --prefer-dist --working-dir=tools/php-cs-fixer
+
+      - name: Run PHP CS Fixer
+        run: tools/php-cs-fixer/vendor/bin/php-cs-fixer fix --dry-run --diff
+
   static-analysis:
-    uses: Enabel/CI/.github/workflows/phpstan.yaml@main
+    name: PHPStan
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v5
+
+      - name: Setup PHP
+        uses: shivammathur/setup-php@v2
+        with:
+          php-version: '8.4'
+          coverage: none
+
+      - name: Install dependencies
+        run: composer install --no-progress --prefer-dist --optimize-autoloader
+
+      - name: Install PHPStan
+        run: composer install --no-progress --prefer-dist --working-dir=tools/phpstan
+
+      - name: Run PHPStan
+        run: tools/phpstan/vendor/bin/phpstan analyse --memory-limit=1G
+
+  symfony-versions:
+    name: Symfony ${{ matrix.symfony }} (PHP ${{ matrix.php }})
+    runs-on: ubuntu-latest
+    strategy:
+      fail-fast: false
+      matrix:
+        include:
+          - php: '8.3'
+            symfony: '7.4.*'
+          - php: '8.4'
+            symfony: '8.1.*'
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v5
+
+      - name: Setup PHP
+        uses: shivammathur/setup-php@v2
+        with:
+          php-version: ${{ matrix.php }}
+          coverage: none
+
+      - name: Install symfony/flex
+        run: |
+          composer global config --no-plugins allow-plugins.symfony/flex true
+          composer global require --no-progress --no-scripts symfony/flex
+
+      - name: Install dependencies (Symfony ${{ matrix.symfony }})
+        env:
+          SYMFONY_REQUIRE: ${{ matrix.symfony }}
+        run: composer update --prefer-dist --prefer-stable --no-progress
+
+      - name: Run tests
+        run: vendor/bin/phpunit
