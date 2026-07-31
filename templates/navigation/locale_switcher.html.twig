@@ -1,12 +1,17 @@
 {# Locale switcher component #}
+{% set flagClass = 'rounded border border-dark-subtle' %}
+{% set flagStyle = 'width: 1.5rem; height: 1.125rem; vertical-align: -0.15rem;' %}
 <li class="nav-item dropdown">
     {% set icon = (app.locale == 'en' ? 'gb' : app.locale) %}
     {% set locale_display_name = app.locale|locale_name(app.locale)|capitalize %}
     <a href="#" class="nav-link dropdown-toggle" id="dropdownLocales" data-bs-toggle="dropdown"
        aria-expanded="false">
-        <twig:ux:icon name="cif:{{ icon }}" style="width: 1.5rem; height: 1.5rem;" />{% if showLocaleName %}&nbsp;{{ locale_display_name }}{% endif %}
+        <twig:ux:icon name="cif:{{ icon }}" class="{{ flagClass }}" style="{{ flagStyle }}" preserveAspectRatio="xMidYMid slice" title="{{ locale_display_name }}" />{% if labelFormat == 'name' %}&nbsp;{{ locale_display_name }}{% elseif labelFormat == 'code' %}&nbsp;{{ app.locale|upper }}{% endif %}
     </a>
     <ul class="dropdown-menu" aria-labelledby="dropdownLocales">
+        {% if header %}
+            <li><h6 class="dropdown-header">{{ header }}</h6></li>
+        {% endif %}
         {% for locale in locales %}
             {% if locale != app.locale %}
             {% set icon = (locale == 'en' ? 'gb' : locale) %}
@@ -14,7 +19,7 @@
             {% set locale_display_name = locale|locale_name(locale)|capitalize %}
             <li role="menuitem">
                 <a class="dropdown-item" href="{{ navigation_url }}">
-                    <twig:ux:icon name="cif:{{ icon }}" style="width: 1.5rem; height: 1.5rem;" />{% if showLocaleName %}&nbsp;{{ locale_display_name }}{% endif %}
+                    <twig:ux:icon name="cif:{{ icon }}" class="{{ flagClass }}" style="{{ flagStyle }}" preserveAspectRatio="xMidYMid slice" title="{{ locale_display_name }}" />{% if labelFormat == 'name' %}&nbsp;{{ locale_display_name }}{% elseif labelFormat == 'code' %}&nbsp;{{ locale|upper }}{% endif %}
                 </a>
             </li>
             {% endif %}

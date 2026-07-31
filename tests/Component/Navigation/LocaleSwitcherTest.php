@@ -67,4 +67,63 @@ class LocaleSwitcherTest extends TestCase
         $component = new LocaleSwitcher();
         $component->preMount(['showLocaleName' => 'yes']);
     }
+
+    public function testLabelFormatDefaultsToName(): void
+    {
+        $component = new LocaleSwitcher();
+        $data = $component->preMount([]);
+
+        $this->assertSame(LocaleSwitcher::LABEL_NAME, $data['labelFormat']);
+    }
+
+    public function testLabelFormatCanBeSetToCode(): void
+    {
+        $component = new LocaleSwitcher();
+        $data = $component->preMount(['labelFormat' => LocaleSwitcher::LABEL_CODE]);
+
+        $this->assertSame('code', $data['labelFormat']);
+    }
+
+    public function testShowLocaleNameFalseStillMeansNoLabel(): void
+    {
+        $component = new LocaleSwitcher();
+        $data = $component->preMount(['showLocaleName' => false]);
+
+        $this->assertSame(LocaleSwitcher::LABEL_NONE, $data['labelFormat']);
+    }
+
+    public function testExplicitLabelFormatWinsOverShowLocaleName(): void
+    {
+        $component = new LocaleSwitcher();
+        $data = $component->preMount([
+            'showLocaleName' => false,
+            'labelFormat' => LocaleSwitcher::LABEL_CODE,
+        ]);
+
+        $this->assertSame(LocaleSwitcher::LABEL_CODE, $data['labelFormat']);
+    }
+
+    public function testComponentThrowsExceptionForUnknownLabelFormat(): void
+    {
+        $this->expectException(InvalidOptionsException::class);
+
+        $component = new LocaleSwitcher();
+        $component->preMount(['labelFormat' => 'initials']);
+    }
+
+    public function testHeaderDefaultsToNullAndCanBeSet(): void
+    {
+        $component = new LocaleSwitcher();
+
+        $this->assertNull($component->preMount([])['header']);
+        $this->assertSame('Change language', $component->preMount(['header' => 'Change language'])['header']);
+    }
+
+    public function testComponentThrowsExceptionForInvalidHeaderType(): void
+    {
+        $this->expectException(InvalidOptionsException::class);
+
+        $component = new LocaleSwitcher();
+        $component->preMount(['header' => 42]);
+    }
 }
