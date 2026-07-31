@@ -1,5 +1,14 @@
 # Changelog
 
+## [v2.4.1](https://github.com/Enabel/ux/tree/v2.4.1) (2026-07-31)
+
+[Full Changelog](https://github.com/Enabel/ux/compare/v2.4.0...v2.4.1)
+
+**Merged pull requests:**
+
+- 🐛 Restore brand colours and cropping on the ErrorPage default symbol [\#28](https://github.com/Enabel/ux/pull/28) ([damienlagae](https://github.com/damienlagae))
+- ⬆️ Upgrade PHPUnit to 12 & test Symfony 7.4/8.1 in CI [\#27](https://github.com/Enabel/ux/pull/27) ([damienlagae](https://github.com/damienlagae))
+
 ## [v2.4.0](https://github.com/Enabel/ux/tree/v2.4.0) (2026-06-10)
 
 [Full Changelog](https://github.com/Enabel/ux/compare/v2.3.0...v2.4.0)
