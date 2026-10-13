@@ -33,6 +33,12 @@ import '@enabel/enabel-bootstrap-theme/dist/css/enabel-bootstrap-theme.min.css';
 
 You can still override the `stylesheets` or `javascripts` blocks to load additional assets.
 
+> [!IMPORTANT]
+> **Upgrading from 2.5 or earlier:** the layout used to load the theme 3.0.2 CSS and `bootstrap.bundle.min.js` from
+> jsDelivr. Pages that do not override the `stylesheets`/`javascripts` blocks (typically login or reset password
+> pages) lose both unless `assets/app.js` imports them as shown above. The CDN script also defined a global
+> `window.bootstrap`: inline scripts relying on it must import from `bootstrap` instead.
+
 ## Translations and parameters
 
 The layout relies on translation keys for application information and menu labels.
