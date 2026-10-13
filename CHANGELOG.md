@@ -1,5 +1,13 @@
 # Changelog
 
+## [v2.6.0](https://github.com/Enabel/ux/tree/v2.6.0) (2026-10-13)
+
+[Full Changelog](https://github.com/Enabel/ux/compare/v2.5.0...v2.6.0)
+
+**Merged pull requests:**
+
+- 🔥 Stop loading Bootstrap and the theme from a CDN in the layout, allow enabel-bootstrap-theme 4 [\#30](https://github.com/Enabel/ux/pull/30) ([damienlagae](https://github.com/damienlagae))
+
 ## [v2.5.0](https://github.com/Enabel/ux/tree/v2.5.0) (2026-07-31)
 
 [Full Changelog](https://github.com/Enabel/ux/compare/v2.4.1...v2.5.0)
