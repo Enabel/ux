@@ -4,7 +4,7 @@
 
 A Bootstrap 5 toast component for non-intrusive notifications (flash messages, status updates). Renders a `.toast` element styled with `text-bg-{type}`, with optional dismiss button, auto-hide and configurable politeness for screen readers.
 
-The component renders the markup only — Bootstrap's toast must be initialized client-side (via `bootstrap.Toast.getOrCreateInstance(el).show()` or any equivalent), exactly like the native Bootstrap toast.
+The component renders the markup only — Bootstrap's toast must be initialized client-side (via `Toast.getOrCreateInstance(el).show()`, with `Toast` imported from `bootstrap`, see [below](#showing-the-toast-client-side)), exactly like the native Bootstrap toast.
 
 ## Parameters
 
