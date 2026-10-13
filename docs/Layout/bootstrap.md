@@ -10,7 +10,7 @@ The layout is defined in:
 - `templates/layout/bootstrap/_footer.html.twig` (footer)
 
 It provides:
-- An HTML5 skeleton with a complete `<head>` (favicon, meta, CSS/JS via CDN)
+- An HTML5 skeleton with a complete `<head>` (favicon, meta, assets through AssetMapper)
 - A configurable navbar (logo, app name, menus, locale switcher)
 - A flash messages area rendered as alerts
 - Clear Twig blocks to customize each part
@@ -21,11 +21,17 @@ This layout require `symfony/asset-mapper` to work.
 
 ## Dependencies
 
-By default, the layout loads:
-- Bootstrap 5.3 (JS via CDN)
-- Enabel Bootstrap Theme 3.x (CSS via CDN)
+The layout loads no asset from a CDN: it only renders `importmap('app')`. Your `app` entrypoint must import
+Bootstrap and the Enabel Bootstrap Theme (plus Font Awesome and flag-icons if you use them, the theme no longer
+bundles them since 4.0):
 
-You can override the `stylesheets` or `javascripts` blocks to use your own assets.
+```js
+// assets/app.js
+import 'bootstrap';
+import '@enabel/enabel-bootstrap-theme/dist/css/enabel-bootstrap-theme.min.css';
+```
+
+You can still override the `stylesheets` or `javascripts` blocks to load additional assets.
 
 ## Translations and parameters
 
