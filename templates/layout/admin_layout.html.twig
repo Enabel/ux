@@ -1,9 +1,9 @@
-{# Admin layout: sidebar column, flash messages, title with actions, breadcrumb and content #}
-<div class="d-flex">
+{# Admin layout: renders the page <main> landmark itself (sidebar column, flash messages, title with actions, breadcrumb and content); meant to replace the base layout's `main` block #}
+<main class="d-flex flex-shrink-0 flex-grow-1">
     <aside class="flex-shrink-0 border-end">
         {% block sidebar %}{% endblock %}
     </aside>
-    <main class="flex-grow-1 p-4">
+    <div class="flex-grow-1 p-4">
         {% for type, messages in app.flashes %}
             {% for message in messages %}
                 <twig:Enabel:Ux:Alert :type="this.alertType(type)" :dismissible="true">{{ message }}</twig:Enabel:Ux:Alert>
@@ -30,5 +30,5 @@
         </div>
 
         {% block content %}{% endblock %}
-    </main>
-</div>
+    </div>
+</main>

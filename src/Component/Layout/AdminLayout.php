@@ -16,7 +16,7 @@ class AdminLayout
 {
     public string $title;
 
-    /** @var list<array{label: string, link?: string}> */
+    /** @var list<array{label: string, link?: string|null}> */
     public array $breadcrumb = [];
 
     /**
@@ -30,7 +30,16 @@ class AdminLayout
         $resolver = new OptionsResolver();
         $this->configureOptions($resolver);
 
-        return $resolver->resolve($data) + $data;
+        $resolved = $resolver->resolve($data);
+        $resolved['breadcrumb'] = array_map(static function (array $item): array {
+            if (null === ($item['link'] ?? null) || '' === $item['link']) {
+                unset($item['link']);
+            }
+
+            return $item;
+        }, $resolved['breadcrumb']);
+
+        return $resolved + $data;
     }
 
     public function configureOptions(OptionsResolver $resolver): void
@@ -47,7 +56,7 @@ class AdminLayout
             }
 
             foreach ($breadcrumb as $item) {
-                if (!\is_array($item) || !\is_string($item['label'] ?? null) || (isset($item['link']) && !\is_string($item['link']))) {
+                if (!\is_array($item) || !\is_string($item['label'] ?? null) || (null !== ($item['link'] ?? null) && !\is_string($item['link']))) {
                     return false;
                 }
             }

@@ -33,6 +33,30 @@ class AdminLayoutTest extends TestCase
         $this->assertSame($breadcrumb, $data['breadcrumb']);
     }
 
+    public function testBreadcrumbItemsWithoutUsableLinkLoseTheLinkKey(): void
+    {
+        $data = (new AdminLayout())->preMount(['title' => 'Users', 'breadcrumb' => [
+            ['label' => 'Admin', 'link' => null],
+            ['label' => 'Empty', 'link' => ''],
+            ['label' => 'Section', 'link' => '/admin/section'],
+            ['label' => 'Users', 'link' => null],
+        ]]);
+
+        $this->assertSame([
+            ['label' => 'Admin'],
+            ['label' => 'Empty'],
+            ['label' => 'Section', 'link' => '/admin/section'],
+            ['label' => 'Users'],
+        ], $data['breadcrumb']);
+    }
+
+    public function testBreadcrumbLinkMustBeAStringOrNull(): void
+    {
+        $this->expectException(InvalidOptionsException::class);
+
+        (new AdminLayout())->preMount(['title' => 'Users', 'breadcrumb' => [['label' => 'Admin', 'link' => 5]]]);
+    }
+
     public function testBreadcrumbMustBeAList(): void
     {
         $this->expectException(InvalidOptionsException::class);
