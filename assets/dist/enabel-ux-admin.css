@@ -1,13 +1,16 @@
 /*
  * Enabel UX - admin sidebar styles.
- * Override the custom properties on `.enabel-ux-sidebar` to restyle the sidebar.
+ * The defaults of the custom properties have zero specificity (:where): override them
+ * with a `.enabel-ux-sidebar { --enabel-ux-sidebar-accent: ... }` rule anywhere in the app CSS.
  */
 
-.enabel-ux-sidebar {
+:where(.enabel-ux-sidebar) {
   --enabel-ux-sidebar-bg: color-mix(in srgb, var(--bs-dark) 82%, black);
   --enabel-ux-sidebar-accent: var(--bs-secondary);
   --enabel-ux-sidebar-color: rgba(255, 255, 255, .75);
+}
 
+.enabel-ux-sidebar {
   display: flex;
   flex-direction: column;
   flex-grow: 1;
@@ -26,14 +29,19 @@
   list-style: none;
 }
 
+.enabel-ux-sidebar-group > .enabel-ux-sidebar-list {
+  flex-grow: 0;
+  padding: 0;
+}
+
 .enabel-ux-sidebar-section {
+  display: block;
   padding: 1.25rem .75rem .4rem;
   font-size: .7rem;
   font-weight: 500;
   letter-spacing: .08em;
   text-transform: uppercase;
   color: rgba(255, 255, 255, .6);
-  list-style: none;
 }
 
 .enabel-ux-sidebar-link {
