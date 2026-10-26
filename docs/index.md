@@ -11,6 +11,7 @@ https://github.com/Enabel/Ux
 - [Alert](Alert/alert.md) - A Bootstrap alert component for displaying messages
 - [Callout](Callout/callout.md) - A Bootstrap callout component for displaying highlighted information with customizable types and icons
 - [Card](Card/card.md) - A Bootstrap card component for displaying content in a flexible and extensible container
+- [ConfirmAction](ConfirmAction/confirmAction.md) - A button opening a confirmation modal whose form sends a POST protected by a CSRF token
 - [Modal](Modal/modal.md) - Easily render modals from a dedicated controller
 - [Timeline](Timeline/timeline.md) - A Bootstrap timeline component for displaying chronological events with icons and color-coded styling
 - [Toast](Toast/toast.md) - A Bootstrap toast component for non-intrusive notifications with auto-hide and accessibility-aware politeness
@@ -21,6 +22,8 @@ https://github.com/Enabel/Ux
   - [MenuItem](Navigation/menuItem.md) - Individual navigation links or items
   - [UserMenu](Navigation/userMenu.md) - User menu with avatar (photo or auto-derived colored initials) and dropdown
   - [LocaleSwitcher](Navigation/localeSwitcher.md) - A locale switcher dropdown for Bootstrap navbar
+  - [Sidebar](Navigation/sidebar.md) - A vertical navigation for side menus
+  - [SidebarItem](Navigation/sidebarItem.md) - A sidebar link, active when the current route matches a prefix
   - [Tab](Navigation/tab.md) - A Bootstrap nav-tabs/nav-pills component for creating tabbed navigation
   - [ImpersonateBanner](Navigation/impersonateBanner.md) - A fixed-top banner for Symfony's user-impersonation feature
   - [ImpersonateDropdown](Navigation/impersonateDropdown.md) - A navbar dropdown with a debounced JSON user search to start impersonation
@@ -28,6 +31,7 @@ https://github.com/Enabel/Ux
 ## Layouts
 
 - [Bootstrap](Layout/bootstrap.md) - A layout for rendering Bootstrap components with Enabel UX components & Enabel Bootstrap Theme
+- [AdminLayout](Layout/adminLayout.md) - A layout for in-house admin pages: sidebar, flash messages, breadcrumb, title with actions and content
 - [EmailLayout](Layout/emailLayout.md) - A reusable HTML email layout for Symfony Mailer's TemplatedEmail
 - [ErrorPage](Layout/errorPage.md) - A full-page error layout for Symfony's TwigBundle exception templates
 - [LoginCard](Layout/loginCard.md) - A centered Bootstrap card on a coloured or image background for login/auth pages

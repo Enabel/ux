@@ -1,5 +1,13 @@
 # Changelog
 
+## [v2.7.0](https://github.com/Enabel/ux/tree/v2.7.0) (2026-10-26)
+
+[Full Changelog](https://github.com/Enabel/ux/compare/v2.6.0...v2.7.0)
+
+**Merged pull requests:**
+
+- ✨ Add the admin components: Sidebar, SidebarItem, AdminLayout and ConfirmAction
+
 ## [v2.6.0](https://github.com/Enabel/ux/tree/v2.6.0) (2026-10-13)
 
 [Full Changelog](https://github.com/Enabel/ux/compare/v2.5.0...v2.6.0)
