@@ -6,7 +6,7 @@
 
 **Merged pull requests:**
 
-- 💄 Admin design: dark themed sidebar, SidebarSection component (a labelled group wrapping its SidebarItem), AdminLayout description and translated flash messages. **Markup change:** Sidebar/SidebarItem no longer use the Bootstrap `nav`/`nav-link`/`nav-item` classes; styling comes from `enabel-ux-admin.css` (served through AssetMapper, required) and its `--enabel-ux-sidebar-*` custom properties
+- 💄 Admin design: dark themed sidebar, SidebarSection component (a labelled group wrapping its SidebarItem), AdminLayout description and translated flash messages. **Markup change:** Sidebar/SidebarItem no longer use the Bootstrap `nav`/`nav-link`/`nav-item` classes; styling comes from `enabel-ux-admin.css` (served through AssetMapper, required) and its `--enabel-ux-sidebar-*` custom properties [\#36](https://github.com/Enabel/ux/pull/36) ([damienlagae](https://github.com/damienlagae))
 
 ## [v2.7.0](https://github.com/Enabel/ux/tree/v2.7.0) (2026-10-26)
 
