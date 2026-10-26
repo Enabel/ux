@@ -1,7 +1,7 @@
 {# SidebarSection component: a labelled group of SidebarItem #}
-<li class="enabel-ux-sidebar-group">
+<li {{ attributes.defaults({class: 'enabel-ux-sidebar-group'}) }}>
     <span id="{{ id }}" class="enabel-ux-sidebar-section">{{ label }}</span>
-    <ul class="enabel-ux-sidebar-list" aria-labelledby="{{ id }}" {{ attributes }}>
+    <ul class="enabel-ux-sidebar-list" aria-labelledby="{{ id }}">
         {% block content %}
         {% endblock %}
     </ul>

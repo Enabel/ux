@@ -8,6 +8,8 @@ A labelled group of [SidebarItem](sidebarItem.md) components inside a [Sidebar](
 |:----------|:---------|:------------------------------|:--------|
 | `label`   | `string` | Text of the heading. Required |         |
 
+Extra attributes (for example `class`) are applied to the group `li`. A caller `id` is not used: the section computes its own id.
+
 ## Blocks
 
 | Block     | Description                    |

@@ -36,13 +36,13 @@ The [Sidebar](../Navigation/sidebar.md) emits `<link rel="stylesheet" href="{{ a
 | `--enabel-ux-sidebar-accent`   | `var(--bs-secondary)` (active item border and icon, focus outline) |
 | `--enabel-ux-sidebar-color`    | `rgba(255, 255, 255, .75)`                        |
 
-Apps can add `<link rel="stylesheet" href="{{ asset('enabel-ux-admin.css') }}">` in their `<head>` (stylesheets block) to avoid a flash of unstyled sidebar; a duplicate link is harmless.
-
 ```css
 .enabel-ux-sidebar {
     --enabel-ux-sidebar-accent: var(--bs-primary);
 }
 ```
+
+Apps can add `<link rel="stylesheet" href="{{ asset('enabel-ux-admin.css') }}">` in their `<head>` (stylesheets block) to avoid a flash of unstyled sidebar; a duplicate link is harmless.
 
 ## Where to use it
 
