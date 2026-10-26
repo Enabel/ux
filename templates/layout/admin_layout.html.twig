@@ -6,7 +6,7 @@
     <main class="flex-grow-1 p-4">
         {% for type, messages in app.flashes %}
             {% for message in messages %}
-                <twig:Enabel:Ux:Alert :type="type == 'error' ? 'danger' : type" :dismissible="true">{{ message }}</twig:Enabel:Ux:Alert>
+                <twig:Enabel:Ux:Alert :type="this.alertType(type)" :dismissible="true">{{ message }}</twig:Enabel:Ux:Alert>
             {% endfor %}
         {% endfor %}
 

@@ -10,6 +10,7 @@
 namespace Enabel\Ux\Tests\Component\Layout;
 
 use Enabel\Ux\Component\Layout\AdminLayout;
+use PHPUnit\Framework\Attributes\DataProvider;
 use PHPUnit\Framework\TestCase;
 use Symfony\Component\OptionsResolver\Exception\InvalidOptionsException;
 use Symfony\Component\OptionsResolver\Exception\MissingOptionsException;
@@ -44,5 +45,23 @@ class AdminLayoutTest extends TestCase
         $this->expectException(MissingOptionsException::class);
 
         (new AdminLayout())->preMount([]);
+    }
+
+    /**
+     * @return iterable<string, array{string, string}>
+     */
+    public static function flashTypes(): iterable
+    {
+        yield 'error is mapped' => ['error', 'danger'];
+        yield 'accepted type is kept' => ['success', 'success'];
+        yield 'danger is kept' => ['danger', 'danger'];
+        yield 'notice falls back' => ['notice', 'info'];
+        yield 'custom falls back' => ['custom', 'info'];
+    }
+
+    #[DataProvider('flashTypes')]
+    public function testAlertType(string $flashType, string $expected): void
+    {
+        $this->assertSame($expected, (new AdminLayout())->alertType($flashType));
     }
 }

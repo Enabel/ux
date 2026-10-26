@@ -55,4 +55,16 @@ class AdminLayout
             return true;
         });
     }
+
+    /**
+     * Maps a flash type to a type accepted by the Alert component.
+     */
+    public function alertType(string $flashType): string
+    {
+        return match ($flashType) {
+            'error' => 'danger',
+            'primary', 'secondary', 'success', 'danger', 'warning', 'info', 'light', 'dark' => $flashType,
+            default => 'info',
+        };
+    }
 }
