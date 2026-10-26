@@ -32,7 +32,7 @@
         "symfony/phpunit-bridge": "^7.3 || ^8.0"
     },
     "suggest": {
-        "symfony/asset-mapper": "Allows to manage frontend assets more easily.",
+        "symfony/asset-mapper": "Allows to manage frontend assets more easily. Required by the admin Sidebar stylesheet (enabel-ux-admin.css).",
         "symfony/translation": "Required to translate the flash messages of the AdminLayout component (trans filter)",
         "symfony/security-csrf": "Required by the ConfirmAction component (csrf_token())"
     },

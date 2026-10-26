@@ -28,13 +28,15 @@ Messages are passed through the `trans` filter (default domain `messages`), so y
 
 ## Stylesheet
 
-The [Sidebar](../Navigation/sidebar.md) emits `<link rel="stylesheet" href="{{ asset('enabel-ux-admin.css') }}">` (AssetMapper logical name `enabel-ux-admin.css`, served from the bundle). Symfony AssetMapper is required for it. The stylesheet styles the sidebar with the Enabel theme variables; the layout itself gives the content area the `bg-body-tertiary` utility class and does not need the file. The sidebar can be restyled by overriding these custom properties on `.enabel-ux-sidebar` (declare your rule after the bundle stylesheet):
+The [Sidebar](../Navigation/sidebar.md) emits `<link rel="stylesheet" href="{{ asset('enabel-ux-admin.css') }}">` (AssetMapper logical name `enabel-ux-admin.css`, served from the bundle). Symfony AssetMapper is required for it. The stylesheet styles the sidebar with the Enabel theme variables; the layout itself gives the content area the `bg-body-tertiary` utility class and does not need the file. The sidebar can be restyled by overriding these custom properties on `.enabel-ux-sidebar` (or `:root .enabel-ux-sidebar`) anywhere in your CSS; their defaults have zero specificity, so there is no ordering requirement:
 
 | Custom property                | Default                                           |
 |:-------------------------------|:--------------------------------------------------|
 | `--enabel-ux-sidebar-bg`       | `color-mix(in srgb, var(--bs-dark) 82%, black)`   |
 | `--enabel-ux-sidebar-accent`   | `var(--bs-secondary)` (active item border and icon, focus outline) |
 | `--enabel-ux-sidebar-color`    | `rgba(255, 255, 255, .75)`                        |
+
+Apps can add `<link rel="stylesheet" href="{{ asset('enabel-ux-admin.css') }}">` in their `<head>` (stylesheets block) to avoid a flash of unstyled sidebar; a duplicate link is harmless.
 
 ```css
 .enabel-ux-sidebar {
