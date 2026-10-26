@@ -11,3 +11,7 @@ menu:
     logout: 'Logout'
     profile: 'Profile'
     admin: 'Admin'
+
+enabel_ux:
+  confirm_action:
+    cancel: 'Cancel'

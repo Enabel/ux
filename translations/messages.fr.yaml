@@ -11,3 +11,8 @@ menu:
     logout: 'Déconnexion'
     profile: 'Profil'
     admin: 'Administration'
+
+
+enabel_ux:
+  confirm_action:
+    cancel: 'Annuler'
