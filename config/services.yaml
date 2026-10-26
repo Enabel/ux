@@ -3,6 +3,14 @@ services:
     tags:
       - { name: 'twig.component', key: 'Enabel:Ux:Alert', template: '@EnabelUx/alert/alert.html.twig', expose_public_props: true }
 
+  Enabel\Ux\Component\Layout\AdminLayout:
+    tags:
+      - { name: 'twig.component', key: 'Enabel:Ux:AdminLayout', template: '@EnabelUx/layout/admin_layout.html.twig', expose_public_props: true }
+
+  Enabel\Ux\Component\ConfirmAction:
+    tags:
+      - { name: 'twig.component', key: 'Enabel:Ux:ConfirmAction', template: '@EnabelUx/confirm_action.html.twig', expose_public_props: true }
+
   Enabel\Ux\Component\Card\Card:
     tags:
       - { name: 'twig.component', key: 'Enabel:Ux:Card', template: '@EnabelUx/card/card.html.twig', expose_public_props: true }
@@ -30,6 +38,16 @@ services:
     tags:
       - { name: 'twig.component', key: 'Enabel:Ux:MenuItem', template: '@EnabelUx/navigation/menu_item.html.twig', expose_public_props: true }
   
+  Enabel\Ux\Component\Navigation\Sidebar:
+    tags:
+      - { name: 'twig.component', key: 'Enabel:Ux:Sidebar', template: '@EnabelUx/navigation/sidebar.html.twig', expose_public_props: true }
+
+  Enabel\Ux\Component\Navigation\SidebarItem:
+    arguments:
+      - '@request_stack'
+    tags:
+      - { name: 'twig.component', key: 'Enabel:Ux:SidebarItem', template: '@EnabelUx/navigation/sidebar_item.html.twig', expose_public_props: true }
+
   Enabel\Ux\Component\Navigation\Navbar:
     tags:
       - { name: 'twig.component', key: 'Enabel:Ux:Navbar', template: '@EnabelUx/navigation/navbar.html.twig', expose_public_props: true }

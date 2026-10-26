@@ -1,0 +1,7 @@
+{# Sidebar component #}
+<nav{% if label %} aria-label="{{ label }}"{% endif %} {{ attributes }}>
+    <ul class="nav flex-column">
+        {% block content %}
+        {% endblock %}
+    </ul>
+</nav>
