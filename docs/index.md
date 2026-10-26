@@ -24,6 +24,7 @@ https://github.com/Enabel/Ux
   - [LocaleSwitcher](Navigation/localeSwitcher.md) - A locale switcher dropdown for Bootstrap navbar
   - [Sidebar](Navigation/sidebar.md) - A vertical navigation for side menus
   - [SidebarItem](Navigation/sidebarItem.md) - A sidebar link, active when the current route matches a prefix
+  - [SidebarSection](Navigation/sidebarSection.md) - A heading grouping the items of a sidebar
   - [Tab](Navigation/tab.md) - A Bootstrap nav-tabs/nav-pills component for creating tabbed navigation
   - [ImpersonateBanner](Navigation/impersonateBanner.md) - A fixed-top banner for Symfony's user-impersonation feature
   - [ImpersonateDropdown](Navigation/impersonateDropdown.md) - A navbar dropdown with a debounced JSON user search to start impersonation

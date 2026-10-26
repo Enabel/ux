@@ -1,6 +1,6 @@
 ## Description
 
-A vertical Bootstrap `nav` for side menus, typically used in the `sidebar` block of the [AdminLayout](../Layout/adminLayout.md). Items are [SidebarItem](sidebarItem.md) components.
+A vertical Bootstrap `nav` for side menus, typically used in the `sidebar` block of the [AdminLayout](../Layout/adminLayout.md). Items are [SidebarItem](sidebarItem.md) components, optionally grouped by [SidebarSection](sidebarSection.md) headings. The sidebar has a dark background following the Enabel theme (see the stylesheet in the [AdminLayout](../Layout/adminLayout.md) docs).
 
 ## Parameters
 
@@ -12,13 +12,18 @@ A vertical Bootstrap `nav` for side menus, typically used in the `sidebar` block
 
 | Block     | Description                         |
 |:----------|:------------------------------------|
-| `content` | The `SidebarItem` list items        |
+| `content` | The `SidebarSection` and `SidebarItem` list items |
 
 ## Usage
 
 ```twig
 <twig:Enabel:Ux:Sidebar label="Administration">
+    <twig:Enabel:Ux:SidebarSection label="Security" />
     <twig:Enabel:Ux:SidebarItem label="Security events" link="{{ path('admin.security_events') }}" activeRoutePrefix="admin.security_events" icon="bi:shield-lock" />
     <twig:Enabel:Ux:SidebarItem label="Responses" link="{{ path('admin.responses') }}" activeRoutePrefix="admin.responses" />
+
+    <twig:Enabel:Ux:SidebarItem class="mt-auto" label="Back to the app" link="{{ path('home') }}" icon="bi:box-arrow-left" />
 </twig:Enabel:Ux:Sidebar>
 ```
+
+The sidebar is a flex column filling the height of its column: an item with `class="mt-auto"` is pushed to the bottom.

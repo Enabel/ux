@@ -25,6 +25,12 @@ A single link of a [Sidebar](sidebar.md). The item is marked active automaticall
 
 With `activeRoutePrefix="admin.permissions"`, the routes `admin.permissions` and `admin.permissions.edit` both activate the item (`active` class and `aria-current="page"`).
 
+To push an item to the bottom of the sidebar (for example a link back to the application), add `class="mt-auto"`; the class is applied to the `li`:
+
+```twig
+<twig:Enabel:Ux:SidebarItem class="mt-auto" label="Back to the app" link="{{ path('home') }}" icon="bi:box-arrow-left" />
+```
+
 ## Notes
 
 - The prefix is matched on whole dot-separated segments: `admin.responses` matches `admin.responses` and `admin.responses.delegate`, but neither `admin.responses_archive` nor `admin.responsesettings`.

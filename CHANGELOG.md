@@ -1,5 +1,13 @@
 # Changelog
 
+## [v2.8.0](https://github.com/Enabel/ux/tree/v2.8.0) (2026-10-26)
+
+[Full Changelog](https://github.com/Enabel/ux/compare/v2.7.0...v2.8.0)
+
+**Merged pull requests:**
+
+- 💄 Admin design: dark themed sidebar, SidebarSection component, AdminLayout description and translated flash messages
+
 ## [v2.7.0](https://github.com/Enabel/ux/tree/v2.7.0) (2026-10-26)
 
 [Full Changelog](https://github.com/Enabel/ux/compare/v2.6.0...v2.7.0)
