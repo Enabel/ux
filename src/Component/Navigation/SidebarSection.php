@@ -15,6 +15,7 @@ use Symfony\UX\TwigComponent\Attribute\PreMount;
 class SidebarSection
 {
     public string $label;
+    public string $id;
 
     /**
      * @param array<string, mixed> $data
@@ -27,7 +28,10 @@ class SidebarSection
         $resolver = new OptionsResolver();
         $this->configureOptions($resolver);
 
-        return $resolver->resolve($data) + $data;
+        $resolved = $resolver->resolve($data) + $data;
+        $resolved['id'] = 'sidebar-section-'.bin2hex(random_bytes(6));
+
+        return $resolved;
     }
 
     public function configureOptions(OptionsResolver $resolver): void

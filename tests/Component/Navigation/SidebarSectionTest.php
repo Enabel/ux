@@ -23,6 +23,15 @@ class SidebarSectionTest extends TestCase
         $this->assertSame('Administration', $data['label']);
     }
 
+    public function testIdIsUniquePerInstance(): void
+    {
+        $first = (new SidebarSection())->preMount(['label' => 'A']);
+        $second = (new SidebarSection())->preMount(['label' => 'A']);
+
+        $this->assertMatchesRegularExpression('/^sidebar-section-[0-9a-f]{12}$/', $first['id']);
+        $this->assertNotSame($first['id'], $second['id']);
+    }
+
     public function testLabelIsRequired(): void
     {
         $this->expectException(MissingOptionsException::class);
