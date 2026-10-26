@@ -1,0 +1,34 @@
+{# Admin layout: sidebar column, flash messages, title with actions, breadcrumb and content #}
+<div class="d-flex">
+    <aside class="flex-shrink-0 border-end">
+        {% block sidebar %}{% endblock %}
+    </aside>
+    <main class="flex-grow-1 p-4">
+        {% for type, messages in app.flashes %}
+            {% for message in messages %}
+                <twig:Enabel:Ux:Alert :type="type == 'error' ? 'danger' : type" :dismissible="true">{{ message }}</twig:Enabel:Ux:Alert>
+            {% endfor %}
+        {% endfor %}
+
+        {% if breadcrumb is not empty %}
+            <nav aria-label="breadcrumb">
+                <ol class="breadcrumb">
+                    {% for item in breadcrumb %}
+                        {% if item.link is defined and not loop.last %}
+                            <li class="breadcrumb-item"><a href="{{ item.link }}">{{ item.label }}</a></li>
+                        {% else %}
+                            <li class="breadcrumb-item active"{% if loop.last %} aria-current="page"{% endif %}>{{ item.label }}</li>
+                        {% endif %}
+                    {% endfor %}
+                </ol>
+            </nav>
+        {% endif %}
+
+        <div class="d-flex justify-content-between align-items-center mb-4">
+            <h1 class="h3 mb-0">{{ title }}</h1>
+            <div>{% block actions %}{% endblock %}</div>
+        </div>
+
+        {% block content %}{% endblock %}
+    </main>
+</div>

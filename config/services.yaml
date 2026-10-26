@@ -3,6 +3,10 @@ services:
     tags:
       - { name: 'twig.component', key: 'Enabel:Ux:Alert', template: '@EnabelUx/alert/alert.html.twig', expose_public_props: true }
 
+  Enabel\Ux\Component\Layout\AdminLayout:
+    tags:
+      - { name: 'twig.component', key: 'Enabel:Ux:AdminLayout', template: '@EnabelUx/layout/admin_layout.html.twig', expose_public_props: true }
+
   Enabel\Ux\Component\Card\Card:
     tags:
       - { name: 'twig.component', key: 'Enabel:Ux:Card', template: '@EnabelUx/card/card.html.twig', expose_public_props: true }

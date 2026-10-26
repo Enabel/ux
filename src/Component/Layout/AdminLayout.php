@@ -1,0 +1,58 @@
+<?php
+
+/*
+ * This file is part of the Enabel UX package.
+ * Copyright (c) Enabel <https://enabel.be/>
+ * For the full copyright and license information, please view the LICENSE
+ * file that was distributed with this source code.
+ */
+
+namespace Enabel\Ux\Component\Layout;
+
+use Symfony\Component\OptionsResolver\OptionsResolver;
+use Symfony\UX\TwigComponent\Attribute\PreMount;
+
+class AdminLayout
+{
+    public string $title;
+
+    /** @var list<array{label: string, link?: string}> */
+    public array $breadcrumb = [];
+
+    /**
+     * @param array<string, mixed> $data
+     *
+     * @return array<string, mixed>
+     */
+    #[PreMount]
+    public function preMount(array $data): array
+    {
+        $resolver = new OptionsResolver();
+        $this->configureOptions($resolver);
+
+        return $resolver->resolve($data) + $data;
+    }
+
+    public function configureOptions(OptionsResolver $resolver): void
+    {
+        $resolver->setIgnoreUndefined();
+        $resolver->setRequired('title');
+        $resolver->setDefaults(['breadcrumb' => []]);
+
+        $resolver->setAllowedTypes('title', 'string');
+        $resolver->setAllowedTypes('breadcrumb', 'array');
+        $resolver->setAllowedValues('breadcrumb', static function (array $breadcrumb): bool {
+            if (!array_is_list($breadcrumb)) {
+                return false;
+            }
+
+            foreach ($breadcrumb as $item) {
+                if (!\is_array($item) || !\is_string($item['label'] ?? null) || (isset($item['link']) && !\is_string($item['link']))) {
+                    return false;
+                }
+            }
+
+            return true;
+        });
+    }
+}
