@@ -30,6 +30,16 @@ services:
     tags:
       - { name: 'twig.component', key: 'Enabel:Ux:MenuItem', template: '@EnabelUx/navigation/menu_item.html.twig', expose_public_props: true }
   
+  Enabel\Ux\Component\Navigation\Sidebar:
+    tags:
+      - { name: 'twig.component', key: 'Enabel:Ux:Sidebar', template: '@EnabelUx/navigation/sidebar.html.twig', expose_public_props: true }
+
+  Enabel\Ux\Component\Navigation\SidebarItem:
+    arguments:
+      - '@request_stack'
+    tags:
+      - { name: 'twig.component', key: 'Enabel:Ux:SidebarItem', template: '@EnabelUx/navigation/sidebar_item.html.twig', expose_public_props: true }
+
   Enabel\Ux\Component\Navigation\Navbar:
     tags:
       - { name: 'twig.component', key: 'Enabel:Ux:Navbar', template: '@EnabelUx/navigation/navbar.html.twig', expose_public_props: true }
