@@ -12,7 +12,6 @@ menu:
     profile: 'Profil'
     admin: 'Administration'
 
-
 enabel_ux:
   confirm_action:
     cancel: 'Annuler'

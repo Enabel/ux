@@ -32,7 +32,8 @@
         "symfony/phpunit-bridge": "^7.3 || ^8.0"
     },
     "suggest": {
-        "symfony/asset-mapper": "Allows to manage frontend assets more easily."
+        "symfony/asset-mapper": "Allows to manage frontend assets more easily.",
+        "symfony/security-csrf": "Required by the ConfirmAction component (csrf_token())"
     },
     "minimum-stability": "stable",
     "autoload": {
