@@ -2,6 +2,12 @@
 
 A button that opens a Bootstrap confirmation modal. Confirming submits a plain `POST` form (no JavaScript beyond Bootstrap's modal) that carries a CSRF token in the `_token` field. Use it for every write action that must not happen on a simple `GET`.
 
+> **Warning: never place this component inside another `<form>`.** It renders its own `<form>` (the modal). HTML forbids nested forms: the browser drops the inner `<form>` tag, so the confirm button would submit the outer form instead of POSTing to `url`. Place it outside any form, for example in the `actions` block of [AdminLayout](../Layout/adminLayout.md) or in a table row that is not wrapped in a form.
+
+## Requirements
+
+The template calls `csrf_token()`, which needs `symfony/security-csrf` (listed under `suggest` in `composer.json`) and the Twig CSRF extension (provided by `symfony/twig-bridge` once the security-csrf component is installed).
+
 ## Parameters
 
 | Parameter      | Type      | Description                                                       | Default          |

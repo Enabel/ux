@@ -1,3 +1,4 @@
+{# This component renders a <form>: never nest it inside another <form> (the browser would drop the inner tag and the confirm button would submit the outer form) #}
 {# Button opening a confirmation modal; the form inside sends a plain POST with a CSRF token #}
 <button type="button" class="btn btn-{{ variant }}{{ size == 'sm' ? ' btn-sm' : '' }}" data-bs-toggle="modal" data-bs-target="#{{ modalId }}">
     {% if icon %}<twig:ux:icon name="{{ icon }}" style="width: 1.2rem; height: 1.2rem;" /> {% endif %}{{ label }}
