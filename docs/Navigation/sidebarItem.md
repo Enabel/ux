@@ -28,6 +28,5 @@ With `activeRoutePrefix="admin.permissions"`, the routes `admin.permissions` and
 ## Notes
 
 - The prefix is matched on whole dot-separated segments: `admin.responses` matches `admin.responses` and `admin.responses.delegate`, but neither `admin.responses_archive` nor `admin.responsesettings`.
-
 - An empty or missing `activeRoutePrefix` never activates the item automatically.
 - Use `active: true` to force the state when the route name is not enough.

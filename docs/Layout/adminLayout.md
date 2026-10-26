@@ -7,7 +7,7 @@ A page layout for in-house admin screens. It renders the page `<main>` landmark 
 | Parameter    | Type     | Description                                                                          | Default |
 |:-------------|:---------|:-------------------------------------------------------------------------------------|:--------|
 | `title`      | `string` | Page title (`h1`). Required                                                          |         |
-| `breadcrumb` | `array`  | List of `{label: string, link?: string|null}`; the last item is the current page          | `[]`    |
+| `breadcrumb` | `array`  | List of `{label: string, link?: string or null}`; the last item is the current page          | `[]`    |
 
 Each breadcrumb item needs a `label`. A `link` is rendered as an anchor except on the last item, which is always plain text with `aria-current="page"`. An item whose `link` is `null` or empty is rendered as plain text, never as an empty anchor.
 
