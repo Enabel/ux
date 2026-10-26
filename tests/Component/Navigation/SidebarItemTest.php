@@ -10,6 +10,7 @@
 namespace Enabel\Ux\Tests\Component\Navigation;
 
 use Enabel\Ux\Component\Navigation\SidebarItem;
+use PHPUnit\Framework\Attributes\DataProvider;
 use PHPUnit\Framework\TestCase;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\RequestStack;
@@ -81,5 +82,29 @@ class SidebarItemTest extends TestCase
         ]);
 
         $this->assertFalse($data['active']);
+    }
+
+    /**
+     * @return iterable<string, array{string, bool}>
+     */
+    public static function routes(): iterable
+    {
+        yield 'same route' => ['admin.responses', true];
+        yield 'child route' => ['admin.responses.delegate', true];
+        yield 'sibling sharing the prefix with an underscore' => ['admin.responses_archive', false];
+        yield 'sibling sharing the prefix as a word start' => ['admin.responsesettings', false];
+        yield 'parent route' => ['admin', false];
+    }
+
+    #[DataProvider('routes')]
+    public function testPrefixMatchesWholeSegments(string $route, bool $expected): void
+    {
+        $data = $this->createItem($route)->preMount([
+            'label' => 'Responses',
+            'link' => '/admin/responses',
+            'activeRoutePrefix' => 'admin.responses',
+        ]);
+
+        $this->assertSame($expected, $data['active']);
     }
 }

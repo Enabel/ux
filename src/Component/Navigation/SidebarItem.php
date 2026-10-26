@@ -54,7 +54,7 @@ class SidebarItem
 
         $route = $this->requestStack->getCurrentRequest()?->attributes->get('_route');
 
-        return \is_string($route) && str_starts_with($route, $prefix);
+        return \is_string($route) && ($route === $prefix || str_starts_with($route, $prefix.'.'));
     }
 
     public function configureOptions(OptionsResolver $resolver): void
