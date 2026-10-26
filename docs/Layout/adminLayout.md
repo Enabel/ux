@@ -24,11 +24,11 @@ Each breadcrumb item needs a `label`. A `link` is rendered as an anchor except o
 
 Flash messages are rendered above the breadcrumb through the [Alert](../Alert/alert.md) component, dismissible. The `error` flash type is shown as `danger`; the Bootstrap types (`primary`, `secondary`, `success`, `danger`, `warning`, `info`, `light`, `dark`) are kept as is; any other type falls back to `info`.
 
-Messages are passed through the `trans` filter (default domain `messages`), so you can flash a translation key. Translating an already translated text is harmless: an unknown key is returned as is.
+Messages are passed through the `trans` filter (default domain `messages`), so you can flash a translation key. Translating an already translated text is harmless: an unknown key is returned as is. This needs `symfony/translation` (already used by ConfirmAction).
 
 ## Stylesheet
 
-The layout emits `<link rel="stylesheet" href="{{ asset('enabel-ux-admin.css') }}">` (AssetMapper logical name `enabel-ux-admin.css`, served from the bundle). It styles the sidebar with the Enabel theme variables and gives the content area the `bg-body-tertiary` background. The sidebar can be restyled by overriding these custom properties on `.enabel-ux-sidebar` (declare your rule after the bundle stylesheet):
+The [Sidebar](../Navigation/sidebar.md) emits `<link rel="stylesheet" href="{{ asset('enabel-ux-admin.css') }}">` (AssetMapper logical name `enabel-ux-admin.css`, served from the bundle). Symfony AssetMapper is required for it. The stylesheet styles the sidebar with the Enabel theme variables; the layout itself gives the content area the `bg-body-tertiary` utility class and does not need the file. The sidebar can be restyled by overriding these custom properties on `.enabel-ux-sidebar` (declare your rule after the bundle stylesheet):
 
 | Custom property                | Default                                           |
 |:-------------------------------|:--------------------------------------------------|

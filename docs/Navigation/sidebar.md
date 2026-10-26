@@ -2,6 +2,10 @@
 
 A vertical Bootstrap `nav` for side menus, typically used in the `sidebar` block of the [AdminLayout](../Layout/adminLayout.md). Items are [SidebarItem](sidebarItem.md) components, optionally grouped by [SidebarSection](sidebarSection.md) headings. The sidebar has a dark background following the Enabel theme (see the stylesheet in the [AdminLayout](../Layout/adminLayout.md) docs).
 
+## Markup and styling
+
+The sidebar no longer uses the Bootstrap `nav` / `nav-link` / `nav-item` classes (changed in 2.8.0). Its look comes from `enabel-ux-admin.css`, linked by the component through AssetMapper (required), and from its `--enabel-ux-sidebar-*` custom properties (`-bg`, `-accent`, `-color`), see the [AdminLayout](../Layout/adminLayout.md#stylesheet) docs.
+
 ## Parameters
 
 | Parameter | Type      | Description                                           | Default |
