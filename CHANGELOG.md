@@ -1,5 +1,13 @@
 # Changelog
 
+## [v2.8.0](https://github.com/Enabel/ux/tree/v2.8.0) (2026-10-26)
+
+[Full Changelog](https://github.com/Enabel/ux/compare/v2.7.0...v2.8.0)
+
+**Merged pull requests:**
+
+- 💄 Admin design: dark themed sidebar, SidebarSection component (a labelled group wrapping its SidebarItem), AdminLayout description and translated flash messages. **Markup change:** Sidebar/SidebarItem no longer use the Bootstrap `nav`/`nav-link`/`nav-item` classes; styling comes from `enabel-ux-admin.css` (served through AssetMapper, required) and its `--enabel-ux-sidebar-*` custom properties
+
 ## [v2.7.0](https://github.com/Enabel/ux/tree/v2.7.0) (2026-10-26)
 
 [Full Changelog](https://github.com/Enabel/ux/compare/v2.6.0...v2.7.0)

@@ -1,9 +1,9 @@
 {# SidebarItem component #}
-<li class="nav-item {{ attributes.render('class') }}" {{ attributes.defaults({}) }}>
-    <a class="nav-link d-flex align-items-center gap-2{% if active %} active{% endif %}" href="{{ link }}"{% if active %} aria-current="page"{% endif %}>
+<li {{ attributes }}>
+    <a class="enabel-ux-sidebar-link{% if active %} active{% endif %}" href="{{ link }}"{% if active %} aria-current="page"{% endif %}>
         {% if icon %}
             <twig:ux:icon name="{{ icon }}" style="width: 1.2rem; height: 1.2rem;" />
         {% endif %}
-        {{ label }}
+        <span>{{ label }}</span>
     </a>
 </li>

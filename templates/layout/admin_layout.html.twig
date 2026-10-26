@@ -1,12 +1,12 @@
 {# Admin layout: renders the page <main> landmark itself (sidebar column, flash messages, title with actions, breadcrumb and content); meant to replace the base layout's `main` block #}
-<main class="d-flex flex-shrink-0 flex-grow-1 mb-3">
-    <aside class="flex-shrink-0 border-end">
+<main class="d-flex flex-shrink-0 flex-grow-1">
+    <aside class="d-flex flex-shrink-0">
         {% block sidebar %}{% endblock %}
     </aside>
-    <div class="flex-grow-1 p-4">
+    <div class="flex-grow-1 p-4 bg-body-tertiary">
         {% for type, messages in app.flashes %}
             {% for message in messages %}
-                <twig:Enabel:Ux:Alert :type="this.alertType(type)" :dismissible="true">{{ message }}</twig:Enabel:Ux:Alert>
+                <twig:Enabel:Ux:Alert :type="this.alertType(type)" :dismissible="true">{{ message | trans }}</twig:Enabel:Ux:Alert>
             {% endfor %}
         {% endfor %}
 
@@ -24,10 +24,13 @@
             </nav>
         {% endif %}
 
-        <div class="d-flex justify-content-between align-items-center mb-4">
+        <div class="d-flex justify-content-between align-items-center {{ description ? 'mb-1' : 'mb-4' }}">
             <h1 class="h3 mb-0">{{ title }}</h1>
             <div>{% block actions %}{% endblock %}</div>
         </div>
+        {% if description %}
+            <p class="text-body-secondary mb-4">{{ description }}</p>
+        {% endif %}
 
         {% block content %}{% endblock %}
     </div>

@@ -48,6 +48,10 @@ services:
     tags:
       - { name: 'twig.component', key: 'Enabel:Ux:SidebarItem', template: '@EnabelUx/navigation/sidebar_item.html.twig', expose_public_props: true }
 
+  Enabel\Ux\Component\Navigation\SidebarSection:
+    tags:
+      - { name: 'twig.component', key: 'Enabel:Ux:SidebarSection', template: '@EnabelUx/navigation/sidebar_section.html.twig', expose_public_props: true }
+
   Enabel\Ux\Component\Navigation\Navbar:
     tags:
       - { name: 'twig.component', key: 'Enabel:Ux:Navbar', template: '@EnabelUx/navigation/navbar.html.twig', expose_public_props: true }

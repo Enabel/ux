@@ -1,6 +1,7 @@
 {# Sidebar component #}
-<nav{% if label %} aria-label="{{ label }}"{% endif %} {{ attributes }}>
-    <ul class="nav flex-column">
+<link rel="stylesheet" href="{{ asset('enabel-ux-admin.css') }}">
+<nav{% if label %} aria-label="{{ label }}"{% endif %} {{ attributes.defaults({class: 'enabel-ux-sidebar'}) }}>
+    <ul class="enabel-ux-sidebar-list">
         {% block content %}
         {% endblock %}
     </ul>

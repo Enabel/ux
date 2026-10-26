@@ -15,6 +15,7 @@ use Symfony\UX\TwigComponent\Attribute\PreMount;
 class AdminLayout
 {
     public string $title;
+    public ?string $description = null;
 
     /** @var list<array{label: string, link?: string|null}> */
     public array $breadcrumb = [];
@@ -46,9 +47,10 @@ class AdminLayout
     {
         $resolver->setIgnoreUndefined();
         $resolver->setRequired('title');
-        $resolver->setDefaults(['breadcrumb' => []]);
+        $resolver->setDefaults(['breadcrumb' => [], 'description' => null]);
 
         $resolver->setAllowedTypes('title', 'string');
+        $resolver->setAllowedTypes('description', ['string', 'null']);
         $resolver->setAllowedTypes('breadcrumb', 'array');
         $resolver->setAllowedValues('breadcrumb', static function (array $breadcrumb): bool {
             if (!array_is_list($breadcrumb)) {

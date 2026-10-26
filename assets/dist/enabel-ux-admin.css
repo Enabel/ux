@@ -1,0 +1,84 @@
+/*
+ * Enabel UX - admin sidebar styles.
+ * The defaults of the custom properties have zero specificity (:where): override them
+ * with a `.enabel-ux-sidebar { --enabel-ux-sidebar-accent: ... }` rule anywhere in the app CSS.
+ */
+
+:where(.enabel-ux-sidebar) {
+  --enabel-ux-sidebar-bg: color-mix(in srgb, var(--bs-dark) 82%, black);
+  --enabel-ux-sidebar-accent: var(--bs-secondary);
+  --enabel-ux-sidebar-color: rgba(255, 255, 255, .75);
+}
+
+.enabel-ux-sidebar {
+  display: flex;
+  flex-direction: column;
+  flex-grow: 1;
+  width: 16rem;
+  min-height: 100%;
+  background: var(--enabel-ux-sidebar-bg);
+  color: var(--enabel-ux-sidebar-color);
+}
+
+.enabel-ux-sidebar-list {
+  display: flex;
+  flex-direction: column;
+  flex-grow: 1;
+  margin: 0;
+  padding: 0 .5rem 1rem;
+  list-style: none;
+}
+
+.enabel-ux-sidebar-group > .enabel-ux-sidebar-list {
+  flex-grow: 0;
+  padding: 0;
+}
+
+.enabel-ux-sidebar-section {
+  display: block;
+  padding: 1.25rem .75rem .4rem;
+  font-size: .7rem;
+  font-weight: 500;
+  letter-spacing: .08em;
+  text-transform: uppercase;
+  color: rgba(255, 255, 255, .6);
+}
+
+.enabel-ux-sidebar-link {
+  display: flex;
+  align-items: center;
+  gap: .75rem;
+  padding: .5rem .75rem;
+  border-left: 3px solid transparent;
+  border-radius: .5rem;
+  color: var(--enabel-ux-sidebar-color);
+  text-decoration: none;
+}
+
+.enabel-ux-sidebar-link > svg,
+.enabel-ux-sidebar-link > i {
+  flex-shrink: 0;
+  color: rgba(255, 255, 255, .5);
+}
+
+.enabel-ux-sidebar-link:hover {
+  background: rgba(255, 255, 255, .06);
+  color: #fff;
+}
+
+.enabel-ux-sidebar-link.active {
+  border-left-color: var(--enabel-ux-sidebar-accent);
+  background: rgba(255, 255, 255, .1);
+  color: #fff;
+  font-weight: 500;
+}
+
+.enabel-ux-sidebar-link.active > svg,
+.enabel-ux-sidebar-link.active > i {
+  color: var(--enabel-ux-sidebar-accent);
+}
+
+.enabel-ux-sidebar-link:focus-visible {
+  outline: 2px solid var(--enabel-ux-sidebar-accent);
+  outline-offset: 2px;
+}

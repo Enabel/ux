@@ -23,6 +23,21 @@ class AdminLayoutTest extends TestCase
 
         $this->assertSame('Users', $data['title']);
         $this->assertSame([], $data['breadcrumb']);
+        $this->assertNull($data['description']);
+    }
+
+    public function testDescriptionIsKept(): void
+    {
+        $data = (new AdminLayout())->preMount(['title' => 'Users', 'description' => 'Who did what.']);
+
+        $this->assertSame('Who did what.', $data['description']);
+    }
+
+    public function testDescriptionMustBeAStringOrNull(): void
+    {
+        $this->expectException(InvalidOptionsException::class);
+
+        (new AdminLayout())->preMount(['title' => 'Users', 'description' => 5]);
     }
 
     public function testBreadcrumbIsKept(): void
