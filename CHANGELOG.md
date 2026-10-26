@@ -6,7 +6,7 @@
 
 **Merged pull requests:**
 
-- ✨ Add the admin components: Sidebar, SidebarItem, AdminLayout and ConfirmAction
+- ✨ Add the admin components: Sidebar, SidebarItem, AdminLayout and ConfirmAction [\#35](https://github.com/Enabel/ux/pull/35) ([damienlagae](https://github.com/damienlagae))
 
 ## [v2.6.0](https://github.com/Enabel/ux/tree/v2.6.0) (2026-10-13)
 
