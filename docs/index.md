@@ -52,7 +52,7 @@ Install with composer
 - Stimulus
 
 **Server:**
-- Symfony 7.3+
+- Symfony 8.0+
 - Symfony UX Twig components 2.3+
 - Symfony UX Icons components 2.3+
 
