@@ -13,16 +13,16 @@ jobs:
       fail-fast: false
       matrix:
         include:
-          - php: '8.3'
-            name: highest
-            flags: '--prefer-stable'
           - php: '8.4'
             name: highest
             flags: '--prefer-stable'
-          - php: '8.3'
+          - php: '8.5'
+            name: highest
+            flags: '--prefer-stable'
+          - php: '8.4'
             name: lowest
             flags: '--prefer-lowest --prefer-stable'
-          - php: '8.4'
+          - php: '8.5'
             name: dev
             flags: ''
     steps:
@@ -67,7 +67,7 @@ jobs:
       - name: Setup PHP
         uses: shivammathur/setup-php@v2
         with:
-          php-version: '8.3'
+          php-version: '8.4'
           coverage: none
 
       - name: Install PHP CS Fixer
@@ -105,9 +105,9 @@ jobs:
       fail-fast: false
       matrix:
         include:
-          - php: '8.3'
-            symfony: '7.4.*'
           - php: '8.4'
+            symfony: '7.4.*'
+          - php: '8.5'
             symfony: '8.1.*'
     steps:
       - name: Checkout code
