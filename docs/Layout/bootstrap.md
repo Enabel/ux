@@ -39,6 +39,11 @@ You can still override the `stylesheets` or `javascripts` blocks to load additio
 > pages) lose both unless `assets/app.js` imports them as shown above. The CDN script also defined a global
 > `window.bootstrap`: inline scripts relying on it must import from `bootstrap` instead.
 
+> [!NOTE]
+> Flex adds the theme stylesheets (`enabel-bootstrap-theme.min.css`, `variables.min.css`, `error.min.css`) to
+> `importmap.php`. Earlier versions added the bare `@enabel/enabel-bootstrap-theme` entry instead: nothing imports it,
+> and Flex never removes entries, so drop it once with `symfony console importmap:remove @enabel/enabel-bootstrap-theme`.
+
 ## Translations and parameters
 
 The layout relies on translation keys for application information and menu labels.
