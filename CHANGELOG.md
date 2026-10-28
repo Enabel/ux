@@ -1,5 +1,16 @@
 # Changelog
 
+## [v2.9.0](https://github.com/Enabel/ux/tree/v2.9.0) (2026-10-28)
+
+[Full Changelog](https://github.com/Enabel/ux/compare/v2.8.0...v2.9.0)
+
+**Merged pull requests:**
+
+- 🐛 Declare the theme stylesheets in the importmap instead of the bare package [\#39](https://github.com/Enabel/ux/pull/39) ([damienlagae](https://github.com/damienlagae))
+- ⬆️ Require Symfony 8 [\#38](https://github.com/Enabel/ux/pull/38) ([damienlagae](https://github.com/damienlagae))
+- ⬆️ Require PHP 8.4 and test on PHP 8.5 [\#37](https://github.com/Enabel/ux/pull/37) ([damienlagae](https://github.com/damienlagae))
+- ⬆️ Update dependency phpunit/phpunit to v13 [\#33](https://github.com/Enabel/ux/pull/33) ([renovate](https://github.com/apps/renovate))
+
 ## [v2.8.0](https://github.com/Enabel/ux/tree/v2.8.0) (2026-10-26)
 
 [Full Changelog](https://github.com/Enabel/ux/compare/v2.7.0...v2.8.0)
