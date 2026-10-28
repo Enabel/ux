@@ -9,7 +9,7 @@ The component renders the full `<!DOCTYPE html>` page (it intentionally does **n
 ## Pre-requisite
 
 The CSS that styles the error page is shipped by the Enabel Bootstrap Theme. Flex adds it to your importmap when
-installing or updating this bundle. If it is missing (apps installed before 2.9), add it by hand:
+installing or updating this bundle. If it is missing, add it by hand:
 
 ```bash
 symfony console importmap:require "@enabel/enabel-bootstrap-theme/dist/css/error.min.css"
