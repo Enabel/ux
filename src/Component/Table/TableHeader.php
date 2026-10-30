@@ -67,17 +67,15 @@ class TableHeader
             throw new \LogicException('A sortable header needs a request and a field.');
         }
 
-        $query = $request->query->all();
-        unset($query['page']);
-        $query['sort'] = $this->field;
-        $query['direction'] = 'DESC' === $this->currentDirection() ? 'asc' : 'desc';
+        $routeParams = $request->attributes->get('_route_params', []);
 
-        $params = $request->attributes->get('_route_params', []);
+        // Route parameters over the query: a filter named like a placeholder must not
+        // change the list linked to. The sort over both, and back to the first page.
+        $params = array_merge($request->query->all(), \is_array($routeParams) ? $routeParams : []);
+        unset($params['page']);
+        $params['sort'] = $this->field;
+        $params['direction'] = 'DESC' === $this->currentDirection() ? 'asc' : 'desc';
 
-        return $this->urlGenerator->generate(
-            (string) $request->attributes->get('_route'),
-            // Route parameters last: a filter named like a placeholder must not change the list linked to.
-            array_merge($query, \is_array($params) ? $params : []),
-        );
+        return $this->urlGenerator->generate((string) $request->attributes->get('_route'), $params);
     }
 }

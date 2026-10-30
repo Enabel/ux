@@ -88,5 +88,6 @@ final class TestKernel extends Kernel
     {
         $routes->add('admin', '/admin');
         $routes->add('admin_items', '/admin/{section}/items');
+        $routes->add('admin_sorted', '/admin/sorted/{direction}')->defaults(['direction' => 'desc']);
     }
 }

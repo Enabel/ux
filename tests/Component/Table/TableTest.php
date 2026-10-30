@@ -138,6 +138,18 @@ class TableTest extends KernelTestCase
         $this->assertStringStartsWith('/admin/users/items?', (string) $th->filter('a')->attr('href'));
     }
 
+    public function testTheComputedSortWinsOverARouteDefault(): void
+    {
+        $request = Request::create('/admin/sorted/desc', 'GET', ['page' => '2']);
+        $request->attributes->set('_route', 'admin_sorted');
+        $request->attributes->set('_route_params', ['direction' => 'desc', 'page' => '2']);
+        static::getContainer()->get(RequestStack::class)->push($request);
+
+        $th = $this->header(['label' => 'Name', 'field' => 'name', 'sort' => new Sort('name', 'DESC')]);
+
+        $this->assertSame('/admin/sorted/asc?sort=name', $th->filter('a')->attr('href'));
+    }
+
     public function testArrayQueryValuesArePreserved(): void
     {
         $this->pushRequest(['type' => ['a', 'b']]);
