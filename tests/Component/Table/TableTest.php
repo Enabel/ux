@@ -150,7 +150,7 @@ class TableTest extends KernelTestCase
         $this->assertSame('/admin/sorted/asc?sort=name', $th->filter('a')->attr('href'));
     }
 
-    public function testARequiredPagePlaceholderIsKept(): void
+    public function testARequiredPagePlaceholderGoesBackToTheFirstPage(): void
     {
         $request = Request::create('/admin/paged/3');
         $request->attributes->set('_route', 'admin_paged');
@@ -159,7 +159,7 @@ class TableTest extends KernelTestCase
 
         $th = $this->header(['label' => 'Name', 'field' => 'name', 'sort' => new Sort('name', 'ASC')]);
 
-        $this->assertSame('/admin/paged/3?sort=name&direction=desc', $th->filter('a')->attr('href'));
+        $this->assertSame('/admin/paged/1?sort=name&direction=desc', $th->filter('a')->attr('href'));
     }
 
     public function testArrayQueryValuesArePreserved(): void

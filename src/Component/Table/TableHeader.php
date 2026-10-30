@@ -68,14 +68,19 @@ class TableHeader
         }
 
         $routeParams = $request->attributes->get('_route_params', []);
-
-        // Back to the first page: the page of the query, never a route placeholder.
+        $routeParams = \is_array($routeParams) ? $routeParams : [];
         $query = $request->query->all();
+
+        // Back to the first page, whether the page is in the query or a route placeholder
+        // (which must stay, a mandatory one could not be generated without it).
         unset($query['page']);
+        if (\array_key_exists('page', $routeParams)) {
+            $routeParams['page'] = 1;
+        }
 
         // Route parameters over the query: a filter named like a placeholder must not
         // change the list linked to. The sort over both.
-        $params = array_merge($query, \is_array($routeParams) ? $routeParams : []);
+        $params = array_merge($query, $routeParams);
         $params['sort'] = $this->field;
         $params['direction'] = 'DESC' === $this->currentDirection() ? 'asc' : 'desc';
 
