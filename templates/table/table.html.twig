@@ -1,0 +1,29 @@
+{# A paginated list in a card. Blocks: `filters` (optional, e.g. Enabel:Ux:FilterBar), `head` (Enabel:Ux:TableHeader cells) and `row` (the cells of `item`). #}
+<div {{ attributes.defaults({class: 'card border-0 shadow-sm'}) }}>
+    {% set filters_html %}{% block filters %}{% endblock %}{% endset %}
+    {% if filters_html | trim is not same as('') %}
+        <div class="card-header bg-body py-3">{{ filters_html }}</div>
+    {% endif %}
+    <div class="table-responsive">
+        <table class="table table-hover align-middle mb-0">
+            <thead class="table-light"><tr>{% block head %}{% endblock %}</tr></thead>
+            <tbody>
+                {% for item in pager %}
+                    <tr>{% block row %}{% endblock %}</tr>
+                {% else %}
+                    <tr><td colspan="100" class="text-muted text-center">{{ emptyMessage }}</td></tr>
+                {% endfor %}
+            </tbody>
+        </table>
+    </div>
+    <div class="card-footer bg-body small text-body-secondary py-3 d-flex justify-content-between align-items-center">
+        <span>
+            {%- if pager.nbResults > 0 -%}
+                {{ 'enabel_ux.table.range' | trans({'%start%': pager.currentPageOffsetStart, '%end%': pager.currentPageOffsetEnd, '%total%': pager.nbResults}) }}
+            {%- endif -%}
+        </span>
+        {% if pager.haveToPaginate %}
+            {{ pagerfanta(pager, 'twig', {template: '@EnabelUx/table/pagerfanta.html.twig'}) }}
+        {% endif %}
+    </div>
+</div>

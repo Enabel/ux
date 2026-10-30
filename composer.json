@@ -26,15 +26,28 @@
         "twig/twig": "^3.0"
     },
     "require-dev": {
+        "babdev/pagerfanta-bundle": "^4.5",
         "ergebnis/composer-normalize": "^2.48",
+        "pagerfanta/twig": "^4.7",
         "phpunit/phpunit": "^13.0",
+        "symfony/css-selector": "^8.0",
+        "symfony/dom-crawler": "^8.0",
+        "symfony/form": "^8.0",
         "symfony/framework-bundle": "^8.0",
-        "symfony/phpunit-bridge": "^8.0"
+        "symfony/phpunit-bridge": "^8.0",
+        "symfony/routing": "^8.0",
+        "symfony/security-csrf": "^8.0",
+        "symfony/translation": "^8.0",
+        "symfony/twig-bundle": "^8.0",
+        "symfony/yaml": "^8.0"
     },
     "suggest": {
+        "babdev/pagerfanta-bundle": "Required, with pagerfanta/twig, by the Table component (pagination) and Enabel\\Ux\\Admin\\Pager",
+        "pagerfanta/twig": "Required by the Table component: the pagerfanta() Twig function and the Bootstrap 5 template",
         "symfony/asset-mapper": "Allows to manage frontend assets more easily. Required by the admin Sidebar stylesheet (enabel-ux-admin.css).",
-        "symfony/translation": "Required to translate the flash messages of the AdminLayout component (trans filter)",
-        "symfony/security-csrf": "Required by the ConfirmAction component (csrf_token())"
+        "symfony/form": "Required by the FilterBar component",
+        "symfony/security-csrf": "Required by the ConfirmAction component (csrf_token()) and Enabel\\Ux\\Admin\\CsrfGuard",
+        "symfony/translation": "Required to translate the flash messages of the AdminLayout component (trans filter)"
     },
     "minimum-stability": "stable",
     "autoload": {

@@ -15,3 +15,8 @@ menu:
 enabel_ux:
   confirm_action:
     cancel: 'Cancel'
+  table:
+    range: '%start%–%end% of %total%'
+  filter:
+    submit: 'Filter'
+    reset: 'Reset'
