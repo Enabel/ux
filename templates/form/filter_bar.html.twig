@@ -1,0 +1,26 @@
+{# The filters of a list: a GET form on one line. A SearchType field takes the remaining width. #}
+{{ form_start(form, {method: 'GET', attr: {class: 'row g-2 align-items-end'}}) }}
+    {% for field in form %}
+        {% if not field.rendered %}
+            {% set is_search = 'search' in field.vars.block_prefixes %}
+            <div class="{{ is_search ? 'col' : 'col-lg-auto' }}">
+                {{ form_label(field, null, {label_attr: {class: is_search ? 'visually-hidden' : 'form-label small text-body-secondary mb-1'}}) }}
+                {% if is_search %}
+                    <div class="input-group">
+                        <span class="input-group-text bg-body text-body-secondary">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 16 16" fill="currentColor" aria-hidden="true"><path d="M11.742 10.344a6.5 6.5 0 1 0-1.397 1.398l3.85 3.85a1 1 0 0 0 1.415-1.414zm-5.242 1.156a5 5 0 1 1 0-10 5 5 0 0 1 0 10"/></svg>
+                        </span>
+                        {{ form_widget(field) }}
+                    </div>
+                {% else %}
+                    {{ form_widget(field) }}
+                {% endif %}
+                {{ form_errors(field) }}
+            </div>
+        {% endif %}
+    {% endfor %}
+    <div class="col-auto d-flex gap-1">
+        <button type="submit" class="btn btn-primary">{{ 'enabel_ux.filter.submit' | trans }}</button>
+        <a href="{{ this.resetUrl }}" class="btn btn-link">{{ 'enabel_ux.filter.reset' | trans }}</a>
+    </div>
+{{ form_end(form, {render_rest: false}) }}

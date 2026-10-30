@@ -1,3 +1,8 @@
 enabel_ux:
   confirm_action:
     cancel: 'Annuleren'
+  table:
+    range: '%start%–%end% van %total%'
+  filter:
+    submit: 'Filteren'
+    reset: 'Wissen'

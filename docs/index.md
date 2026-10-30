@@ -16,6 +16,9 @@ https://github.com/Enabel/Ux
 - [Timeline](Timeline/timeline.md) - A Bootstrap timeline component for displaying chronological events with icons and color-coded styling
 - [Toast](Toast/toast.md) - A Bootstrap toast component for non-intrusive notifications with auto-hide and accessibility-aware politeness
 - [Widget](Widget/widget.md) - A Bootstrap widget component for displaying key metrics, statistics, and navigation elements in dashboard-style format
+- [Table](Table/table.md) - A paginated list in a card, with sortable headers (TableHeader), the range and the pagination
+- [FilterBar](Form/filterBar.md) - The filters of a list on one line: a GET form with "Filter" and "Reset"
+- [Admin helpers](Admin/admin.md) - Sort, Pager, CsrfGuard and Flash for hand-written admin controllers
 - **Navigation Components** - Bootstrap components for creating responsive navigation:
   - [Navbar](Navigation/navbar.md) - Main navigation container with logo, name, and link configuration
   - [Menu](Navigation/menu.md) - Menu container for organizing navigation items

@@ -1,0 +1,8 @@
+{#- Bootstrap 5 pagination without the bottom margin of the <ul>, for the footer of Enabel:Ux:Table. -#}
+{%- extends '@BabDevPagerfanta/twitter_bootstrap5.html.twig' -%}
+
+{%- block pager_widget -%}
+    <ul class="pagination mb-0">
+        {{- block('pager') -}}
+    </ul>
+{%- endblock pager_widget -%}

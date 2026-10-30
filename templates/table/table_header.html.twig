@@ -1,0 +1,15 @@
+{# A header cell of Enabel:Ux:Table, linking to the list sorted on `field` when a `sort` is given. #}
+{% if this.sortable %}
+    <th scope="col" class="small text-uppercase"{% if this.ariaSort %} aria-sort="{{ this.ariaSort }}"{% endif %}>
+        <a href="{{ this.href }}" class="text-reset text-decoration-none">
+            {{- label -}}
+            {% if this.currentDirection == 'ASC' %}
+                <span class="ms-1" aria-hidden="true">&uarr;</span>
+            {% elseif this.currentDirection == 'DESC' %}
+                <span class="ms-1" aria-hidden="true">&darr;</span>
+            {% endif %}
+        </a>
+    </th>
+{% else %}
+    <th scope="col" class="small text-uppercase">{{ label }}</th>
+{% endif %}

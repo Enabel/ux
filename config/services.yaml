@@ -101,3 +101,25 @@ services:
   Enabel\Ux\Component\Layout\LoginCard:
     tags:
       - { name: 'twig.component', key: 'Enabel:Ux:LoginCard', template: '@EnabelUx/layout/login_card.html.twig', expose_public_props: true }
+
+  Enabel\Ux\Component\Table\Table:
+    tags:
+      - { name: 'twig.component', key: 'Enabel:Ux:Table', template: '@EnabelUx/table/table.html.twig', expose_public_props: true }
+
+  Enabel\Ux\Component\Table\TableHeader:
+    arguments:
+      - '@request_stack'
+      - '@router'
+    tags:
+      - { name: 'twig.component', key: 'Enabel:Ux:TableHeader', template: '@EnabelUx/table/table_header.html.twig', expose_public_props: true }
+
+  Enabel\Ux\Component\Form\FilterBar:
+    arguments:
+      - '@request_stack'
+      - '@router'
+    tags:
+      - { name: 'twig.component', key: 'Enabel:Ux:FilterBar', template: '@EnabelUx/form/filter_bar.html.twig', expose_public_props: true }
+
+  Enabel\Ux\Admin\CsrfGuard:
+    arguments:
+      - '@?security.csrf.token_manager'
