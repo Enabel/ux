@@ -25,3 +25,8 @@ $filters->handleRequest($request);
 
 The form is unnamed (`createNamed('')`) so its fields are plain query parameters, which
 [TableHeader](../Table/table.md#tableheader) keeps when sorting.
+
+The other way round, the current `sort` and `direction` are carried through a submit as hidden
+inputs, unless the form has a field of that name; `page` is not, so a new filter starts on the
+first page. Hidden fields are rendered without a column nor a label. The `attr` of the form and
+the `label_attr` of the fields are kept, the bar adds its classes to them.

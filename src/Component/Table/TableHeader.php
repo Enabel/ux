@@ -76,7 +76,8 @@ class TableHeader
 
         return $this->urlGenerator->generate(
             (string) $request->attributes->get('_route'),
-            array_merge(\is_array($params) ? $params : [], $query),
+            // Route parameters last: a filter named like a placeholder must not change the list linked to.
+            array_merge($query, \is_array($params) ? $params : []),
         );
     }
 }

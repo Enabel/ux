@@ -74,6 +74,12 @@ class CsrfGuardTest extends TestCase
         (new CsrfGuard($this->manager))->assertValid(Request::create('/', 'POST'), 'admin.thing');
     }
 
+    public function testATokenPostedAsAnArrayIsRefusedLikeAnyInvalidToken(): void
+    {
+        $this->expectException(AccessDeniedHttpException::class);
+        (new CsrfGuard($this->manager))->assertValid(Request::create('/', 'POST', ['_token' => ['x']]), 'admin.thing');
+    }
+
     public function testWithoutCsrfProtectionItSaysWhatIsMissing(): void
     {
         $this->expectException(\LogicException::class);

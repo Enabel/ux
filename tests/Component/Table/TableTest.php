@@ -126,6 +126,18 @@ class TableTest extends KernelTestCase
         $this->assertSame('/admin/users/items?sort=name&direction=desc', $th->filter('a')->attr('href'));
     }
 
+    public function testAQueryParameterNamedLikeAPlaceholderDoesNotChangeTheList(): void
+    {
+        $request = Request::create('/admin/users/items', 'GET', ['section' => 'other']);
+        $request->attributes->set('_route', 'admin_items');
+        $request->attributes->set('_route_params', ['section' => 'users']);
+        static::getContainer()->get(RequestStack::class)->push($request);
+
+        $th = $this->header(['label' => 'Name', 'field' => 'name', 'sort' => new Sort('name', 'ASC')]);
+
+        $this->assertStringStartsWith('/admin/users/items?', (string) $th->filter('a')->attr('href'));
+    }
+
     public function testArrayQueryValuesArePreserved(): void
     {
         $this->pushRequest(['type' => ['a', 'b']]);

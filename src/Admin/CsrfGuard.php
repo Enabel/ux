@@ -32,7 +32,8 @@ final readonly class CsrfGuard
             throw new \LogicException('CsrfGuard needs symfony/security-csrf and CSRF protection enabled (framework.csrf_protection).');
         }
 
-        $token = $request->request->get('_token');
+        // all(): get() answers _token[]=x with a 400, where a refused token is a 403.
+        $token = $request->request->all()['_token'] ?? null;
 
         if (!\is_string($token) || !$this->tokenManager->isTokenValid(new CsrfToken($tokenId, $token))) {
             throw new AccessDeniedHttpException('Invalid CSRF token.');

@@ -29,6 +29,26 @@ class FilterBar
     }
 
     /**
+     * The sort of the list (`sort`, `direction`), which a GET submit would
+     * otherwise drop; a form field of the same name takes precedence.
+     *
+     * @return array<string, string>
+     */
+    public function keptParameters(): array
+    {
+        $query = $this->requestStack->getCurrentRequest()?->query->all() ?? [];
+
+        $kept = [];
+        foreach (['sort', 'direction'] as $name) {
+            if (\is_string($query[$name] ?? null) && !isset($this->form->children[$name])) {
+                $kept[$name] = $query[$name];
+            }
+        }
+
+        return $kept;
+    }
+
+    /**
      * The current route without its query string, or the current path.
      */
     public function resetUrl(): string

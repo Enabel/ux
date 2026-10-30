@@ -42,7 +42,8 @@
         "symfony/yaml": "^8.0"
     },
     "suggest": {
-        "babdev/pagerfanta-bundle": "Required by the Table component (pagination) and Enabel\\Ux\\Admin\\Pager",
+        "babdev/pagerfanta-bundle": "Required, with pagerfanta/twig, by the Table component (pagination) and Enabel\\Ux\\Admin\\Pager",
+        "pagerfanta/twig": "Required by the Table component: the pagerfanta() Twig function and the Bootstrap 5 template",
         "symfony/asset-mapper": "Allows to manage frontend assets more easily. Required by the admin Sidebar stylesheet (enabel-ux-admin.css).",
         "symfony/form": "Required by the FilterBar component",
         "symfony/security-csrf": "Required by the ConfirmAction component (csrf_token()) and Enabel\\Ux\\Admin\\CsrfGuard",

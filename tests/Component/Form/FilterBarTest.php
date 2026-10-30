@@ -13,6 +13,7 @@ use Enabel\Ux\Tests\Kernel\TestKernel;
 use Symfony\Bundle\FrameworkBundle\Test\KernelTestCase;
 use Symfony\Component\DomCrawler\Crawler;
 use Symfony\Component\Form\Extension\Core\Type\FormType;
+use Symfony\Component\Form\Extension\Core\Type\HiddenType;
 use Symfony\Component\Form\Extension\Core\Type\SearchType;
 use Symfony\Component\Form\Extension\Core\Type\TextType;
 use Symfony\Component\Form\FormError;
@@ -72,6 +73,52 @@ class FilterBarTest extends KernelTestCase
         $form->get('q')->addError(new FormError('Broken'));
 
         $this->assertStringContainsString('Broken', $this->render($form)->html());
+    }
+
+    public function testTheSortIsCarriedThroughASubmit(): void
+    {
+        static::getContainer()->get(RequestStack::class)->push(Request::create('/admin', 'GET', ['sort' => 'actor', 'direction' => 'asc', 'page' => '2', 'q' => 'abc']));
+
+        $crawler = $this->render($this->form());
+
+        $this->assertSame('actor', $crawler->filter('input[type=hidden][name=sort]')->attr('value'));
+        $this->assertSame('asc', $crawler->filter('input[type=hidden][name=direction]')->attr('value'));
+        $this->assertCount(0, $crawler->filter('input[name=page]'), 'a new filter starts on the first page');
+    }
+
+    public function testAFormFieldNamedLikeTheSortWins(): void
+    {
+        static::getContainer()->get(RequestStack::class)->push(Request::create('/admin', 'GET', ['sort' => 'actor']));
+
+        $crawler = $this->render($this->form()->add('sort', TextType::class));
+
+        $this->assertCount(1, $crawler->filter('input[name=sort]'));
+        $this->assertCount(0, $crawler->filter('input[type=hidden][name=sort]'));
+    }
+
+    public function testHiddenFieldsHaveNoColumnNorLabel(): void
+    {
+        $crawler = $this->render($this->form()->add('scope', HiddenType::class, ['data' => 'mine']));
+
+        $this->assertSame('mine', $crawler->filter('input[type=hidden][name=scope]')->attr('value'));
+        $this->assertCount(0, $crawler->filter('[class*="col"] input[name=scope]'));
+        $this->assertCount(1, $crawler->filter('label'), 'only the label of q');
+    }
+
+    public function testFormAndLabelAttributesAreKept(): void
+    {
+        /** @var FormFactoryInterface $factory */
+        $factory = static::getContainer()->get('test.form_factory');
+        $form = $factory
+            ->createNamed('', FormType::class, null, ['method' => 'GET', 'attr' => ['class' => 'filters', 'data-controller' => 'autosubmit']])
+            ->add('q', TextType::class, ['label_attr' => ['class' => 'fw-bold', 'id' => 'q-label']]);
+
+        $crawler = $this->render($form);
+
+        $this->assertSame('filters row g-2 align-items-end', $crawler->filter('form')->attr('class'));
+        $this->assertSame('autosubmit', $crawler->filter('form')->attr('data-controller'));
+        $this->assertStringStartsWith('fw-bold form-label small text-body-secondary mb-1', (string) $crawler->filter('label')->attr('class'));
+        $this->assertSame('q-label', $crawler->filter('label')->attr('id'));
     }
 
     private function form(): FormInterface

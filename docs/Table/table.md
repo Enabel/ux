@@ -3,7 +3,12 @@
 A paginated list in a card: optional filters, the table, the range ("1–25 of 30") and the
 pagination. The calling template renders the header cells and the cells of each row.
 
-Requires `babdev/pagerfanta-bundle` (and `pagerfanta/doctrine-orm-adapter` for a Doctrine query).
+Requires `babdev/pagerfanta-bundle` and `pagerfanta/twig` (the bundle does not install it, and the
+`pagerfanta()` Twig function comes from it), plus `pagerfanta/doctrine-orm-adapter` for a Doctrine query:
+
+```bash
+composer require babdev/pagerfanta-bundle pagerfanta/twig pagerfanta/doctrine-orm-adapter
+```
 
 ## Usage
 
