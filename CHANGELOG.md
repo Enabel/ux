@@ -1,5 +1,13 @@
 # Changelog
 
+## [v2.10.0](https://github.com/Enabel/ux/tree/v2.10.0) (2026-10-30)
+
+[Full Changelog](https://github.com/Enabel/ux/compare/v2.9.0...v2.10.0)
+
+**Merged pull requests:**
+
+- ✨ Add the Table, TableHeader and FilterBar components and the admin helpers (Sort, Pager, CsrfGuard, Flash) [\#42](https://github.com/Enabel/ux/pull/42) ([damienlagae](https://github.com/damienlagae))
+
 ## [v2.9.0](https://github.com/Enabel/ux/tree/v2.9.0) (2026-10-28)
 
 [Full Changelog](https://github.com/Enabel/ux/compare/v2.8.0...v2.9.0)
