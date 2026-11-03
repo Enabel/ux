@@ -7,7 +7,7 @@
         <meta name="description" content="{{ 'params.application.description' }}">
         <meta name="theme-color" content="#ffffff">
     {% endblock %}
-    <title>{% block title %}{{ 'params.application.name'|trans }}{% endblock %}</title>
+    <title>{% block document_title %}{% block title %}{{ 'params.application.name'|trans }}{% endblock %}{% endblock %}</title>
     {% block favicon %}
         {# Start favicon section #}
         <link rel="apple-touch-icon" sizes="180x180" href="{{ asset('bundles/enabelux/favicon/apple-touch-icon.png') }}">
