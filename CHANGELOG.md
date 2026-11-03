@@ -1,5 +1,13 @@
 # Changelog
 
+## [v2.11.0](https://github.com/Enabel/ux/tree/v2.11.0) (2026-11-03)
+
+[Full Changelog](https://github.com/Enabel/ux/compare/v2.10.0...v2.11.0)
+
+**Merged pull requests:**
+
+- ✨ Add a `document_title` block around the `title` block of the base layout, so a layout between the base and the pages can frame the title a page sets. **New block name:** a block named `document_title` already defined by an application in a template extending the base layout would now be rendered inside `<title>` [\#44](https://github.com/Enabel/ux/pull/44) ([damienlagae](https://github.com/damienlagae))
+
 ## [v2.10.0](https://github.com/Enabel/ux/tree/v2.10.0) (2026-10-30)
 
 [Full Changelog](https://github.com/Enabel/ux/compare/v2.9.0...v2.10.0)
