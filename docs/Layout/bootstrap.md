@@ -89,7 +89,8 @@ To use the layout, extend `@EnabelUx/layout/bootstrap/base.html.twig` and fill i
 
 The layout exposes the following blocks:
 - `meta_tags`: metadata and `<meta>` tags
-- `title`: the `<title>` content
+- `document_title`: the whole `<title>` content, wrapping `title`
+  - `title`: the page title (the application name by default)
 - `favicon`: the full favicon set
 - `stylesheets`: additional CSS
 - `javascripts`: additional scripts
@@ -100,6 +101,17 @@ The layout exposes the following blocks:
 - `footer`: includes the provided footer by default
 
 You can override any block in your templates.
+
+A page sets `title`. A layout placed between the base and the pages overrides `document_title` to frame whatever
+title the page sets, for instance to show a third-party bundle's pages (whose templates define `title`) like the
+application's own:
+
+```twig
+{# templates/bundles/SomeBundle/layout.html.twig #}
+{% extends 'admin/layout.html.twig' %}
+
+{% block document_title %}Monitor: {{ block('title') }} · {{ 'params.application.name'|trans }}{% endblock %}
+```
 
 ## Navbar and menus
 
