@@ -45,6 +45,15 @@ class MyController
 }
 ```
 
+The background page is rendered in a sub-request, which the Symfony firewall does not run for. The helper therefore:
+
+- only accepts a path of the application (`/...`) as `$backgroundUri`: a URL with a scheme or a host is refused with a 400;
+- checks the `access_control` rules of the background path before rendering it (when SecurityBundle is installed), and throws an `AccessDeniedException` when the user cannot access it;
+- requests the background on the host, scheme and client address of the current request;
+- marks the response `no-store, private`, whatever the background page declares.
+
+Prefer a background generated from a route name. If it comes from the request (a `backUrl` parameter, for instance), it can point to any page of the application the user is allowed to see.
+
 The Twig template for the modal should just render the content of the modal, without any layout.
 
 Optionally, you can specify one of the alternative sizes (sm, lg, xl) by adding the corresponding class to the .modal-content element.

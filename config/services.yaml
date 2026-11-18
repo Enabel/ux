@@ -23,6 +23,9 @@ services:
       - '@request_stack'
       - '@http_kernel'
       - '@twig'
+      - '@?security.access_map'
+      - '@?security.access.decision_manager'
+      - '@?security.token_storage'
   
   Enabel\Ux\Component\Navigation\LocaleSwitcher:
     tags:
