@@ -73,3 +73,10 @@ Optionally, you can specify one of the alternative sizes (sm, lg, xl) by adding 
     
     <form method="post" action="{{ path('modal_route') }}" data-target="modal">...</form>
 ```
+
+A form without an `action` attribute is submitted to the URI the modal was loaded from, whatever the current URL of the
+browser is. Pressing the browser's back button while a modal is displayed closes the modal and returns to the
+background page.
+
+The JavaScript tests of the modal controller use Node's built-in test runner and have no dependencies:
+`node --test "tests/js/*.test.mjs"`.

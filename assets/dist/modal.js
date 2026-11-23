@@ -7,6 +7,9 @@ export default class extends Controller {
         this.onClick = this.onClick.bind(this);
         this.onSubmit = this.onSubmit.bind(this);
         this.onHideBsModal = this.onHideBsModal.bind(this);
+        this.onPopState = this.onPopState.bind(this);
+        this.currentUrl = null;
+        this.closingFromHistory = false;
     }
 
     initialize() {
@@ -17,6 +20,7 @@ export default class extends Controller {
         }
 
         window.history.replaceState({ page: this.element.dataset.modalBackgroundUri }, '', document.location.toString());
+        this.currentUrl = document.location.toString();
         Modal.getOrCreateInstance(this.element).show();
     }
 
@@ -24,12 +28,14 @@ export default class extends Controller {
         document.addEventListener('click', this.onClick);
         document.addEventListener('submit', this.onSubmit);
         document.addEventListener('hide.bs.modal', this.onHideBsModal);
+        window.addEventListener('popstate', this.onPopState);
     }
 
     disconnect() {
         document.removeEventListener('click', this.onClick);
         document.removeEventListener('submit', this.onSubmit);
         document.removeEventListener('hide.bs.modal', this.onHideBsModal);
+        window.removeEventListener('popstate', this.onPopState);
     }
 
     onClick(event) {
@@ -49,7 +55,9 @@ export default class extends Controller {
         }
 
         event.preventDefault();
-        const url = event.target.action;
+        // A form without an action attribute posts to the URL the modal was loaded from: the document URL
+        // cannot be trusted for that, as it changes on history navigation while the modal stays displayed.
+        const url = event.target.getAttribute('action') ? event.target.action : (this.currentUrl ?? event.target.action);
         const { method } = event.target;
         const body = new FormData(event.target);
         this.load(url, method, body);
@@ -60,7 +68,45 @@ export default class extends Controller {
             return;
         }
 
+        if (this.closingFromHistory) {
+            // The history already moved back to the background page: do not push a new entry.
+            this.closingFromHistory = false;
+
+            return;
+        }
+
         window.history.pushState({ page: window.history.state.page }, '', window.history.state.page);
+    }
+
+    onPopState() {
+        if (!this.element.classList.contains('show')) {
+            return;
+        }
+
+        // popstate also fires for fragment navigation and for moves between two modal pages: only close
+        // when the document is back on the background page.
+        const backgroundUrl = window.history.state?.page;
+
+        if (!backgroundUrl || this.withoutHash(backgroundUrl) !== this.withoutHash(document.location.toString())) {
+            return;
+        }
+
+        this.closingFromHistory = true;
+
+        try {
+            Modal.getOrCreateInstance(this.element).hide();
+        } finally {
+            this.closingFromHistory = false;
+        }
+
+        this.currentUrl = null;
+    }
+
+    withoutHash(url) {
+        const parsed = new URL(url, document.location.origin);
+        parsed.hash = '';
+
+        return parsed.toString();
     }
 
     load(url, method, body) {
@@ -97,6 +143,7 @@ export default class extends Controller {
             });
 
             window.history.pushState(window.history.state, '', url);
+            this.currentUrl = url;
         });
     }
 
