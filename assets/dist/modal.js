@@ -68,6 +68,9 @@ export default class extends Controller {
             return;
         }
 
+        // The modal content is gone: action-less forms of the background page post to the document URL again.
+        this.currentUrl = null;
+
         if (this.closingFromHistory) {
             // The history already moved back to the background page: do not push a new entry.
             this.closingFromHistory = false;
@@ -98,8 +101,6 @@ export default class extends Controller {
         } finally {
             this.closingFromHistory = false;
         }
-
-        this.currentUrl = null;
     }
 
     withoutHash(url) {

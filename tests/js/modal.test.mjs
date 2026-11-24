@@ -1,4 +1,4 @@
-// Run with: node --test tests/js
+// Run with: node --test "tests/js/*.test.mjs"
 import { register } from 'node:module';
 import { test, beforeEach } from 'node:test';
 import assert from 'node:assert/strict';
@@ -194,7 +194,7 @@ test('a form with an explicit action uses it', async () => {
     assert.equal(new URL(env.fetchCalls.at(-1).url).pathname, '/other/path');
 });
 
-test('a directly linked modal posts action-less forms to the document URL', async () => {
+test('a directly linked modal posts action-less forms to the modal URL after a history back', async () => {
     env.location.href = MODAL;
     env.element.matches = (selector) => selector === '[data-modal-background-uri]';
     env.element.dataset.modalBackgroundUri = BACKGROUND;
@@ -261,6 +261,34 @@ test('a normal hide still pushes the background page', async () => {
 
     assert.equal(env.pushStates.length, pushesBefore + 1);
     assert.equal(env.pushStates.at(-1), BACKGROUND);
+});
+
+test('a form without action on the background page posts to the document URL after a normal close', async () => {
+    createController();
+
+    click(MODAL);
+    await settle();
+    env.modal.hide();
+    assert.equal(env.location.href, BACKGROUND);
+
+    submit(createForm());
+    await settle();
+
+    assert.equal(new URL(env.fetchCalls.at(-1).url).pathname, '/finance/1');
+});
+
+test('a form without action on the background page posts to the document URL after a popstate close', async () => {
+    createController();
+
+    click(MODAL);
+    await settle();
+    env.history.replaceState({ page: BACKGROUND }, '', BACKGROUND);
+    env.dispatchWindow('popstate', {});
+
+    submit(createForm());
+    await settle();
+
+    assert.equal(new URL(env.fetchCalls.at(-1).url).pathname, '/finance/1');
 });
 
 test('a hide after a popstate close pushes the background page again', async () => {
