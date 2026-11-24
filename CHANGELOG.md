@@ -1,5 +1,21 @@
 # Changelog
 
+## [v2.11.2](https://github.com/Enabel/ux/tree/v2.11.2) (2026-11-24)
+
+[Full Changelog](https://github.com/Enabel/ux/compare/v2.11.1...v2.11.2)
+
+**Merged pull requests:**
+
+- 🐛 Modal: a form without an `action` attribute is posted to the URL the modal was loaded from instead of the current document URL, and the browser back button closes the displayed modal [\#47](https://github.com/Enabel/ux/pull/47) ([upsun-dispatch](https://github.com/apps/upsun-dispatch))
+
+## [v2.11.1](https://github.com/Enabel/ux/tree/v2.11.1) (2026-11-18)
+
+[Full Changelog](https://github.com/Enabel/ux/compare/v2.11.0...v2.11.1)
+
+**Security:**
+
+- 🔒 Enforce access control on the modal background sub-request ([GHSA-v88g-6xxx-7x9g](https://github.com/Enabel/ux/security/advisories/GHSA-v88g-6xxx-7x9g))
+
 ## [v2.11.0](https://github.com/Enabel/ux/tree/v2.11.0) (2026-11-03)
 
 [Full Changelog](https://github.com/Enabel/ux/compare/v2.10.0...v2.11.0)
