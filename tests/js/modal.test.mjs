@@ -291,6 +291,24 @@ test('a form without action on the background page posts to the document URL aft
     assert.equal(new URL(env.fetchCalls.at(-1).url).pathname, '/finance/1');
 });
 
+test('a cancelled hide keeps the modal URL and pushes no history entry', async () => {
+    createController();
+
+    click(MODAL);
+    await settle();
+    const pushesBefore = env.pushStates.length;
+
+    // Another listener (e.g. an unsaved changes guard) called preventDefault(): Bootstrap keeps the modal open.
+    env.dispatchDocument('hide.bs.modal', { target: env.element, defaultPrevented: true });
+    assert.equal(env.pushStates.length, pushesBefore);
+
+    env.location.href = BACKGROUND;
+    submit(createForm());
+    await settle();
+
+    assert.equal(new URL(env.fetchCalls.at(-1).url).pathname, '/finance/1/budget-line/create');
+});
+
 test('a hide after a popstate close pushes the background page again', async () => {
     createController();
 

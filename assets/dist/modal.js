@@ -64,7 +64,8 @@ export default class extends Controller {
     }
 
     onHideBsModal(event) {
-        if (event.target !== this.element) {
+        // Bootstrap aborts the hide when a listener cancels the event: the modal stays displayed.
+        if (event.target !== this.element || event.defaultPrevented) {
             return;
         }
 
