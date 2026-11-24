@@ -6,7 +6,7 @@
 
 **Merged pull requests:**
 
-- 🐛 Modal: a form without an `action` attribute is posted to the URL the modal was loaded from instead of the current document URL, and the browser back button closes the displayed modal [\#47](https://github.com/Enabel/ux/pull/47) ([upsun-dispatch](https://github.com/apps/upsun-dispatch))
+- 🐛 Post action-less modal forms to the URL the modal was loaded from instead of the document URL, and close the modal on browser back [\#47](https://github.com/Enabel/ux/pull/47) ([upsun-dispatch](https://github.com/apps/upsun-dispatch))
 
 ## [v2.11.1](https://github.com/Enabel/ux/tree/v2.11.1) (2026-11-18)
 
